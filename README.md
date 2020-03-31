@@ -7,8 +7,7 @@ The default download should be in your "Downloads" directory. To check, run in a
 cd ~/Downloads
 ls
 ```
-You should see a file in the name of ZED_SDK_Ubuntu18_cuda10.2_v3.1.2.run or something similar. <br>
-Now change the permission of the file so that you can execute it from the terminal.
+You should see a file in the name of ZED_SDK_Ubuntu18_cuda10.2_v3.1.2.run or something similar. Now change the permission of the file so that you can execute it from the terminal.
 ```
 chmod +x ZED_SDK_Ubuntu18_cuda10.2_v3.1.2.run
 ```
