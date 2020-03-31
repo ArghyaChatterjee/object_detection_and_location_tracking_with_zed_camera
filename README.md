@@ -50,5 +50,18 @@ The system will automatically download a wheel file in the current directory. To
 python3 -m pip install pyzed-3.1-cp36-cp36m-linux_x86_64.whl
 ```
 # Object Detection Model Run:
-Download object_detection_zed.py from this website: https://github.com/stereolabs/zed-tensorflow/blob/master/object_detection_zed.py
-You can also download from my github repo: 
+Download object_detection_zed.py from this website: https://github.com/stereolabs/zed-tensorflow/blob/master/object_detection_zed.py . <br>
+You can also download from my github repo: https://github.com/ArghyaChatterjee/ZED-Camera-SDK-and-ZED-Python-API-Installation-on-Ubuntu-18.04-LTS/blob/master/object_detection_zed.py. <br>
+Just open a new file in your home directory with the name "object_detection_zed.py" & paste the code. Now put the file inside tensorflow installation directory:
+```
+cp ~/object_detection_zed.py ~/.local/lib/python3.6/site-packages/tensorflow/models/research/object_detection/
+```
+Now run the file with python3:
+```
+python3 object_detection_zed.py
+```
+**Note**: If you want to import tensorflow from any directory, add this line to the .bashrc file.
+```
+export $TENSORFLOW="~/.local/lib/python3.6/site-packages/tensorflow:$PATH"
+```
+For further info, visit the website: https://stackoverflow.com/questions/33616732/where-is-the-folder-for-installing-tensorflow-with-pip-mac-osx
