@@ -35,7 +35,7 @@ ctrl+c
 #stop it
 ctrl+c
 ```
-## ZED Python API Installation
+## ZED Python API Installation:
 Run the following command before installing zed python api on your pc. Make sure that python3, pip & Open CV are already installed. 
 ```
 python3 -m pip install cython numpy pyopengl
@@ -50,7 +50,7 @@ The system will automatically download a wheel file in the current directory. To
 python3 -m pip install pyzed-3.1-cp36-cp36m-linux_x86_64.whl
 ```
 ## Object Detection Model Run:
-Download object_detection_zed.py from this website: https://github.com/stereolabs/zed-tensorflow/blob/master/object_detection_zed.py . <br>
+Download code from this website: https://github.com/stereolabs/zed-tensorflow/blob/master/object_detection_zed.py . <br>
 You can also download from my github repo: https://github.com/ArghyaChatterjee/ZED-Camera-SDK-and-ZED-Python-API-Installation-on-Ubuntu-18.04-LTS/blob/master/object_detection_zed.py. <br>
 Just open a new file in your home directory with the name "object_detection_zed.py" & paste the code. Now put the file inside tensorflow installation directory:
 ```
