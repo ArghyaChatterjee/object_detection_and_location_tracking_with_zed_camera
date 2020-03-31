@@ -1,6 +1,6 @@
 # ZED-Camera-SDK-and-ZED-Python-API-Installation-on-Ubuntu-18.04-LTS
 It's a repository to use ZED camera with with ZED SDK &amp; ZED Python API for Object detection with Tensorflow.
-# ZED Camera SDK Installation:
+## ZED Camera SDK Installation:
 Download the Latest SDK version from the site: https://www.stereolabs.com/developers/release/.
 The default download should be in your "Downloads" directory. To check, run in a terminal:
 ```
@@ -35,7 +35,7 @@ ctrl+c
 #stop it
 ctrl+c
 ```
-# ZED Python API Installation
+## ZED Python API Installation
 Run the following command before installing zed python api on your pc. Make sure that python3, pip & Open CV are already installed. 
 ```
 python3 -m pip install cython numpy pyopengl
@@ -49,7 +49,7 @@ The system will automatically download a wheel file in the current directory. To
 ```
 python3 -m pip install pyzed-3.1-cp36-cp36m-linux_x86_64.whl
 ```
-# Object Detection Model Run:
+## Object Detection Model Run:
 Download object_detection_zed.py from this website: https://github.com/stereolabs/zed-tensorflow/blob/master/object_detection_zed.py . <br>
 You can also download from my github repo: https://github.com/ArghyaChatterjee/ZED-Camera-SDK-and-ZED-Python-API-Installation-on-Ubuntu-18.04-LTS/blob/master/object_detection_zed.py. <br>
 Just open a new file in your home directory with the name "object_detection_zed.py" & paste the code. Now put the file inside tensorflow installation directory:
@@ -58,10 +58,11 @@ cp ~/object_detection_zed.py ~/.local/lib/python3.6/site-packages/tensorflow/mod
 ```
 Now run the file with python3:
 ```
+cd ~/.local/lib/python3.6/site-packages/tensorflow/models/research/object_detection/
 python3 object_detection_zed.py
 ```
-**Note**: If you want to import tensorflow from any directory, add this line to the .bashrc file.
+**Note**: If you want to import tensorflow from any directory, add the following line to the .bashrc file. For further info, visit the website: https://stackoverflow.com/questions/33616732/where-is-the-folder-for-installing-tensorflow-with-pip-mac-osx
+
 ```
 export $TENSORFLOW="~/.local/lib/python3.6/site-packages/tensorflow:$PATH"
 ```
-For further info, visit the website: https://stackoverflow.com/questions/33616732/where-is-the-folder-for-installing-tensorflow-with-pip-mac-osx
