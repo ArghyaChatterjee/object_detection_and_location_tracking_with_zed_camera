@@ -22,18 +22,13 @@ ls
 ```
 You should see some executables. Try to run them one by one. After starting an executable, to stop it, hit ctrl+c. Now run the following command:
 ```
-#start an example
-./ZED_Explorer
-#stop it
-ctrl+c
-#start another example
-./ZED_Depth_Viewer
-#stop it
-ctrl+c
-#start another example
-./ZEDfu
-#stop it
-ctrl+c
+
+./ZED_Explorer      # To start an example
+ctrl+c              # To stop it
+./ZED_Depth_Viewer  # To start another example
+ctrl+c              # To stop it
+./ZEDfu             # To start another example
+ctrl+c              # To stop it
 ```
 ## ZED Python API Installation:
 Run the following command before installing zed python api on your pc. Make sure that python3, pip & Open CV are already installed. 
