@@ -1,7 +1,7 @@
 # ZED-Camera-SDK-and-ZED-Python-API-Installation-on-Ubuntu-18.04-LTS
 It's a repository to use ZED camera with with ZED SDK &amp; ZED Python API for Object detection with Tensorflow.
 # ZED Camera SDK Installation:
-Download the Latest SDK version from the site: https://www.stereolabs.com/developers/release/
+Download the Latest SDK version from the site: https://www.stereolabs.com/developers/release/.
 The default download should be in your "Downloads" directory. To check, run in a terminal:
 ```
 cd ~/Downloads
@@ -11,7 +11,7 @@ You should see a file in the name of ZED_SDK_Ubuntu18_cuda10.2_v3.1.2.run or som
 ```
 chmod +x ZED_SDK_Ubuntu18_cuda10.2_v3.1.2.run
 ```
-Now the file is executable. Run the following command:
+Now, the file is executable. Run the following command:
 ```
 ./ZED_SDK_Ubuntu18_cuda10.2_v3.1.2.run
 ```
