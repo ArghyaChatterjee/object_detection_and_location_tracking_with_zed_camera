@@ -165,6 +165,161 @@ Now run the following command and you should not see any error:
 ```
 sudo ldconfig
 ```
+# Open-CV-Tensorflow-and-Object-Detection-API-installation-with-Nvidia-Graphics-on-Ubuntu-18.04-LTS
+It's an installation instruction for Opencv, Tensorflow & Object Detection API. Follow the guideline carefully for smooth installation.
+## Open CV installation:
+Follow the instruction on this site to install opencv: https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/. If you want to follow instruction on this site, then bear with me. First check the version of python installed on your system by typing in a terminal:
+```
+python3 --version
+```
+It should show: version 3.6.9 (or something similar). Update & Upgrade preinstalled packages in your PC by typing: 
+```
+sudo apt-get update
+sudo apt-get upgrade
+```
+Install developer tools by running the following command:
+```
+sudo apt-get install build-essential cmake unzip pkg-config
+```
+Now, we need to install some OpenCV-specific prerequisites. Run the following commands:
+```
+sudo apt-get install libjpeg-dev libpng-dev libtiff-dev
+sudo apt-get install libjasper-dev
+```
+You’ll need the following packages so you can work with your camera stream and process video files. Run:
+```
+sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
+sudo apt-get install libxvidcore-dev libx264-dev
+```
+OpenCV’s highgui module relies on the GTK library for GUI operations. At the same time, install some packages which will provide optimizing functions for OpenCV & Python3 headers & libraries. Type:
+```
+sudo apt-get install libgtk-3-dev
+sudo apt-get install libatlas-base-dev gfortran
+sudo apt-get install python3.6-dev
+```
+Since we’re continuing to work in the terminal, let’s download the official OpenCV release followed by the opencv_contrib  module using wget :
+```
+cd ~
+wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.8.zip
+wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/3.4.8.zip
+```
+Unzip & rename the directories. Run:
+```
+unzip opencv.zip
+unzip opencv_contrib.zip
+mv opencv-3.4.8 opencv
+mv opencv_contrib-3.4.8 opencv_contrib
+```
+Install pip & then use it to install numpy by following the command sequencially:
+```
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python3 get-pip.py
+pip install numpy
+```
+Let's setup our opencv build using cmake by running:
+```
+cd ~/opencv
+$ mkdir build
+$ cd build
+$ cmake -D CMAKE_BUILD_TYPE=RELEASE \
+    -D CMAKE_INSTALL_PREFIX=/usr/local \
+    -D WITH_CUDA=ON \
+    -D INSTALL_PYTHON_EXAMPLES=ON \
+    -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
+    -D OPENCV_ENABLE_NONFREE=ON \
+    -D BUILD_EXAMPLES=ON ..
+```
+Compile & install opencv by running the following command. Use flag -j8 if you have 8 CPU cores or -j4 if you have 4 CPU cores. Type:
+```
+make -j8
+sudo make install
+sudo ldconfig
+```
+To check the installation, type:
+```
+pkg-config --modversion opencv
+```
+It should show: 3.4.8. Change your directory where your Python 3 bindings for OpenCV resides & rename the binding file by running the following command:
+```
+cd /usr/local/lib/python3.6/dist-packages/cv2/python-3.6
+sudo mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.so
+```
+## Tensorflow GPU installation:
+After installing opencv, you should start installing tensorflow. Go to this website: https://www.tensorflow.org/install/<br> 
+If you have a nvidia compatible gpu, run in the terminal:
+```
+sudo apt install python3-testresources
+python3 -m pip install tensorflow-gpu==1.15
+```
+To check the successful installation, type:
+```
+python3
+import tensorflow as tf
+``` 
+To know the version & directory where tensorflow is located, run:
+```
+pip3 show tensorflow-gpu
+```
+It should show version & location.
+## Tensorflow Object Detection API Installation:
+If you want, you can follow the tutorial from the website: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md. <br>
+In a new terminal, run the following command:
+```
+sudo apt install git
+```
+Then download "models" repository from tensorflow github page & put that inside default tensorflow installed directory. Run in the terminal:
+```
+cd ~/.local/lib/python3.6/site-packages/tensorflow
+git clone https://github.com/tensorflow/models
+```
+Currently, open the .bashrc file in your home directory. The PATH should look something like this:
+```
+export PATH=/usr/local/cuda-10.2/bin:/usr/local/cuda-10.2/NsightCompute-2019.5${PATH:+:${PATH}}
+```
+You have to manually add /home/arghya/.local/bin directory to environment path variable. After adding the directory to the variable list, it should look something like this:
+```
+export PATH=/usr/local/cuda-10.2/bin:/usr/local/cuda-10.2/NsightCompute-2019.5:/home/arghya/.local/bin${PATH:+:${PATH}}
+``` 
+To verify the path, open a new terminal & run: 
+```
+echo $PATH
+```
+The path should show something like this:
+```
+/usr/local/cuda-10.2/bin:/usr/local/cuda-10.2/NsightCompute-2019.5:/home/arghya/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+```
+The remaining libraries can be installed on Ubuntu 18.04 via apt-get:
+```
+sudo apt-get install protobuf-compiler python3-pil python3-lxml python3-tk
+python3 -m pip install --user Cython
+python3 -m pip install --user contextlib2
+python3 -m pip install --user jupyter
+python3 -m pip install --user matplotlib
+```
+Now, download, compile & copy the cocoapi files to the tensorflow default installed directory.
+```
+git clone https://github.com/cocodataset/cocoapi.git
+cd cocoapi/PythonAPI
+make
+cp -r pycocotools ~/.local/lib/python3.6/site-packages/tensorflow/models/research/
+```
+The Tensorflow Object Detection API uses Protobufs to configure model and training parameters. Before the framework can be used, the Protobuf libraries must be compiled. Run:
+```
+cd ~/.local/lib/python3.6/site-packages/tensorflow/models/research/
+protoc object_detection/protos/*.proto --python_out=.
+```
+Make sure the directories have been added to the python path. Type in the same shell: <br>
+```
+export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+```
+For future use, open your .bashrc file & put this line at the end:
+```
+export PYTHONPATH=$PYTHONPATH:/home/arghya/.local/lib/python3.6/site-packages/tensorflow/models/research/:/home/arghya/.local/lib/python3.6/site-packages/tensorflow/models/research/slim
+```
+You can test that you have correctly installed the Tensorflow Object Detection API by running the following command. In the same terminal, run:
+```
+python3 object_detection/builders/model_builder_test.py
+```
 # ZED-Camera-SDK-ZED-Python-API-Installation-and-Object-Detection-Demo-on-Ubuntu-18.04-LTS
 It's a repository to use ZED camera with ZED SDK &amp; ZED Python API for Object detection with Tensorflow.
 ## ZED Camera SDK Installation:
