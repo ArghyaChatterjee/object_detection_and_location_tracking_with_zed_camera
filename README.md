@@ -1,4 +1,4 @@
-# Nvidia-Graphics-Driver-CUDA-&-CUDNN-Installation-on-Ubuntu-18.04-LTS
+# Nvidia-Graphics-Driver-CUDA-&-CUDNN-Installation
 It's a must installation after a fresh Ubuntu 18.04 OS installation
 ## OS Installation Guideline:
 1. Download Ubuntu 18.04 OS image from this website: https://ubuntu.com/download/desktop
@@ -165,7 +165,7 @@ Now run the following command and you should not see any error:
 ```
 sudo ldconfig
 ```
-# Open-CV-Tensorflow-and-Object-Detection-API-installation-with-Nvidia-Graphics-on-Ubuntu-18.04-LTS
+# Open-CV-Tensorflow-and-Object-Detection-API-installation-with-Nvidia-GPU
 It's an installation instruction for Opencv, Tensorflow & Object Detection API. Follow the guideline carefully for smooth installation.
 ## Open CV installation:
 Follow the instruction on this site to install opencv: https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/. If you want to follow instruction on this site, then bear with me. First check the version of python installed on your system by typing in a terminal:
@@ -320,7 +320,7 @@ You can test that you have correctly installed the Tensorflow Object Detection A
 ```
 python3 object_detection/builders/model_builder_test.py
 ```
-# ZED-Camera-SDK-ZED-Python-API-Installation-and-Object-Detection-Demo-on-Ubuntu-18.04-LTS
+# ZED-Camera-SDK-ZED-Python-API-Installation-and-Object-Detection-Demo
 It's a repository to use ZED camera with ZED SDK &amp; ZED Python API for Object detection with Tensorflow.
 ## ZED Camera SDK Installation:
 Download the Latest SDK version from the site: https://www.stereolabs.com/developers/release/.
