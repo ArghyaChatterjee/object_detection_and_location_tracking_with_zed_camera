@@ -1,3 +1,170 @@
+# Nvidia-Graphics-Driver-CUDA-&-CUDNN-Installation-on-Ubuntu-18.04-LTS
+It's a must installation after a fresh Ubuntu 18.04 OS installation
+## OS Installation Guideline:
+1. Download Ubuntu 18.04 OS image from this website: https://ubuntu.com/download/desktop
+2. Download Etherbalena from this website: https://www.balena.io/etcher/
+3. Follow this tutorial for installing Ubuntu 18.04 LTS OS on your system: https://www.youtube.com/watch?v=G6LAIrGeIjo
+## Configuring Latest Python Version:
+Ubuntu 18.04 LTS comes with preinstalled python 3. To check, run on terminal:
+```
+python3 --version
+```
+It should show: 3.6.9. Now to make python 3.6.9 default & import it with just "python" command using symbolic link, run on terminal:
+```
+sudo ln -s /usr/bin/python3 /usr/bin/python
+```
+**Note**: Don't try to undo this step by reversing the order, otherwise the system will break & you will loose your terminal. Check with the following command: 
+```
+python --version
+```
+It should show: 3.6.9
+## Configuring Latest PIP Version:
+If you want to use pip (python installation pipeline), you have to install it. You can install it with python 3. Run in a terminal:
+```
+sudo apt install python3-pip
+```
+To verify installation, please run: 
+```
+pip3 --version
+```
+It should show: pip 9.0.1. If you want to upgrade pip3, run: 
+```
+pip3 install --upgrade pip
+``` 
+If you want to import pip3 as pip, run the following command:
+```
+sudo ln -s /usr/bin/pip3 /usr/bin/pip
+```
+Now check it with the following command: 
+```
+pip --version
+```
+It should show: pip 20.0.2 or something similar.
+## Configuring Latest CMake Version:
+Ubuntu 18.04 LTS doesn't come with a preinstalled cmake. To check, run on terminal:
+```
+cmake --version
+```
+It should show: Not installed but can be installed with "sudo apt-get install cmake". Run the following command in the terminal:
+```
+sudo mkdir /opt/cmake
+```
+Manually download "cmake-3.17.0-Linux-x86_64.sh" file to the "Downloads" directory from this site: https://cmake.org/download/. Run the following command to copy the file to newly created cmake directory: 
+```
+sudo cp ~/Downloads/cmake-3.17.0-Linux-x86_64.sh /opt/cmake/
+```
+Now run the following command to install cmake: <br>
+```
+cd /opt/cmake
+sudo sh cmake-3.17.0-Linux-x86_64.sh --prefix=/opt/cmake --skip-license
+```
+Follow the command prompt for further installation instruction. Now to import current version of cmake using symbolic link, type:
+```
+sudo ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
+```
+Remove installation file, it's no longer needed:
+```
+rm cmake-3.17.0-Linux-x86_64.sh
+```
+Check with the following command: 
+```
+cmake --version
+```
+It should show: 3.17.0
+## Configuring Latest Nvidia Graphics Driver:
+Go to Activities Overview--->Software Updater--->Settings--->Additional Driver & Choose available latest nvidia driver. Then click on "Apply changes".
+If you want to check for recent version of nvidia gpu driver, please type:
+```
+apt search nvidia-driver
+```
+If you want more updated version of nvidia gpu driver, run:
+```
+sudo apt-add-repository ppa:graphics-drivers/ppa
+sudo apt-get update
+sudo apt-get install nvidia-driver-440
+```
+Restart the computer. Check the version of the nvidia graphics driver:
+```
+nvidia-smi
+```
+It should show: driver version-440.33 & CUDA version-10.2
+## Configuring Latest CUDA installation:
+Check whether cuda is already installed on your system or not. In the terminal, run:
+```
+nvcc --version
+```
+It should show: nvcc not installed but can be installed by sudo apt install nvidia-cuda-toolkit. Go to this website: https://developer.nvidia.com/cuda-downloads. Then click on Linux--->x86_64--->Ubuntu--->18.04--->deb local, you will get the installation file & proccedure. <br>
+The installation proccedure is also mentioned below. Run the following commands in the terminal:
+```
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
+sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
+wget http://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda-repo-ubuntu1804-10-2-local-10.2.89-440.33.01_1.0-1_amd64.deb
+sudo dpkg -i cuda-repo-ubuntu1804-10-2-local-10.2.89-440.33.01_1.0-1_amd64.deb
+sudo apt-key add /var/cuda-repo-10-2-local-10.2.89-440.33.01/7fa2af80.pub
+sudo apt-get update
+sudo apt-get -y install cuda
+```
+Now there are some post installation instructions. You can get documentation of post installation instruction here: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions. <br>
+Post installation proccedure is also documented below. Just add 2 lines to your .bashrc file & save it.
+```
+export PATH=/usr/local/cuda-10.2/bin:/usr/local/cuda-10.2/NsightCompute-2019.5${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+```
+**Note**: If you want to know what does ${PATH:+:${PATH}} mean & how does it work, visit this website: https://unix.stackexchange.com/questions/267506/what-does-pathpath-mean. <br>
+To check the installation, open a new terminal & run:
+```
+nvcc --version
+``` 
+It should show: 10.2
+## Configuring Latest CUDNN installation:
+First check that you have already cudnn installed on your system or not. Run:
+```
+cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
+```
+Or,
+```
+cat /usr/include/cudnn.h | grep CUDNN_MAJOR -A 2
+```
+It should show: No such file or directory. <br>
+Follow the installation guideline documented on this website: https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html <br>
+Installation proccedure is also documented below. Go to this website: https://developer.nvidia.com/rdp/cudnn-download & download "cuDNN Library for Linux". Put it to your home directory after download. Now open a new terminal & run the following command:
+ ```
+ tar -xzvf cudnn-10.2-linux-x64-v7.6.5.32.tgz
+ sudo cp cuda/include/cudnn.h /usr/local/cuda/include
+ sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+ sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+ ```
+To check the installation, run the following command:
+```
+cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
+```
+It should show: #define CUDNN_MAJOR 7 #define CUDNN_MINOR 6 #define CUDNN_PATCHLEVEL 5. Then in the same terminal, run: 
+```
+sudo ldconfig
+```
+**Note**: If you get the error: /sbin/ldconfig.real: /usr/local/cuda-10.2/targets/x86_64-linux/lib/libcudnn.so.7 is not a symbolic link, then follow the instruction below. If you don't get the error message, your installation is complete & you don't need to continue further. Otherwise, run the following command: 
+ ```
+ cd /usr/local/cuda/lib64/
+ ls -lha libcudnn*
+ ```
+You should see two symlinks (bold teal) and one single file. Something like this:
+ ```
+ /usr/local/cuda/lib64$ ls -lha libcudnn*
+lrwxrwxrwx 1 root root  13 Mar 25 23:56 libcudnn.so -> libcudnn.so.7
+lrwxrwxrwx 1 root root  17 Mar 25 23:55 libcudnn.so.7 -> libcudnn.so.7.6.5
+-rwxr-xr-x 1 root root 76M Mar 25 23:27 libcudnn.so.7.6.5
+```
+If libcudnn.so and libcudnn.so.7 are not symlinks then this is the reason why you got this error. Cudnn downloaded from nvidia has symbolic link but when copied to other location, it losses the sym link info. If so, this is what you need to do:
+```
+/usr/local/cuda/lib64$ sudo rm libcudnn.so
+/usr/local/cuda/lib64$ sudo rm libcudnn.so.7
+/usr/local/cuda/lib64$ sudo ln -sf libcudnn.so.7.6.5 libcudnn.so.7
+/usr/local/cuda/lib64$ sudo ln -sf libcudnn.so.7 libcudnn.so
+```
+Now run the following command and you should not see any error:
+```
+sudo ldconfig
+```
 # ZED-Camera-SDK-ZED-Python-API-Installation-and-Object-Detection-Demo-on-Ubuntu-18.04-LTS
 It's a repository to use ZED camera with ZED SDK &amp; ZED Python API for Object detection with Tensorflow.
 ## ZED Camera SDK Installation:
