@@ -368,7 +368,7 @@ python3 -m pip install pyzed-3.1-cp36-cp36m-linux_x86_64.whl
 ```
 ## Object Detection Model Run:
 Download code from this website: https://github.com/stereolabs/zed-tensorflow/blob/master/object_detection_zed.py . <br>
-You can also download from my github repo: https://github.com/ArghyaChatterjee/Object-Detection-Demo-With-ZED-camera-on-Ubuntu-18.04-LTS/blob/master/object_detection_zed.py. <br>
+You can also download from my github repo: https://github.com/ArghyaChatterjee/Object-Detection-Demo-With-ZED-camera-on-Ubuntu-18.04/blob/master/object_detection_zed.py. <br>
 Just open a new file in your home directory with the name "object_detection_zed.py" & paste the code. Now put the file inside tensorflow installation directory:
 ```
 cp ~/object_detection_zed.py ~/.local/lib/python3.6/site-packages/tensorflow/models/research/object_detection/
