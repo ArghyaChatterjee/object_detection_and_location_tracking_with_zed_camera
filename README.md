@@ -272,7 +272,7 @@ To know the version & directory where tensorflow is located, run:
 ```
 pip3 show tensorflow-gpu
 ```
-It should show version & location.
+It should show version & location. <br>
 **Note**: 
 - To this date, tensorflow 2.1 binary package works well with cuda 10.1 (Not cuda 10.2). So if you want to run with cuda 10.2, you have to build tensorflow 2.1 from source. Follow this instruction: https://www.tensorflow.org/install/source.
 - As we have already upgraded the pip3 version (v. 20.0.2), the default version of tensorflow which will be installed is tensorflow 2.1. With the same command, the previous version of pip3 (v. 9.0.1) would have installed tensorflow 1.14. 
@@ -412,7 +412,8 @@ The result should be something like below:
     <img src="Object_detection.png", width="800">
 </p>
 
-**Note**: If you want to import tensorflow from any directory, add the following line to the .bashrc file. 
+**Note**: 
+- If you want to import tensorflow from any directory, add the following line to the .bashrc file. 
 ```
 export $TENSORFLOW="~/.local/lib/python3.6/site-packages/tensorflow:$PATH"
 ```
