@@ -249,6 +249,7 @@ After installing opencv, you should start installing tensorflow. A list of CUDA 
 <p align="center">
     <img src="GPU_Version.png", width="800">
 </p>
+
 Go to this website for more info: https://www.tensorflow.org/install/<br> 
 Assuming that you have a nvidia compatible gpu, run in the terminal:
 ```
