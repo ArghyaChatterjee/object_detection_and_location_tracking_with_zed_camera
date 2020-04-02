@@ -249,8 +249,9 @@ After installing opencv, you should start installing tensorflow. Go to this webs
 If you have a nvidia compatible gpu, run in the terminal:
 ```
 sudo apt install python3-testresources
-python3 -m pip install tensorflow-gpu==1.15
+python3 -m pip install --user tensorflow-gpu==1.15
 ```
+**Note**: Upgrading the system pip can cause problems. If not in a virtual environment, use python3 -m pip. This ensures that you upgrade and use the Python pip instead of the system pip.
 To check the successful gpu version installation, type:
 ```
 python3
@@ -385,8 +386,8 @@ Now run the file with python3:
 cd ~/.local/lib/python3.6/site-packages/tensorflow/models/research/object_detection/
 python3 object_detection_zed.py
 ```
-**Note**: If you want to import tensorflow from any directory, add the following line to the .bashrc file. For further info, visit the website: https://stackoverflow.com/questions/33616732/where-is-the-folder-for-installing-tensorflow-with-pip-mac-osx
-
+**Note**: If you want to import tensorflow from any directory, add the following line to the .bashrc file. 
 ```
 export $TENSORFLOW="~/.local/lib/python3.6/site-packages/tensorflow:$PATH"
 ```
+For further info regarding $TENSORFLOWPATH, visit the website: https://stackoverflow.com/questions/33616732/where-is-the-folder-for-installing-tensorflow-with-pip-mac-osx
