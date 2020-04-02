@@ -15,6 +15,7 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 ```
 **Note**: 
 - Don't try to undo this step by reversing the order, otherwise the system will break & you will loose your terminal. <br>
+
 Check with the following command: 
 ```
 python --version
@@ -114,6 +115,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBR
 ```
 **Note**: 
 - If you want to know what does ${PATH:+:${PATH}} mean & how does it work, visit this website: https://unix.stackexchange.com/questions/267506/what-does-pathpath-mean. <br>
+
 To check the installation, open a new terminal & run:
 ```
 nvcc --version
@@ -128,8 +130,7 @@ Or,
 ```
 cat /usr/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
-It should show: No such file or directory. <br>
-Follow the installation guideline documented on this website: https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html <br>
+It should show: No such file or directory. Follow the installation guideline documented on this website: https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html <br>
 Installation proccedure is also documented below. Go to this website: https://developer.nvidia.com/rdp/cudnn-download & download "cuDNN Library for Linux". Put it to your home directory after download. Now open a new terminal & run the following command:
  ```
  tar -xzvf cudnn-10.2-linux-x64-v7.6.5.32.tgz
