@@ -27,7 +27,7 @@ To verify installation, please run:
 ```
 pip3 --version
 ```
-It should show: pip 9.0.1. If you want to upgrade pip3, run: 
+It should show: pip 9.0.1. If you want to upgrade pip3 (To install tensorflow 2.x later), run: 
 ```
 pip3 install --upgrade pip
 ``` 
@@ -250,13 +250,17 @@ After installing opencv, you should start installing tensorflow. A list of CUDA 
     <img src="GPU_Version.png", width="800">
 </p>
 
-Go to this website for more info: https://www.tensorflow.org/install/<br> 
+Go to this website for more info: https://www.tensorflow.org/install/. We will be installing tensorflow from binary packages. According to the chart above, tensorflow 2.1 binary package ships with preconfigured Cuda 10.1 dynamic libraries.
 Assuming that you have a nvidia compatible gpu, run in the terminal:
 ```
 sudo apt install python3-testresources
-python3 -m pip install --user tensorflow-gpu==1.15
+python3 -m pip install --user --upgrade tensorflow-gpu
 ```
-**Note**: If you are using a virtual environment, omit the --user argument. Upgrading the system pip can cause problems. If not in a virtual environment, use python3 -m pip. This ensures that you upgrade and use the Python pip instead of the system pip.
+**Note**: 
+- As we have already upgraded the pip3 version (v. 20.0.2), the default version of tensorflow which will be installed is tensorflow 2.1. With the same command, the previous version of pip3 (v. 9.0.1) would have installed tensorflow 1.14. 
+- From tensorflow 2.x versions, you do not need to explicitely mention the gpu or cpu version, only mentioning "tensorflow" will do the same job. 
+- If you are using a virtual environment, omit the --user argument. 
+- Upgrading the system pip can cause problems. If not in a virtual environment, use python3 -m pip. This ensures that you upgrade and use the Python pip instead of the system pip.
 To check the successful gpu version installation, type:
 ```
 python3
@@ -391,6 +395,11 @@ Now run the file with python3:
 cd ~/.local/lib/python3.6/site-packages/tensorflow/models/research/object_detection/
 python3 object_detection_zed.py
 ```
+The result should be something like below:
+<p align="center">
+    <img src="Object_detection.png", width="800">
+</p>
+
 **Note**: If you want to import tensorflow from any directory, add the following line to the .bashrc file. 
 ```
 export $TENSORFLOW="~/.local/lib/python3.6/site-packages/tensorflow:$PATH"
