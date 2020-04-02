@@ -18,7 +18,10 @@ Check with the following command:
 python --version
 ```
 It should show: 3.6.9 <br>
-**Note**: Don't try to undo this step by reversing the order, otherwise the system will break & you will loose your terminal.
+**Note**: Don't try to undo python symlink step by reversing the order, otherwise the system will break & you will loose your terminal. If you want to unlink the symbolic link we created, type:
+```
+sudo unlink usr/bin/python3
+```
 ## Configuring Latest PIP Version:
 If you want to use pip (python installation pipeline), you have to install it. You can install it with python 3. Run in a terminal:
 ```
