@@ -1,9 +1,9 @@
 # Nvidia-Graphics-Driver-CUDA-&-CUDNN-Installation
 It's a must installation after a fresh Ubuntu 18.04 OS installation
 ## OS Installation Guideline:
-1. Download Ubuntu 18.04 OS image from this website: https://ubuntu.com/download/desktop
-2. Download Etherbalena from this website: https://www.balena.io/etcher/
-3. Follow this tutorial for installing Ubuntu 18.04 LTS OS on your system: https://www.youtube.com/watch?v=G6LAIrGeIjo
+- Download Ubuntu 18.04 OS image from this website: https://ubuntu.com/download/desktop
+- Download Etherbalena from this website: https://www.balena.io/etcher/
+- Follow this tutorial for installing Ubuntu 18.04 LTS OS on your system: https://www.youtube.com/watch?v=G6LAIrGeIjo
 ## Configuring Latest Python Version:
 Ubuntu 18.04 LTS comes with preinstalled python 3. To check, run on terminal:
 ```
