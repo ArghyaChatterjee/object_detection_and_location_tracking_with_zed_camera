@@ -14,7 +14,8 @@ It should show: 3.6.9. Now to make python 3.6.9 default & import it with just "p
 sudo ln -s /usr/bin/python3 /usr/bin/python
 ```
 **Note**: 
-- Don't try to undo this step by reversing the order, otherwise the system will break & you will loose your terminal. Check with the following command: 
+- Don't try to undo this step by reversing the order, otherwise the system will break & you will loose your terminal. <br>
+Check with the following command: 
 ```
 python --version
 ```
