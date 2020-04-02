@@ -13,7 +13,8 @@ It should show: 3.6.9. Now to make python 3.6.9 default & import it with just "p
 ```
 sudo ln -s /usr/bin/python3 /usr/bin/python
 ```
-**Note**: Don't try to undo this step by reversing the order, otherwise the system will break & you will loose your terminal. Check with the following command: 
+**Note**: 
+- Don't try to undo this step by reversing the order, otherwise the system will break & you will loose your terminal. Check with the following command: 
 ```
 python --version
 ```
@@ -110,7 +111,8 @@ Post installation proccedure is also documented below. Just add 2 lines to your 
 export PATH=/usr/local/cuda-10.2/bin:/usr/local/cuda-10.2/NsightCompute-2019.5${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 ```
-**Note**: If you want to know what does ${PATH:+:${PATH}} mean & how does it work, visit this website: https://unix.stackexchange.com/questions/267506/what-does-pathpath-mean. <br>
+**Note**: 
+- If you want to know what does ${PATH:+:${PATH}} mean & how does it work, visit this website: https://unix.stackexchange.com/questions/267506/what-does-pathpath-mean. <br>
 To check the installation, open a new terminal & run:
 ```
 nvcc --version
@@ -142,26 +144,27 @@ It should show: #define CUDNN_MAJOR 7 #define CUDNN_MINOR 6 #define CUDNN_PATCHL
 ```
 sudo ldconfig
 ```
-**Note**: If you get the error: /sbin/ldconfig.real: /usr/local/cuda-10.2/targets/x86_64-linux/lib/libcudnn.so.7 is not a symbolic link, then follow the instruction below. If you don't get the error message, your installation is complete & you don't need to continue further. Otherwise, run the following command: 
+**Note**: 
+- If you get the error: /sbin/ldconfig.real: /usr/local/cuda-10.2/targets/x86_64-linux/lib/libcudnn.so.7 is not a symbolic link, then follow the instruction below. If you don't get the error message, your installation is complete & you don't need to continue further. Otherwise, run the following command: 
  ```
  cd /usr/local/cuda/lib64/
  ls -lha libcudnn*
  ```
-You should see two symlinks (bold teal) and one single file. Something like this:
+- You should see two symlinks (bold teal) and one single file. Something like this:
  ```
  /usr/local/cuda/lib64$ ls -lha libcudnn*
 lrwxrwxrwx 1 root root  13 Mar 25 23:56 libcudnn.so -> libcudnn.so.7
 lrwxrwxrwx 1 root root  17 Mar 25 23:55 libcudnn.so.7 -> libcudnn.so.7.6.5
 -rwxr-xr-x 1 root root 76M Mar 25 23:27 libcudnn.so.7.6.5
 ```
-If libcudnn.so and libcudnn.so.7 are not symlinks then this is the reason why you got this error. Cudnn downloaded from nvidia has symbolic link but when copied to other location, it losses the sym link info. If so, this is what you need to do:
+- If libcudnn.so and libcudnn.so.7 are not symlinks then this is the reason why you got this error. Cudnn downloaded from nvidia has symbolic link but when copied to other location, it losses the sym link info. If so, this is what you need to do:
 ```
 /usr/local/cuda/lib64$ sudo rm libcudnn.so
 /usr/local/cuda/lib64$ sudo rm libcudnn.so.7
 /usr/local/cuda/lib64$ sudo ln -sf libcudnn.so.7.6.5 libcudnn.so.7
 /usr/local/cuda/lib64$ sudo ln -sf libcudnn.so.7 libcudnn.so
 ```
-Now run the following command and you should not see any error:
+- Now run the following command and you should not see any error:
 ```
 sudo ldconfig
 ```
