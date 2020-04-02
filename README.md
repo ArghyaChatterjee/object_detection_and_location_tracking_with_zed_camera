@@ -229,7 +229,7 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
     -D OPENCV_ENABLE_NONFREE=ON \
     -D BUILD_EXAMPLES=ON ..
 ```
-Compile & install opencv by running the following command. Use flag -j8 if you have 8 CPU cores or -j4 if you have 4 CPU cores. Type:
+Compile & install opencv by running the following command. Use flag -j8 if you have 8 CPU cores or -j4 if you have 4 CPU cores.
 ```
 make -j8
 sudo make install
