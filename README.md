@@ -367,6 +367,12 @@ The system will automatically download a wheel file in the current directory. To
 ```
 python3 -m pip install pyzed-3.1-cp36-cp36m-linux_x86_64.whl
 ```
+To check successful installation, run:
+```
+python3
+import pyzed.sl as sl
+```
+The file should successfully import without showing any error.
 ## Object Detection Model Run:
 Download code from this website: https://github.com/stereolabs/zed-tensorflow/blob/master/object_detection_zed.py . <br>
 You can also download from my github repo: https://github.com/ArghyaChatterjee/Object-Detection-Demo-With-ZED-camera-on-Ubuntu-18.04/blob/master/object_detection_zed.py. <br>
