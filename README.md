@@ -17,7 +17,6 @@ Check with the following command:
 ```
 python --version
 ```
-It should show: 3.6.9 <br>
 **Note**: 
 - Don't try to undo python symlink step by reversing the order, otherwise the system will break & you will loose your terminal. If you want to unlink the symbolic link we created, type:
 ```
@@ -119,7 +118,6 @@ To check the installation, open a new terminal & run:
 ```
 nvcc --version
 ``` 
-It should show: 10.2 <br>
 **Note**:
 - If you want to know what does ${PATH:+:${PATH}} mean & how does it work, visit this website: https://unix.stackexchange.com/questions/267506/what-does-pathpath-mean.
 ## Configuring Latest CUDNN installation:
