@@ -251,10 +251,11 @@ If you have a nvidia compatible gpu, run in the terminal:
 sudo apt install python3-testresources
 python3 -m pip install tensorflow-gpu==1.15
 ```
-To check the successful installation, type:
+To check the successful gpu version installation, type:
 ```
 python3
 import tensorflow as tf
+tf.test.is_gpu_available()
 ``` 
 To know the version & directory where tensorflow is located, run:
 ```
@@ -314,7 +315,7 @@ export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
 ```
 For future use, open your .bashrc file & put this line at the end:
 ```
-export PYTHONPATH=$PYTHONPATH:/home/arghya/.local/lib/python3.6/site-packages/tensorflow/models/research/:/home/arghya/.local/lib/python3.6/site-packages/tensorflow/models/research/slim
+export PYTHONPATH=$PYTHONPATH:/home/arghya/.local/lib/python3.6/site-packages/tensorflow/models:/home/arghya/.local/lib/python3.6/site-packages/tensorflow/models/research:/home/arghya/.local/lib/python3.6/site-packages/tensorflow/models/research/slim
 ```
 You can test that you have correctly installed the Tensorflow Object Detection API by running the following command. In the same terminal, run:
 ```
