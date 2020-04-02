@@ -250,7 +250,8 @@ After installing opencv, you should start installing tensorflow. A list of CUDA 
     <img src="GPU_Version.png", width="800">
 </p>
 
-Go to this website for more info: https://www.tensorflow.org/install/. We will be installing tensorflow from binary packages. According to the chart above, tensorflow 2.1 binary package ships with preconfigured Cuda 10.1 dynamic libraries. <br>
+Go to this website for more info: https://www.tensorflow.org/install/. <br>
+We will be installing tensorflow from binary packages. According to the chart above, tensorflow 2.1 binary package ships with preconfigured Cuda 10.1 dynamic libraries. <br>
 Assuming that you have a nvidia compatible gpu, run in the terminal:
 ```
 sudo apt install python3-testresources
