@@ -245,13 +245,17 @@ cd /usr/local/lib/python3.6/dist-packages/cv2/python-3.6
 sudo mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.so
 ```
 ## Tensorflow GPU installation:
-After installing opencv, you should start installing tensorflow. Go to this website: https://www.tensorflow.org/install/<br> 
-If you have a nvidia compatible gpu, run in the terminal:
+After installing opencv, you should start installing tensorflow. A list of CUDA version compatible tensorflow is given below:
+<p align="center">
+    <img src="GPU_Version.png", width="800">
+</p>
+Go to this website for more info: https://www.tensorflow.org/install/<br> 
+Assuming that you have a nvidia compatible gpu, run in the terminal:
 ```
 sudo apt install python3-testresources
 python3 -m pip install --user tensorflow-gpu==1.15
 ```
-**Note**: Upgrading the system pip can cause problems. If not in a virtual environment, use python3 -m pip. This ensures that you upgrade and use the Python pip instead of the system pip.
+**Note**: If you are using a virtual environment, omit the --user argument. Upgrading the system pip can cause problems. If not in a virtual environment, use python3 -m pip. This ensures that you upgrade and use the Python pip instead of the system pip.
 To check the successful gpu version installation, type:
 ```
 python3
