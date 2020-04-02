@@ -18,8 +18,7 @@ Check with the following command:
 python --version
 ```
 It should show: 3.6.9 <br>
-**Note**: 
-- Don't try to undo this step by reversing the order, otherwise the system will break & you will loose your terminal.
+**Note**: Don't try to undo this step by reversing the order, otherwise the system will break & you will loose your terminal.
 ## Configuring Latest PIP Version:
 If you want to use pip (python installation pipeline), you have to install it. You can install it with python 3. Run in a terminal:
 ```
@@ -117,8 +116,7 @@ To check the installation, open a new terminal & run:
 nvcc --version
 ``` 
 It should show: 10.2 <br>
-**Note**: 
-- If you want to know what does ${PATH:+:${PATH}} mean & how does it work, visit this website: https://unix.stackexchange.com/questions/267506/what-does-pathpath-mean.
+**Note**: If you want to know what does ${PATH:+:${PATH}} mean & how does it work, visit this website: https://unix.stackexchange.com/questions/267506/what-does-pathpath-mean.
 ## Configuring Latest CUDNN installation:
 First check that you have already cudnn installed on your system or not. Run:
 ```
@@ -410,8 +408,7 @@ The result should be something like below:
     <img src="Object_detection.png", width="800">
 </p>
 
-**Note**: 
-- If you want to import tensorflow from any directory, add the following line to the .bashrc file. For further info regarding $TENSORFLOWPATH, visit the website: https://stackoverflow.com/questions/33616732/where-is-the-folder-for-installing-tensorflow-with-pip-mac-osx
+**Note**: If you want to import tensorflow from any directory, add the following line to the .bashrc file. For further info regarding $TENSORFLOWPATH, visit the website: https://stackoverflow.com/questions/33616732/where-is-the-folder-for-installing-tensorflow-with-pip-mac-osx
 ```
 export $TENSORFLOW="~/.local/lib/python3.6/site-packages/tensorflow:$PATH"
 ```
