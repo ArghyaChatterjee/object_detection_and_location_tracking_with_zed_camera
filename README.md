@@ -262,17 +262,6 @@ Assuming that you have a nvidia compatible gpu, run in the terminal:
 sudo apt install python3-testresources
 python3 -m pip install --user --upgrade tensorflow-gpu
 ```
-**Note**: 
-- To this date, tensorflow 2.1 binary package works well with cuda 10.1 (Not cuda 10.2). So if you want to run with cuda 10.2, you have to build tensorflow 2.1 from source. Follow this instruction: https://www.tensorflow.org/install/source.
-- As we have already upgraded the pip3 version (v. 20.0.2), the default version of tensorflow which will be installed is tensorflow 2.1. With the same command, the previous version of pip3 (v. 9.0.1) would have installed tensorflow 1.14. 
-- From tensorflow 2.x versions, you do not need to explicitely mention the gpu or cpu version, only mentioning "tensorflow" will do the same job. 
-- If you are using a virtual environment, omit the --user argument. 
-- Upgrading the system pip can cause problems. If not in a virtual environment, use python3 -m pip. This ensures that you upgrade and use the Python pip instead of the system pip. 
-- If you ever realize that you have installed wrong version of tensorflow, then you can do the following to get it undone & manually delete files 'tensorflow-estimator-1.15', 'tensorflow-estimator', 'tensorflow', 'tensorboard-1.15', 'tensorboard'.
-```
-python3 -m pip uninstall protobuf    
-python3 -m pip uninstall tensorflow-gpu
-```
 To check the successful gpu version installation, type:
 ```
 python3
@@ -284,6 +273,17 @@ To know the version & directory where tensorflow is located, run:
 pip3 show tensorflow-gpu
 ```
 It should show version & location.
+**Note**: 
+- To this date, tensorflow 2.1 binary package works well with cuda 10.1 (Not cuda 10.2). So if you want to run with cuda 10.2, you have to build tensorflow 2.1 from source. Follow this instruction: https://www.tensorflow.org/install/source.
+- As we have already upgraded the pip3 version (v. 20.0.2), the default version of tensorflow which will be installed is tensorflow 2.1. With the same command, the previous version of pip3 (v. 9.0.1) would have installed tensorflow 1.14. 
+- From tensorflow 2.x versions, you do not need to explicitely mention the gpu or cpu version, only mentioning "tensorflow" will do the same job. 
+- If you are using a virtual environment, omit the --user argument. 
+- Upgrading the system pip can cause problems. If not in a virtual environment, use python3 -m pip. This ensures that you upgrade and use the Python pip instead of the system pip. 
+- If you ever realize that you have installed wrong version of tensorflow, then you can do the following to get it undone & manually delete files 'tensorflow-estimator-1.15', 'tensorflow-estimator', 'tensorflow', 'tensorboard-1.15', 'tensorboard'.
+```
+python3 -m pip uninstall protobuf    
+python3 -m pip uninstall tensorflow-gpu
+```
 ## Tensorflow Object Detection API Installation:
 If you want, you can follow the tutorial from the website: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md. <br>
 In a new terminal, run the following command:
