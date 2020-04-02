@@ -267,7 +267,7 @@ To check the successful gpu version installation, type:
 ```
 python3
 import tensorflow as tf2
-tf.test.is_gpu_available()
+tf2.test.is_gpu_available()
 ``` 
 To know the version & directory where tensorflow is located, run:
 ```
