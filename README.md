@@ -266,7 +266,7 @@ python3 -m pip install --user --upgrade tensorflow-gpu
 To check the successful gpu version installation, type:
 ```
 python3
-import tensorflow as tf
+import tensorflow as tf2
 tf.test.is_gpu_available()
 ``` 
 To know the version & directory where tensorflow is located, run:
