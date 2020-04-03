@@ -113,7 +113,8 @@ nvidia-smi
 ```
 It should show: driver version-440.33 & CUDA version-10.2 <br>
 **Note**:
-- It's recommended to use PPA to install Nvidia drivers. Personal Package Archives (PPA) enables you to upload Ubuntu source packages to be built and published as an apt repository by Launchpad.
+- It's recommended to use PPA to add repositories for Nvidia drivers. Personal Package Archives (PPA) enables you to upload Ubuntu source packages to be built and published as an apt repository by Launchpad.
+- It's recommended to use apt to install nvidia drivers. APT or Advanced Package Tool, is a free-software user interface that works with core libraries to handle the installation and removal of software on Debian, Ubuntu
 - If you want to download & install nvidia driver from source, it's a hectic process. Follow instructions in the website: http://www.linuxandubuntu.com/home/how-to-install-latest-nvidia-drivers-in-linux
 ## Configuring Latest CUDA installation:
 A list of Nvidia Graphics Driver with supported cuda version is given below:
@@ -428,7 +429,10 @@ To check successful installation, run:
 python3
 import pyzed.sl as sl
 ```
-The file should successfully import without showing any error.
+The file should successfully import without showing any error. <br>
+**Note:**
+- For manual installation, follow tutorial provided in their official website: https://www.stereolabs.com/docs/app-development/python/install/
+- Follow tutorial from official website to install from binary package rather installing from source (hectic way). If you really want to install from source, follow their github page: https://github.com/stereolabs/zed-python-api
 ## Object Detection Model Run:
 Download the "object_detection_zed.py" from this github repo: https://github.com/ArghyaChatterjee/Object-Detection-Demo-With-ZED-camera-on-Ubuntu-18.04/blob/master/object_detection_zed.py. <br> 
 Just open a new file in your home directory with the name "object_detection_zed.py" & paste the code. Put the file inside tensorflow installation directory. Then open a new terminal & run:
@@ -446,6 +450,12 @@ The result should be something like below:
 </p>
 
 **Note**: 
+- If you want to monitor system performance during the task allocated, you can open Activities Overview--->System Monitor. Alternatively, you can also install 'htop' to monitor system parameters in a unique way. In a new terminal, run:
+```
+sudo snap install htop
+htop
+```
+- Snappy (snap) is a software deployment and package management system developed by Canonical for the Linux operating system. The packages, called snaps, and the tool for using them, snapd, work across a range of Linux distributions allowing distribution-agnostic upstream software packaging.
 - If you want to monitor your nvidia gpu memory usage during a certain gpu intensive task, install 'glances' & check by running the following command in a new terminal:
 ```
 sudo python3 -m pip install glances[gpu]
