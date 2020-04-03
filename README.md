@@ -44,7 +44,7 @@ Now check it with the following command:
 ```
 pip --version
 ```
-It should show: pip 20.0.2 or something similar.
+It should show: pip 20.0.2 or something similar. <br>
 **Note**: 
 - Don't try to undo pip symbolic link step by reversing the order, otherwise the system will break & you can seriously damage your system. 
 - If you want to unlink the symbolic link we created, type:
