@@ -46,6 +46,8 @@ pip --version
 ```
 It should show: pip 20.0.2 or something similar. <br>
 **Note**: 
+- pip or Python Installation Pipeline is a de facto standard package-management system used to install and manage software packages written in Python. Many packages can be found in the default source for packages and their dependencies — Python Package Index (PyPI).
+- Default version of pip3 is v. 9.0.1 but when upgraded, the version of pip3 becomes v. 20.0.2.
 - Don't try to undo pip symbolic link step by reversing the order, otherwise the system will break & you can seriously damage your system. 
 - If you want to unlink the symbolic link we created, type:
 ```
@@ -56,7 +58,7 @@ Ubuntu 18.04 LTS doesn't come with a preinstalled cmake. To check, run on termin
 ```
 cmake --version
 ```
-It should show: Not installed but can be installed with "sudo apt-get install cmake". Run the following command in the terminal:
+It should show: Not installed but can be installed with "sudo apt-get install cmake". Here, we will download & install binary package in our system. Run the following command in the terminal:
 ```
 sudo mkdir /opt/cmake
 ```
@@ -64,7 +66,7 @@ Manually download "cmake-3.17.0-Linux-x86_64.sh" file to the "Downloads" directo
 ```
 sudo cp ~/Downloads/cmake-3.17.0-Linux-x86_64.sh /opt/cmake/
 ```
-Now run the following command to install cmake: <br>
+Now run the following command to install 'cmake': <br>
 ```
 cd /opt/cmake
 sudo sh cmake-3.17.0-Linux-x86_64.sh --prefix=/opt/cmake --skip-license
