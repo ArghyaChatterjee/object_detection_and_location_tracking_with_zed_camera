@@ -245,11 +245,9 @@ unzip opencv_contrib.zip
 mv opencv-3.4.8 opencv
 mv opencv_contrib-3.4.8 opencv_contrib
 ```
-Install pip & then use it to install numpy by following the command sequencially:
+Install numpy by following the command. 
 ```
-wget https://bootstrap.pypa.io/get-pip.py
-sudo python3 get-pip.py
-pip install numpy
+python3 -m pip install numpy
 ```
 Let's setup our opencv build using cmake by running:
 ```
@@ -448,7 +446,7 @@ The result should be something like below:
 </p>
 
 **Note**: 
-- If you want to monitor your nvidia gpu memory usage during a certain gpu favoured task, install 'glances' & check by running the following command in a new terminal:
+- If you want to monitor your nvidia gpu memory usage during a certain gpu intensive task, install 'glances' & check by running the following command in a new terminal:
 ```
 sudo python3 -m pip install glances[gpu]
 sudo glances
