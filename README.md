@@ -1,5 +1,5 @@
 # Nvidia-Graphics-Driver-CUDA-&-CUDNN-Installation
-It's a must installation after a fresh Ubuntu 18.04 OS installation
+It's a must installation after a fresh Ubuntu 18.04 OS installation.
 ## OS Installation Guideline:
 - Download Ubuntu 18.04 OS image from this website: https://ubuntu.com/download/desktop
 - Download Etherbalena from this website: https://www.balena.io/etcher/
@@ -81,7 +81,15 @@ Check with the following command:
 ```
 cmake --version
 ```
-It should show: 3.17.0
+It should show: 3.17.0 <br>
+**Note:**
+- Make sure you have installed latest version of cmake as many softwares use latest cmake version to build & test their up to date projects. 
+- We have used precompiled binary package of cmake. You can also install cmake from source. To do so, follow the instruction here: https://vitux.com/how-to-install-cmake-on-ubuntu-18-04/
+- You can also install cmake from "Ubuntu software centre". Just type Cmake and you will get the link to install it.
+- Cmake can also be installed using "snap" package manager. Just type in a terminal:
+```
+sudo snap install cmake
+```
 ## Configuring Latest Nvidia Graphics Driver:
 A list of Nvidia Graphics Driver with supported compute architecture is given below:
 <p align="center">
@@ -421,8 +429,8 @@ import pyzed.sl as sl
 ```
 The file should successfully import without showing any error.
 ## Object Detection Model Run:
-Download the "object_detection_zed.py" from this github repo: https://github.com/ArghyaChatterjee/Object-Detection-Demo-With-ZED-camera-on-Ubuntu-18.04/blob/master/object_detection_zed.py. Or, just open a new file in your home directory with the name "object_detection_zed.py" & paste the code. Put the file inside tensorflow installation directory. <br> 
-Then open a new terminal & run:
+Download the "object_detection_zed.py" from this github repo: https://github.com/ArghyaChatterjee/Object-Detection-Demo-With-ZED-camera-on-Ubuntu-18.04/blob/master/object_detection_zed.py. <br> 
+Just open a new file in your home directory with the name "object_detection_zed.py" & paste the code. Put the file inside tensorflow installation directory. Then open a new terminal & run:
 ```
 cp ~/object_detection_zed.py ~/.local/lib/python3.6/site-packages/tensorflow/models/research/object_detection/
 ```
