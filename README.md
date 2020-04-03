@@ -421,7 +421,8 @@ import pyzed.sl as sl
 ```
 The file should successfully import without showing any error.
 ## Object Detection Model Run:
-Download the "object_detection_zed.py" from this github repo: https://github.com/ArghyaChatterjee/Object-Detection-Demo-With-ZED-camera-on-Ubuntu-18.04/blob/master/object_detection_zed.py. Or, just open a new file in your home directory with the name "object_detection_zed.py" & paste the code. Now put the file inside tensorflow installation directory. Then open a new terminal & run:
+Download the "object_detection_zed.py" from this github repo: https://github.com/ArghyaChatterjee/Object-Detection-Demo-With-ZED-camera-on-Ubuntu-18.04/blob/master/object_detection_zed.py. Or, just open a new file in your home directory with the name "object_detection_zed.py" & paste the code. Put the file inside tensorflow installation directory. <br> 
+Then open a new terminal & run:
 ```
 cp ~/object_detection_zed.py ~/.local/lib/python3.6/site-packages/tensorflow/models/research/object_detection/
 ```
