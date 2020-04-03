@@ -448,6 +448,11 @@ The result should be something like below:
 </p>
 
 **Note**: 
+- If you want to monitor your nvidia gpu memory usage during a certain gpu favoured task, install 'glances' & check by running the following command in a new terminal:
+```
+sudo python3 -m pip install glances[gpu]
+sudo glances
+```
 - You can also download the object_detection_zed code from this website: https://github.com/stereolabs/zed-tensorflow/blob/master/object_detection_zed.py. They are the key people who wrote it.
 - If you want to import tensorflow from any directory, add the following line to the .bashrc file. For further info regarding $TENSORFLOWPATH, visit the website: https://stackoverflow.com/questions/33616732/where-is-the-folder-for-installing-tensorflow-with-pip-mac-osx
 ```
