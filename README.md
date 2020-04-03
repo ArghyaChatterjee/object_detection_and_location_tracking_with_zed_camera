@@ -114,8 +114,7 @@ Check whether cuda is already installed on your system or not. In the terminal, 
 ```
 nvcc --version
 ```
-It should show: nvcc not installed but can be installed by sudo apt install nvidia-cuda-toolkit. Go to this website: https://developer.nvidia.com/cuda-downloads. Then click on Linux--->x86_64--->Ubuntu--->18.04--->deb local, you will get the installation file & proccedure. <br>
-The installation proccedure is also mentioned below. Run the following commands in the terminal:
+It should show: nvcc not installed but can be installed by sudo apt install nvidia-cuda-toolkit. Download cuda 10.1 from this website: https://developer.nvidia.com/cuda-downloads. Click on Linux--->x86_64--->Ubuntu--->18.04--->deb local, you will get the installation file. Now, run the following commands in the terminal:
 ```
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
 sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
@@ -125,8 +124,7 @@ sudo apt-key add /var/cuda-repo-10-2-local-10.2.89-440.33.01/7fa2af80.pub
 sudo apt-get update
 sudo apt-get -y install cuda
 ```
-Now there are some post installation instructions. You can get documentation of post installation instruction here: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions. <br>
-Post installation proccedure is also documented below. Just add 2 lines to your .bashrc file & save it.
+Now there are some post installation instructions. Just add 2 lines to your .bashrc file & save it.
 ```
 export PATH=/usr/local/cuda-10.2/bin:/usr/local/cuda-10.2/NsightCompute-2019.5${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
@@ -137,6 +135,8 @@ nvcc --version
 ``` 
 **Note**:
 - It's necessary to double check Nvidia Graphics driver supported cuda version. Otherwise, we won't be able to use matching version of tensorflow later in this tutorial.  
+- You can manually follow the instruction to download and install cuda on your system. Go to this link for more info: https://developer.nvidia.com/cuda-downloads .
+- You can get documentation of post installation instruction here: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions.
 - If you want to know what does ${PATH:+:${PATH}} mean & how does it work, visit this website: https://unix.stackexchange.com/questions/267506/what-does-pathpath-mean.
 - $LD_LIBRARY_PATH points to the directory where cuda & cudnn dynamic libraries (dll) are loaded. These libraries are necessary while running tensorflow in order to use your GPU. 
 ## Configuring Latest CUDNN installation:
@@ -148,8 +148,7 @@ Or,
 ```
 cat /usr/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
-It should show: No such file or directory. Follow the installation guideline documented on this website: https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html <br>
-Installation proccedure is also documented below. Go to this website: https://developer.nvidia.com/rdp/cudnn-download & download "cuDNN Library for Linux". Put it to your home directory after download. Now open a new terminal & run the following command:
+It should show: No such file or directory. Go to this website: https://developer.nvidia.com/rdp/cudnn-download & download "cuDNN Library for Linux". Put the file to your home directory after download. Now open a new terminal & run the following command:
  ```
  tar -xzvf cudnn-10.2-linux-x64-v7.6.5.32.tgz
  sudo cp cuda/include/cudnn.h /usr/local/cuda/include
@@ -165,6 +164,7 @@ It should show: #define CUDNN_MAJOR 7 #define CUDNN_MINOR 6 #define CUDNN_PATCHL
 sudo ldconfig
 ```
 **Note**: 
+- If you want to manually download & install cudnn in your system, follow the installation guideline documented on this website: https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html .
 - If you get the error: /sbin/ldconfig.real: /usr/local/cuda-10.2/targets/x86_64-linux/lib/libcudnn.so.7 is not a symbolic link, then follow the instruction below. If you don't get the error message, your installation is complete & you don't need to continue further. Otherwise, run the following command: 
  ```
  cd /usr/local/cuda/lib64/
@@ -191,7 +191,7 @@ sudo ldconfig
 # Open-CV-Tensorflow-and-Object-Detection-API-installation-with-Nvidia-GPU
 It's an installation instruction for Opencv, Tensorflow & Object Detection API. Follow the guideline carefully for smooth installation.
 ## Open CV installation:
-Follow the instruction on this site to install opencv: https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/. If you want to follow instruction on this site, then bear with me. First check the version of python installed on your system by typing in a terminal:
+First check the version of python installed on your system by typing in a terminal:
 ```
 python3 --version
 ```
@@ -252,9 +252,9 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
     -D OPENCV_ENABLE_NONFREE=ON \
     -D BUILD_EXAMPLES=ON ..
 ```
-Compile & install opencv by running the following command. Use flag -j8 if you have 8 CPU cores or -j4 if you have 4 CPU cores.
+Compile & install opencv by running the following command. 
 ```
-make -j8
+make -j8                             # Use -j4 instead if your CPU has 4 cores.
 sudo make install
 sudo ldconfig
 ```
@@ -267,6 +267,10 @@ It should show: 3.4.8. Change your directory where your Python 3 bindings for Op
 cd /usr/local/lib/python3.6/dist-packages/cv2/python-3.6
 sudo mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.so
 ```
+**Note**: 
+- Follow the instruction on this site to download and install opencv & some other necessary packages manually: https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/
+- It's very necessary to keep the flag -D WITH_CUDA flag = ON to use your GPU while compiling & use cuda in later opencv related jobs. 
+- It's also necerssary to keep the flag -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules to show the path of an extra module opencv contrib which is a very useful library.
 ## Tensorflow GPU installation:
 After installing opencv, you should start installing tensorflow. A list of CUDA version compatible tensorflow is given below:
 <p align="center">
@@ -303,23 +307,22 @@ python3 -m pip uninstall protobuf
 python3 -m pip uninstall tensorflow-gpu
 ```
 ## Tensorflow Object Detection API Installation:
-If you want, you can follow the tutorial from the website: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md. <br>
 In a new terminal, run the following command:
 ```
 sudo apt install git
 ```
-Then download "models" repository from tensorflow github page & put that inside default tensorflow installed directory. Run in the terminal:
+Now, we have to download "models" repository from tensorflow github page: https://github.com/tensorflow/models & put that inside default tensorflow installed directory. To do so, run in the terminal:
 ```
 cd ~/.local/lib/python3.6/site-packages/tensorflow
 git clone https://github.com/tensorflow/models
 ```
-Currently, open the .bashrc file in your home directory. The PATH should look something like this:
+Open the .bashrc file in your home directory. The PATH should look something like this:
 ```
-export PATH=/usr/local/cuda-10.2/bin:/usr/local/cuda-10.2/NsightCompute-2019.5${PATH:+:${PATH}}
+export PATH=/usr/local/cuda-10.2/bin${PATH:+:${PATH}}
 ```
 You have to manually add /home/arghya/.local/bin directory to environment path variable. After adding the directory to the variable list, it should look something like this:
 ```
-export PATH=/usr/local/cuda-10.2/bin:/usr/local/cuda-10.2/NsightCompute-2019.5:/home/arghya/.local/bin${PATH:+:${PATH}}
+export PATH=/usr/local/cuda-10.2/bin:/home/arghya/.local/bin${PATH:+:${PATH}}
 ``` 
 To verify the path, open a new terminal & run: 
 ```
@@ -331,13 +334,13 @@ The path should show something like this:
 ```
 The remaining libraries can be installed on Ubuntu 18.04 via apt-get:
 ```
-sudo apt-get install protobuf-compiler python3-pil python3-lxml python3-tk
+sudo apt-get install protobuf-compiler python3-pil python3-lxml python3-tk      
 python3 -m pip install --user Cython
 python3 -m pip install --user contextlib2
 python3 -m pip install --user jupyter
 python3 -m pip install --user matplotlib
 ```
-Now, download, compile & copy the cocoapi files to the tensorflow default installed directory.
+Now, download, compile & copy the cocoapi files to the tensorflow default installed directory. 
 ```
 git clone https://github.com/cocodataset/cocoapi.git
 cd cocoapi/PythonAPI
@@ -353,7 +356,7 @@ Make sure the directories have been added to the python path. Type in the same s
 ```
 export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
 ```
-For future use, open your .bashrc file & put this line at the end:
+For permanent use, open your .bashrc file & put this line at the end:
 ```
 export PYTHONPATH=$PYTHONPATH:/home/arghya/.local/lib/python3.6/site-packages/tensorflow/models:/home/arghya/.local/lib/python3.6/site-packages/tensorflow/models/research:/home/arghya/.local/lib/python3.6/site-packages/tensorflow/models/research/slim
 ```
@@ -361,6 +364,10 @@ You can test that you have correctly installed the Tensorflow Object Detection A
 ```
 python3 object_detection/builders/model_builder_test.py
 ```
+**Note:**
+- If you want, you can follow the tutorial & manually install tensorflow object detection api from the github page: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md.
+- In newer versions of tensorflow, protobuf compilers are installed during tensorflow installation. It's not needed to be installed separately. 
+- coco-api installation can be difficult for some reasons. If you find it very hard, then you can skip the step.
 # ZED-Camera-SDK-ZED-Python-API-Installation-and-Object-Detection-Demo
 It's a repository to use ZED camera with ZED SDK &amp; ZED Python API for Object detection with Tensorflow.
 ## ZED Camera SDK Installation:
@@ -414,13 +421,11 @@ import pyzed.sl as sl
 ```
 The file should successfully import without showing any error.
 ## Object Detection Model Run:
-Download code from this website: https://github.com/stereolabs/zed-tensorflow/blob/master/object_detection_zed.py . <br>
-You can also download from my github repo: https://github.com/ArghyaChatterjee/Object-Detection-Demo-With-ZED-camera-on-Ubuntu-18.04/blob/master/object_detection_zed.py. <br>
-Just open a new file in your home directory with the name "object_detection_zed.py" & paste the code. Now put the file inside tensorflow installation directory:
+Download the "object_detection_zed.py" from this github repo: https://github.com/ArghyaChatterjee/Object-Detection-Demo-With-ZED-camera-on-Ubuntu-18.04/blob/master/object_detection_zed.py. Or, just open a new file in your home directory with the name "object_detection_zed.py" & paste the code. Now put the file inside tensorflow installation directory. Then open a new terminal & run:
 ```
 cp ~/object_detection_zed.py ~/.local/lib/python3.6/site-packages/tensorflow/models/research/object_detection/
 ```
-Now run the file with python3:
+Now in the same terminal, run the file with python3:
 ```
 cd ~/.local/lib/python3.6/site-packages/tensorflow/models/research/object_detection/
 python3 object_detection_zed.py
@@ -430,7 +435,8 @@ The result should be something like below:
     <img src="Object_detection.png", width="800">
 </p>
 
-**Note**: <br> 
+**Note**: 
+- You can also download the object_detection_zed code from this website: https://github.com/stereolabs/zed-tensorflow/blob/master/object_detection_zed.py. They are the key people who wrote it.
 - If you want to import tensorflow from any directory, add the following line to the .bashrc file. For further info regarding $TENSORFLOWPATH, visit the website: https://stackoverflow.com/questions/33616732/where-is-the-folder-for-installing-tensorflow-with-pip-mac-osx
 ```
 export $TENSORFLOW="~/.local/lib/python3.6/site-packages/tensorflow:$PATH"
