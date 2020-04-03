@@ -195,6 +195,7 @@ lrwxrwxrwx 1 root root  17 Mar 25 23:55 libcudnn.so.7 -> libcudnn.so.7.6.5
 /usr/local/cuda/lib64$ sudo ln -sf libcudnn.so.7.6.5 libcudnn.so.7
 /usr/local/cuda/lib64$ sudo ln -sf libcudnn.so.7 libcudnn.so
 ```
+- It is necessary to add -sf flag above for creating a symbolic link. If you forget to add it, it becomes a hard link. 
 - Now run the following command and you should not see any error:
 ```
 sudo ldconfig
@@ -311,7 +312,7 @@ It should show version & location. <br>
 - From tensorflow 2.x versions, you do not need to explicitely mention the gpu or cpu version, only mentioning "tensorflow" will do the same job. 
 - If you are using a virtual environment, omit the --user argument. 
 - Upgrading the system pip can cause problems. If not in a virtual environment, use python3 -m pip. This ensures that you upgrade and use the Python pip instead of the system pip. 
-- If you ever realize that you have installed wrong version of tensorflow, then you can do the following to get it undone & manually delete files 'tensorflow-estimator-1.15', 'tensorflow-estimator', 'tensorflow', 'tensorboard-1.15', 'tensorboard'.
+- If you ever realize that you have installed wrong version of tensorflow, then you can do the following to get it undone & after that, manually delete files named 'tensorflow-estimator-1.15', 'tensorflow-estimator', 'tensorflow', 'tensorboard-1.15', 'tensorboard' from usr/arghya/.local/lib/python3.6/site-packages/.
 ```
 python3 -m pip uninstall protobuf    
 python3 -m pip uninstall tensorflow-gpu
@@ -340,7 +341,7 @@ echo $PATH
 ```
 The path should show something like this:
 ```
-/usr/local/cuda-10.2/bin:/usr/local/cuda-10.2/NsightCompute-2019.5:/home/arghya/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+/usr/local/cuda-10.2/bin:/home/arghya/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 ```
 The remaining libraries can be installed on Ubuntu 18.04 via apt-get:
 ```
