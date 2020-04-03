@@ -111,7 +111,7 @@ Restart the computer. Check the version of the nvidia graphics driver:
 ```
 nvidia-smi
 ```
-It should show: driver version-440.33 & CUDA version-10.2
+It should show: driver version-440.33 & CUDA version-10.2 <br>
 **Note**:
 - It's recommended to use PPA to install Nvidia drivers. Personal Package Archives (PPA) enables you to upload Ubuntu source packages to be built and published as an apt repository by Launchpad.
 - If you want to download & install nvidia driver from source, it's a hectic process. Follow instructions in the website: http://www.linuxandubuntu.com/home/how-to-install-latest-nvidia-drivers-in-linux
