@@ -18,7 +18,8 @@ Check with the following command:
 python --version
 ```
 **Note**: 
-- Don't try to undo python symlink step by reversing the order, otherwise the system will break & you will loose your terminal. If you want to unlink the symbolic link we created, type:
+- Don't try to undo python symbolic link step by reversing the order, otherwise the system will break & you will loose your terminal. 
+- If you want to unlink the symbolic link we created, type:
 ```
 sudo unlink usr/bin/python3
 ```
@@ -44,6 +45,12 @@ Now check it with the following command:
 pip --version
 ```
 It should show: pip 20.0.2 or something similar.
+**Note**: 
+- Don't try to undo pip symbolic link step by reversing the order, otherwise the system will break & you can seriously damage your system. 
+- If you want to unlink the symbolic link we created, type:
+```
+sudo unlink usr/bin/pip3
+```
 ## Configuring Latest CMake Version:
 Ubuntu 18.04 LTS doesn't come with a preinstalled cmake. To check, run on terminal:
 ```
@@ -100,7 +107,7 @@ It should show: driver version-440.33 & CUDA version-10.2
 ## Configuring Latest CUDA installation:
 A list of Nvidia Graphics Driver with supported cuda version is given below:
 <p align="center">
-    <img src="Nvidia_cuda_compatibility.png", width="800">
+    <img src="Nvidia_cuda_compatibility.png", width="400">
 </p>
 
 Check whether cuda is already installed on your system or not. In the terminal, run:
@@ -129,7 +136,9 @@ To check the installation, open a new terminal & run:
 nvcc --version
 ``` 
 **Note**:
+- It's necessary to double check Nvidia Graphics driver supported cuda version. Otherwise, we won't be able to use matching version of tensorflow later in this tutorial.  
 - If you want to know what does ${PATH:+:${PATH}} mean & how does it work, visit this website: https://unix.stackexchange.com/questions/267506/what-does-pathpath-mean.
+- $LD_LIBRARY_PATH points to the directory where cuda & cudnn dynamic libraries (dll) are loaded. These libraries are necessary while running tensorflow in order to use your GPU. 
 ## Configuring Latest CUDNN installation:
 First check that you have already cudnn installed on your system or not. Run:
 ```
