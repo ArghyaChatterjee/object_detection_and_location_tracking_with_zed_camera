@@ -80,6 +80,7 @@ A list of Nvidia Graphics Driver with supported compute architecture is given be
 <p align="center">
     <img src="Nvidia_graphics_driver.png", width="800">
 </p>
+
 Go to Activities Overview--->Software Updater--->Settings--->Additional Driver & Choose available latest nvidia driver. Then click on "Apply changes".
 If you want to check for recent version of nvidia gpu driver, please type:
 ```
@@ -101,6 +102,7 @@ A list of Nvidia Graphics Driver with supported cuda version is given below:
 <p align="center">
     <img src="Nvidia_cuda_compatibility.png", width="800">
 </p>
+
 Check whether cuda is already installed on your system or not. In the terminal, run:
 ```
 nvcc --version
