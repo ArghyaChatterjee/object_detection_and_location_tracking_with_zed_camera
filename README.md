@@ -2,7 +2,7 @@
 It's a must installation after a fresh Ubuntu 18.04 OS installation.
 ## OS Installation Guideline:
 - Download Ubuntu 18.04 OS image from this website: https://ubuntu.com/download/desktop
-- Download Etherbalena from this website: https://www.balena.io/etcher/
+- Download Balena-Etcher from this website: https://www.balena.io/etcher/
 - Follow this tutorial for installing Ubuntu 18.04 LTS OS on your system: https://www.youtube.com/watch?v=G6LAIrGeIjo
 ## Configuring Latest Python Version:
 Ubuntu 18.04 LTS comes with preinstalled python 3. To check, run on terminal:
@@ -375,6 +375,7 @@ You can test that you have correctly installed the Tensorflow Object Detection A
 python3 object_detection/builders/model_builder_test.py
 ```
 **Note:**
+- It's always a good practice to visit the vendor's website (who actually built it) before starting the installation. Visit the website: https://www.stereolabs.com/docs/tensorflow/
 - If you want, you can follow the tutorial & manually install tensorflow object detection api from the github page: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md.
 - In newer versions of tensorflow, protobuf compilers are installed during tensorflow installation. It's not needed to be installed separately. 
 - coco-api installation can be difficult for some reasons. If you find it very hard, then you can skip the step.
