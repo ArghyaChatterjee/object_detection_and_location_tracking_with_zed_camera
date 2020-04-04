@@ -46,8 +46,12 @@ pip --version
 ```
 It should show: pip 20.0.2 or something similar. <br>
 **Note**: 
+- You can also install pip in the following way:
+```
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python3 get-pip.py
+```
 - pip or Python Installation Pipeline is a de facto standard package-management system used to install and manage software packages written in Python. Many packages can be found in the default source for packages and their dependencies — Python Package Index (PyPI).
-- Default version of pip3 is v. 9.0.1 but when upgraded, the version of pip3 becomes v. 20.0.2.
 - Don't try to undo pip symbolic link step by reversing the order, otherwise the system will break & you can seriously damage your system. 
 - If you want to unlink the symbolic link we created, type:
 ```
@@ -85,13 +89,13 @@ cmake --version
 ```
 It should show: 3.17.0 <br>
 **Note:**
-- Make sure you have installed latest version of cmake as many softwares use latest cmake version to build & test their up to date projects. 
-- We have used precompiled binary package of cmake. You can also install cmake from source. To do so, follow the instruction here: https://vitux.com/how-to-install-cmake-on-ubuntu-18-04/
-- You can also install cmake from "Ubuntu software centre". Just type Cmake and you will get the link to install it.
 - Cmake can also be installed using "snap" package manager. Just type in a terminal:
 ```
 sudo snap install cmake
 ```
+- You can also install cmake from "Ubuntu software centre". Just type Cmake and you will get the link to install it.
+- Make sure you have installed latest version of cmake as many softwares use latest cmake version to build & test their up to date projects. 
+- We have used precompiled binary package of cmake. You can also install cmake from source. To do so, follow the instruction here: https://vitux.com/how-to-install-cmake-on-ubuntu-18-04/
 ## Configuring Latest Nvidia Graphics Driver:
 A list of Nvidia Graphics Driver with supported compute architecture is given below:
 <p align="center">
@@ -116,7 +120,7 @@ nvidia-smi
 It should show: driver version-440.33 & CUDA version-10.2 <br>
 **Note**:
 - It's recommended to use PPA to add repositories for Nvidia drivers. Personal Package Archives (PPA) enables you to upload Ubuntu source packages to be built and published as an apt repository by Launchpad.
-- It's recommended to use apt to install nvidia drivers. APT or Advanced Package Tool, is a free-software user interface that works with core libraries to handle the installation and removal of software on Debian, Ubuntu
+- It's recommended to use apt to install nvidia drivers. APT or Advanced Package Tool, is a free-software user interface that works with core libraries to handle the installation and removal of software on Debian, Ubuntu.
 - If you want to download & install nvidia driver from source, it's a hectic process. Follow instructions in the website: http://www.linuxandubuntu.com/home/how-to-install-latest-nvidia-drivers-in-linux
 ## Configuring Latest CUDA installation:
 A list of Nvidia Graphics Driver with supported cuda version is given below:
@@ -140,7 +144,7 @@ sudo apt-get -y install cuda
 ```
 Now there are some post installation instructions. Just add 2 lines to your .bashrc file & save it.
 ```
-export PATH=/usr/local/cuda-10.2/bin:/usr/local/cuda-10.2/NsightCompute-2019.5${PATH:+:${PATH}}
+export PATH=/usr/local/cuda-10.2/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 ```
 To check the installation, open a new terminal & run:
@@ -238,15 +242,15 @@ sudo apt-get install python3.6-dev
 Since we’re continuing to work in the terminal, let’s download the official OpenCV release followed by the opencv_contrib  module using wget :
 ```
 cd ~
-wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.8.zip
-wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/3.4.8.zip
+wget -O opencv.zip https://github.com/opencv/opencv/archive/4.1.0.zip
+wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/4.1.0.zip
 ```
 Unzip & rename the directories. Run:
 ```
 unzip opencv.zip
 unzip opencv_contrib.zip
-mv opencv-3.4.8 opencv
-mv opencv_contrib-3.4.8 opencv_contrib
+mv opencv-4.1.0 opencv
+mv opencv_contrib-4.1.0 opencv_contrib
 ```
 Let's setup our opencv build using cmake by running:
 ```
@@ -263,6 +267,7 @@ $ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 ```
 Compile & install opencv by running the following command. 
 ```
+nproc                                # Will give you the number of CPU cores
 make -j8                             # Use -j4 instead if your CPU has 4 cores.
 sudo make install
 sudo ldconfig
@@ -271,15 +276,19 @@ To check the installation, type:
 ```
 pkg-config --modversion opencv
 ```
-It should show: 3.4.8. Change your directory where your Python 3 bindings for OpenCV resides & rename the binding file by running the following command:
+It should show: 4.1.0. Change your directory where your Python 3 bindings for OpenCV resides & rename the binding file by running the following command:
 ```
 cd /usr/local/lib/python3.6/dist-packages/cv2/python-3.6
-sudo mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.so
+sudo mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.so.4.1.0
 ```
 **Note**: 
 - Follow the instruction on this site to download and install opencv & some other necessary packages manually: https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/
+- 'cmake' & autotools are 2 different build systems. If you have source code build with autotools, you use './configure' & if you have cmake, you use 'cmake', 'ccmake' or 'cmake-gui' to do the configuration.
+- 'cmake' command with Release flag creates a Makefile in the build directory following updated packages mentioned in requirement.txt file according to system configuration.
+- 'make' command builds the package & compiles source codes of Makefile accordingly to create binary executable files. 
+- 'sudo make install' command copies the compiled binaries to the system path binary directories accordingly.
+- 'sudo ldconfig' creates the necessary links and cache to the most recent shared libraries found in the directories specified on the command line or mentioned in the system path. The cache is used by the run-time linker.
 - It's very necessary to keep the flag -D WITH_CUDA flag = ON to use your GPU while compiling & use cuda in later opencv related jobs. 
-- It's also necerssary to keep the flag -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules to show the path of an extra module opencv contrib which is a very useful library.
 ## Tensorflow GPU installation:
 After installing opencv, you should start installing tensorflow. A list of CUDA version compatible tensorflow is given below:
 <p align="center">
