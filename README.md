@@ -4,7 +4,18 @@ It's a must installation after a fresh Ubuntu 18.04 OS installation.
 - Download Ubuntu 18.04 OS image from this website: https://ubuntu.com/download/desktop
 - Download Balena-Etcher from this website: https://www.balena.io/etcher/
 - Follow this tutorial for installing Ubuntu 18.04 LTS OS on your system: https://www.youtube.com/watch?v=G6LAIrGeIjo
+- Open a terminal with 'shift+ctrl+t' & check you have installed the correct version of ubuntu. Type: 
+```
+lsb_release -a
+```
+It should show: Ubuntu 18.04.4 or something similar.
 ## Configuring Latest Python Version:
+
+It's always good practise to update & upgrade your pc before starting any type of installation. Run in a terminal:
+```
+sudo apt-get update
+sudo apt-get upgrade
+```
 Ubuntu 18.04 LTS comes with preinstalled python 3. To check, run on terminal:
 ```
 python3 --version
@@ -119,6 +130,7 @@ nvidia-smi
 ```
 It should show: driver version-440.33 & CUDA version-10.2 <br>
 **Note**:
+- Ubuntu software centre method is just a user interface equivalent of the apt-get install commands except paid apps and some of the free apps which is submited through my apps portal are not available in apt-get.
 - It's recommended to use PPA to add repositories for Nvidia drivers. Personal Package Archives (PPA) enables you to upload Ubuntu source packages to be built and published as an apt repository by Launchpad.
 - It's recommended to use apt to install nvidia drivers. APT or Advanced Package Tool, is a free-software user interface that works with core libraries to handle the installation and removal of software on Debian, Ubuntu.
 - If you want to download & install nvidia driver from source, it's a hectic process. Follow instructions in the website: http://www.linuxandubuntu.com/home/how-to-install-latest-nvidia-drivers-in-linux
@@ -452,23 +464,23 @@ Now in the same terminal, run the file with python3:
 cd ~/.local/lib/python3.6/site-packages/tensorflow/models/research/object_detection/
 python3 object_detection_zed.py
 ```
+To monitor system performance during the task allocated, you can open Activities Overview--->System Monitor. Alternatively, you can also install 'htop' to monitor system parameters in a unique way. In a new terminal, run:
+```
+sudo snap install htop
+htop
+```
+To monitor your nvidia gpu memory usage during a certain gpu intensive task, install 'glances' & check by running the following command in a new terminal:
+```
+sudo python3 -m pip install glances[gpu]
+sudo glances
+```
 The result should be something like below:
 <p align="center">
     <img src="Object_detection.png", width="800">
 </p>
 
 **Note**: 
-- If you want to monitor system performance during the task allocated, you can open Activities Overview--->System Monitor. Alternatively, you can also install 'htop' to monitor system parameters in a unique way. In a new terminal, run:
-```
-sudo snap install htop
-htop
-```
 - Snappy (snap) is a software deployment and package management system developed by Canonical for the Linux operating system. The packages, called snaps, and the tool for using them, snapd, work across a range of Linux distributions allowing distribution-agnostic upstream software packaging.
-- If you want to monitor your nvidia gpu memory usage during a certain gpu intensive task, install 'glances' & check by running the following command in a new terminal:
-```
-sudo python3 -m pip install glances[gpu]
-sudo glances
-```
 - During running object_detection_zed.py with python3, if you see some error on the terminal mentioning 'can not open shared files', probably your system is using your cpu instead of gpu during object detection. This type of error occurs when tensorflow dynamic libraries (dlls) can not access cuda dlls of your system due to cuda version mismatch. Downgrading cuda version will solve the problem.    
 - You can also download the object_detection_zed code from this website: https://github.com/stereolabs/zed-tensorflow/blob/master/object_detection_zed.py. They are the key people who wrote it.
 - If you want to import tensorflow from any directory, add the following line to the .bashrc file. For further info regarding $TENSORFLOWPATH, visit the website: https://stackoverflow.com/questions/33616732/where-is-the-folder-for-installing-tensorflow-with-pip-mac-osx
