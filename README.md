@@ -248,10 +248,6 @@ unzip opencv_contrib.zip
 mv opencv-3.4.8 opencv
 mv opencv_contrib-3.4.8 opencv_contrib
 ```
-Install numpy by following the command. 
-```
-python3 -m pip install numpy
-```
 Let's setup our opencv build using cmake by running:
 ```
 cd ~/opencv
@@ -416,7 +412,7 @@ ctrl+c              # To stop it
 ## ZED Python API Installation:
 Run the following command before installing zed python api on your pc. Make sure that python3, pip & Open CV are already installed. 
 ```
-python3 -m pip install cython numpy pyopengl
+python3 -m pip install numpy pyopengl
 ```
 Now move to zed sdk directory to download zed python api. Run the following command:
 ```
