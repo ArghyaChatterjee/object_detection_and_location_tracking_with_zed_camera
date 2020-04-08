@@ -141,7 +141,7 @@ sudo snap install cmake
 ## Configuring Latest Nvidia Graphics Driver:
 A list of Nvidia Graphics Driver with supported compute architecture is given below:
 <p align="center">
-    <img src="Nvidia_graphics_driver.png", width="800">
+    <img src="assest/Nvidia_graphics_driver.png", width="800">
 </p>
 
 Go to Activities Overview--->Software Updater--->Settings--->Additional Driver & Choose available latest nvidia driver. Then click on "Apply changes".
