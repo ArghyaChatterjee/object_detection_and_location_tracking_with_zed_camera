@@ -385,12 +385,26 @@ Make sure the directories have been added to the python path. Type in the same s
 ```
 export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
 ```
+You can test that you have correctly installed the Tensorflow Object Detection API by running the following command. In the same terminal, run:
+```
+python3 object_detection/builders/model_builder_test.py
+```
 For permanent use, open your .bashrc file & put this line at the end:
 ```
 export PYTHONPATH=$PYTHONPATH:/home/arghya/.local/lib/python3.6/site-packages/tensorflow/models:/home/arghya/.local/lib/python3.6/site-packages/tensorflow/models/research:/home/arghya/.local/lib/python3.6/site-packages/tensorflow/models/research/slim
 ```
-You can test that you have correctly installed the Tensorflow Object Detection API by running the following command. In the same terminal, run:
+Then, you can open a new terminal & run the following command:
 ```
+python3 object_detection/builders/model_builder_test.py
+```
+Or, you can source your currently modified .bashrc file & execute in the same terminal:
+```
+source ~/.bashrc               # Sourcing a script will run the commands in the current shell process.
+python3 object_detection/builders/model_builder_test.py
+```
+Alternatively, you can terminate the current bash session & start a new session from the same terminal to execute the command:
+```
+exec bash                      # Executing a script will run the commands in a new shell process
 python3 object_detection/builders/model_builder_test.py
 ```
 **Note:**
