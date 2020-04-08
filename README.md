@@ -9,6 +9,27 @@ It's a must installation after a fresh Ubuntu 18.04 OS installation.
 lsb_release -a
 ```
 It should show: Ubuntu 18.04.4 or something similar.
+## Installing GCC, G++ & Make
+GNU compiler collection (GCC) is a collection of compilers for programming such as C++, C, Objective-C, Java, and Fortran. The GNU provide the optimising compiler for C++ which is known as g++. 'make' is a tool to help build programs. To install them, run the following command in a terminal:
+```
+sudo apt install build-essential
+```
+To validate that the GCC compiler is successfully installed, run:
+```
+gcc --version
+```
+It should show: 7.4.0. It's the default version for Ubuntu 18.04 LTS OS.
+**Note**:
+- GCC is a compiler used for C language compilation whereas g++ is a compiler used for C++ programming language. GCC release is from a free software foundation operated through the command line. 
+- g++ compiler builds the object code from source code, and it does not generate any intermediate C version of the program. - g++ is a complete compiler, but GCC requires the help of g++. G++ runs on a variety of processor, and you can find full documentation under Emacs. Read more at: https://www.freelancinggig.com/blog/2017/11/10/difference-gcc-g/
+- 'Make' introduces a separate file of "rules", that describes how to go from source code to finished program. It then interprets this file, figures out what needs to be compiled, and calls gcc for you. 
+- If you want updated version of gcc & g++ to be installed on your system, run:
+```
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt install gcc-9 g++-9
+```
+
 ## Configuring Latest Python Version:
 
 It's always good practise to update & upgrade your pc before starting any type of installation. Run in a terminal:
@@ -168,7 +189,9 @@ nvcc --version
 - It's necessary to double check Nvidia Graphics driver supported cuda version. Otherwise, we won't be able to use matching version of tensorflow later in this tutorial.  
 - You can manually follow the instruction to download and install cuda on your system. Go to this link for more info: https://developer.nvidia.com/cuda-downloads .
 - You can get documentation of post installation instruction here: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions.
-- If you want to know what does ${PATH:+:${PATH}} mean & how does it work, visit this website: https://unix.stackexchange.com/questions/267506/what-does-pathpath-mean.
+- $PATH or system path variable specifies the directories in which executable programs are located on the machine that can be started without knowing and typing the whole path to the file on the command line. On Linux and Mac OS X, it usually holds all bin and sbin directories relevant for the current user. On Windows, it contains at least the C:\Windows and C:\Windows\system32 directories.
+- Environment variables hold values related to the current environment, like the Operating System or user sessions. For more info, visit the website: https://superuser.com/questions/284342/what-are-path-and-other-environment-variables-and-how-can-i-set-or-use-them.
+- ${PATH:+:${PATH}} simply prepends newly specified path to the already existing system path when defined properly. For more info, visit this website: https://unix.stackexchange.com/questions/267506/what-does-pathpath-mean.
 - $LD_LIBRARY_PATH points to the directory where cuda & cudnn dynamic libraries (dll) are loaded. These libraries are necessary while running tensorflow in order to use your GPU. 
 ## Configuring Latest CUDNN installation:
 First check that you have already cudnn installed on your system or not. Run:
@@ -398,14 +421,14 @@ Then, you can open a new terminal & run the following command:
 ```
 python3 object_detection/builders/model_builder_test.py
 ```
-Or, you can source your currently modified .bashrc file & execute in the same terminal:
+Or, you can source your currently modified .bashrc file & execute required command in the same terminal:
 ```
-source ~/.bashrc               # Sourcing a script will run the commands in the current shell process.
+source ~/.bashrc               
 python3 object_detection/builders/model_builder_test.py
 ```
-Alternatively, you can terminate the current bash session & start a new session from the same terminal to execute the command:
+Alternatively, you can terminate the current bash session & start a new session from the same terminal to execute required command:
 ```
-exec bash                      # Executing a script will run the commands in a new shell process
+exec bash                      
 python3 object_detection/builders/model_builder_test.py
 ```
 **Note:**
@@ -413,7 +436,9 @@ python3 object_detection/builders/model_builder_test.py
 - If you want, you can follow the tutorial & manually install tensorflow object detection api from the github page: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md.
 - In newer versions of tensorflow, protobuf compilers are installed during tensorflow installation. It's not needed to be installed separately. 
 - coco-api installation can be difficult for some reasons. If you find it very hard, then you can skip the step.
-- '.profile' is for things that are not specifically related to Bash, like environment variables PATH & friends, and should be available anytime, whereas '.bashrc' is for configuring the interactive bash usage, like bash aliases, setting your favorite editor, setting the Bash prompt, etc. In case of '.bash_profile', it is for making sure that both the things in .profile and .bashrc are loaded for login shells.
+- Executing a script will run the commands in a new shell process where as sourcing a script will run the commands in the current shell process. For more info, visit the website: https://superuser.com/questions/176783/what-is-the-difference-between-executing-a-bash-script-vs-sourcing-it.
+- '.profile' is for things that are not specifically related to Bash, like environment variables PATH & friends, and should be available anytime, whereas '.bashrc' is for configuring the interactive bash usage, like bash aliases, setting your favorite editor, setting the Bash prompt, etc. 
+- In case of '.bash_profile', it is for making sure that both the things in .profile and .bashrc are loaded for login shells. For more info, visit the website: https://serverfault.com/questions/261802/what-are-the-functional-differences-between-profile-bash-profile-and-bashrc#answer-500071.
 
 # ZED-Camera-SDK-ZED-Python-API-Installation-and-Object-Detection-Demo
 It's a repository to use ZED camera with ZED SDK &amp; ZED Python API for Object detection with Tensorflow.
