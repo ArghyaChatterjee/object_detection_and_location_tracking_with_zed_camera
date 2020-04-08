@@ -10,7 +10,7 @@ lsb_release -a
 ```
 It should show: Ubuntu 18.04.4 or something similar.
 ## Installing GCC, G++ & Make
-GNU compiler collection (GCC) is a collection of compilers for programming such as C++, C, Objective-C, Java, and Fortran. The GNU provide the optimising compiler for C++ which is known as g++. 'make' is a tool to help build programs. To install them, run the following command in a terminal:
+GCC is a compiler used for C language compilation whereas g++ is a compiler used for C++ programming language & 'make' is a tool to help build programs. To install them, run the following command in a terminal:
 ```
 sudo apt install build-essential
 ```
@@ -18,9 +18,9 @@ To validate that the GCC compiler is successfully installed, run:
 ```
 gcc --version
 ```
-It should show: 7.4.0. It's the default version for Ubuntu 18.04 LTS OS.
+It should show: 7.4.0. It's the default version on Ubuntu 18.04 LTS OS. <br>
 **Note**:
-- GCC is a compiler used for C language compilation whereas g++ is a compiler used for C++ programming language. GCC release is from a free software foundation operated through the command line. 
+- GNU compiler collection (GCC) is a collection of compilers for programming such as C++, C, Objective-C, Java, and Fortran. The GNU provide the optimising compiler for C++ which is known as g++. GCC release is from a free software foundation operated through the command line. 
 - g++ compiler builds the object code from source code, and it does not generate any intermediate C version of the program. - g++ is a complete compiler, but GCC requires the help of g++. G++ runs on a variety of processor, and you can find full documentation under Emacs. Read more at: https://www.freelancinggig.com/blog/2017/11/10/difference-gcc-g/
 - 'Make' introduces a separate file of "rules", that describes how to go from source code to finished program. It then interprets this file, figures out what needs to be compiled, and calls gcc for you. 
 - If you want updated version of gcc & g++ to be installed on your system, run:
@@ -29,7 +29,15 @@ sudo apt install software-properties-common
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt install gcc-9 g++-9
 ```
-
+- Also if you want to make newly installed gcc your systems default gcc compiler, then run:
+```
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
+```
+- For more info, visit: https://linuxize.com/post/how-to-install-gcc-compiler-on-ubuntu-18-04/. To check the installation & update, run:
+```
+gcc --version
+```
+It should show: 9.1.0. <br>
 ## Configuring Latest Python Version:
 
 It's always good practise to update & upgrade your pc before starting any type of installation. Run in a terminal:
@@ -49,6 +57,7 @@ Check with the following command:
 ```
 python --version
 ```
+It should show: 3.6.9. <br>
 **Note**: 
 - Don't try to undo python symbolic link step by reversing the order, otherwise the system will break & you will loose your terminal. 
 - If you want to unlink the symbolic link we created, type:
