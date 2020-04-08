@@ -141,7 +141,7 @@ sudo snap install cmake
 ## Configuring Latest Nvidia Graphics Driver:
 A list of Nvidia Graphics Driver with supported compute architecture is given below:
 <p align="center">
-    <img src="/assest/Nvidia_graphics_driver.png", width="800">
+    <img src="asset/Nvidia_graphics_driver.png", width="800">
 </p>
 
 Go to Activities Overview--->Software Updater--->Settings--->Additional Driver & Choose available latest nvidia driver. Then click on "Apply changes".
@@ -168,7 +168,7 @@ It should show: driver version-440.33 & CUDA version-10.2 <br>
 ## Configuring Latest CUDA installation:
 A list of Nvidia Graphics Driver with supported cuda version is given below:
 <p align="center">
-    <img src="Nvidia_cuda_compatibility.png", width="400">
+    <img src="asset/Nvidia_cuda_compatibility.png", width="400">
 </p>
 
 Check whether cuda is already installed on your system or not. In the terminal, run:
@@ -337,7 +337,7 @@ sudo mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.so.4.1.0
 ## Tensorflow GPU installation:
 After installing opencv, you should start installing tensorflow. A list of CUDA version compatible tensorflow is given below:
 <p align="center">
-    <img src="GPU_Version.png", width="800">
+    <img src="asset/GPU_Version.png", width="800">
 </p>
 
 Here, we will be installing tensorflow from binary packages. According to the chart above, tensorflow 2.1 binary package ships with preconfigured cuda 10.1 dynamic libraries. <br>
@@ -527,7 +527,7 @@ sudo glances
 ```
 The result should be something like below:
 <p align="center">
-    <img src="Object_detection.png", width="800">
+    <img src="asset/Object_detection.png", width="800">
 </p>
 
 **Note**: 
