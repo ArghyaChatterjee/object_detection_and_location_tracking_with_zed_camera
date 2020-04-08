@@ -412,6 +412,8 @@ python3 object_detection/builders/model_builder_test.py
 - If you want, you can follow the tutorial & manually install tensorflow object detection api from the github page: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md.
 - In newer versions of tensorflow, protobuf compilers are installed during tensorflow installation. It's not needed to be installed separately. 
 - coco-api installation can be difficult for some reasons. If you find it very hard, then you can skip the step.
+- '.profile' is for things that are not specifically related to Bash, like environment variables PATH and friends, and should be available anytime, whereas '.bashrc' is for the configuring the interactive Bash usage, like Bash aliases, setting your favorite editor, setting the Bash prompt, etc. '.bash_profile' is for making sure that both the things in .profile and .bashrc are loaded for login shells
+
 # ZED-Camera-SDK-ZED-Python-API-Installation-and-Object-Detection-Demo
 It's a repository to use ZED camera with ZED SDK &amp; ZED Python API for Object detection with Tensorflow.
 ## ZED Camera SDK Installation:
