@@ -68,6 +68,7 @@ sudo python3 get-pip.py
 ```
 sudo unlink usr/bin/pip3
 ```
+- pip or python -m pip commands do the same. The docs for distributing Python modules were just updated to suggest using python -m pip instead of the pip executable, because it's easier to tell which version of python is going to be used to actually run pip that way.
 ## Configuring Latest CMake Version:
 Ubuntu 18.04 LTS doesn't come with a preinstalled cmake. To check, run on terminal:
 ```
