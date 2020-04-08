@@ -506,11 +506,11 @@ The file should successfully import without showing any error. <br>
 - Follow tutorial from official website to install from binary package rather installing from source (hectic way). If you really want to install from source, follow their github page: https://github.com/stereolabs/zed-python-api
 ## Object Detection Model Run:
 Download the "object_detection_zed.py" from this github repo: https://github.com/ArghyaChatterjee/Object-Detection-Demo-With-ZED-camera-on-Ubuntu-18.04/blob/master/object_detection_zed.py. <br> 
-Just open a new file in your home directory with the name "object_detection_zed.py" & paste the code. Put the file inside tensorflow installation directory. Then open a new terminal & run:
+Just open a new file in your home directory with the name "object_detection_zed.py", paste the code & save the file. Then open a new terminal to copy the file from 'home' to 'object_detection' directory under tensorflow:
 ```
 cp ~/object_detection_zed.py ~/.local/lib/python3.6/site-packages/tensorflow/models/research/object_detection/
 ```
-Now in the same terminal, run the file with python3:
+Now in the same terminal, run 'object_detection_zed.py' using python3 to start object detection with ZED:
 ```
 cd ~/.local/lib/python3.6/site-packages/tensorflow/models/research/object_detection/
 python3 object_detection_zed.py
