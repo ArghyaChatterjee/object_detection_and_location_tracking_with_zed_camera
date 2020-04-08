@@ -532,7 +532,8 @@ The result should be something like below:
 
 **Note**: 
 - Snappy (snap) is a software deployment and package management system developed by Canonical for the Linux operating system. The packages, called snaps, and the tool for using them, snapd, work across a range of Linux distributions allowing distribution-agnostic upstream software packaging.
-- During running object_detection_zed.py with python3, if you see some error on the terminal mentioning 'can not open shared files', probably your system is using your cpu instead of gpu during object detection. This type of error occurs when tensorflow dynamic libraries (dlls) can not access cuda dlls of your system due to cuda version mismatch. Downgrading cuda version will solve the problem.    
+- During running object_detection_zed.py with python3, if you see some error on the terminal mentioning 'can not open shared files', probably you are missing libcudart.so.10.1 & libnvinfer.so.6.0 dlls in /usr/local/cuda/lib64 directory. So, your system is using cpu instead of gpu during object detection. 
+- This type of error occurs when tensorflow functions can not access to use cuda dynamic link libraries (dlls) of your system due to cuda version mismatch. Downgrading cuda version will solve the problem.    
 - You can also download the object_detection_zed code from this website: https://github.com/stereolabs/zed-tensorflow/blob/master/object_detection_zed.py. They are the key people who wrote it.
 - If you want to import tensorflow from any directory, add the following line to the .bashrc file. For further info regarding $TENSORFLOWPATH, visit the website: https://stackoverflow.com/questions/33616732/where-is-the-folder-for-installing-tensorflow-with-pip-mac-osx
 ```
