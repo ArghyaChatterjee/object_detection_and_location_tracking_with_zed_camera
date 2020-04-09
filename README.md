@@ -144,7 +144,7 @@ A list of Nvidia Graphics Driver with supported compute architecture is given be
     <img src="asset/Nvidia_graphics_driver.png", width="800">
 </p>
 
-Go to Activities Overview--->Software Updater--->Settings--->Additional Driver & Choose available latest nvidia driver. Then click on "Apply changes".
+Go to Activities Overview--->Software Updater--->Settings--->Additional Driver & Choose available latest nvidia driver-435. Then click on "Apply changes".
 If you want to check for recent version of nvidia gpu driver, please type:
 ```
 apt search nvidia-driver
@@ -153,13 +153,13 @@ If you want more updated version of nvidia gpu driver, run:
 ```
 sudo apt-add-repository ppa:graphics-drivers/ppa
 sudo apt-get update
-sudo apt-get install nvidia-driver-440
+sudo apt-get install nvidia-driver-435
 ```
 Restart the computer. Check the version of the nvidia graphics driver:
 ```
 nvidia-smi
 ```
-It should show: driver version-440.33 & CUDA version-10.2 <br>
+It should show: driver version-435.21 & CUDA version-10.1 <br>
 **Note**:
 - Ubuntu software centre method is just a user interface equivalent of the apt-get install commands except paid apps and some of the free apps which is submited through my apps portal are not available in apt-get.
 - It's recommended to use PPA to add repositories for Nvidia drivers. Personal Package Archives (PPA) enables you to upload Ubuntu source packages to be built and published as an apt repository by Launchpad.
