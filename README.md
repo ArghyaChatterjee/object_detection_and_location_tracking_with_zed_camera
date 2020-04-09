@@ -236,8 +236,8 @@ sudo ldconfig
 - You should see two symlinks (bold teal) and one single file. Something like this:
  ```
  /usr/local/cuda/lib64$ ls -lha libcudnn*
-lrwxrwxrwx 1 root root  13 Mar 25 23:56 libcudnn.so -> libcudnn.so.7
-lrwxrwxrwx 1 root root  17 Mar 25 23:55 libcudnn.so.7 -> libcudnn.so.7.6.5
+lrwxrwxrwx 1 root root  13 Mar 25 23:56 libcudnn.so 
+lrwxrwxrwx 1 root root  17 Mar 25 23:55 libcudnn.so.7
 -rwxr-xr-x 1 root root 76M Mar 25 23:27 libcudnn.so.7.6.5
 ```
 - If libcudnn.so and libcudnn.so.7 are not symlinks then this is the reason why you got this error. Cudnn downloaded from nvidia has symbolic link but when copied to other location, it losses the sym link info. If so, this is what you need to do:
@@ -323,7 +323,7 @@ cd /usr/local/lib/python3.6/dist-packages/cv2/python-3.6
 sudo mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.so.4.1.0
 ```
 **Note**: 
-- Follow the instruction on this site to download and install opencv & some other necessary packages manually: https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/
+- Follow the instruction on this site to download and install opencv & some other necessary packages manually: https://www.pyimagesearch.com/2018/08/15/how-to-install-opencv-4-on-ubuntu/
 - 'cmake' & autotools are 2 different build systems. If you have source code build with autotools, you use './configure' & if you have cmake, you use 'cmake', 'ccmake' or 'cmake-gui' to do the configuration.
 - 'cmake' command with Release flag creates a Makefile in the build directory following updated packages mentioned in requirement.txt file according to system configuration.
 - 'make' command builds the package & compiles source codes of Makefile accordingly to create binary executable files. 
