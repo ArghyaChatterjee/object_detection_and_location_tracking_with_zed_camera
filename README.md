@@ -18,7 +18,7 @@ To validate that the GCC compiler is successfully installed, run:
 ```
 gcc --version
 ```
-It should show: 7.4.0. (default) <br>
+It should show: 7.5.0. (default) <br>
 **Note**:
 - GNU compiler collection (GCC) is a collection of compilers for programming such as C++, C, Objective-C, Java, and Fortran. The GNU provide the optimising compiler for C++ which is known as g++. GCC release is from a free software foundation operated through the command line. 
 - g++ compiler builds the object code from source code, and it does not generate any intermediate C version of the program. g++ is a complete compiler, but GCC requires the help of g++. 
