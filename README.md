@@ -266,15 +266,11 @@ sudo apt-get upgrade
 ```
 Install developer tools by running the following command:
 ```
-sudo apt-get install build-essential cmake unzip pkg-config
+sudo apt-get install build-essential unzip pkg-config
 ```
-Now, we need to install some OpenCV-specific prerequisites. Run the following commands:
+Now, we need to install some OpenCV-specific prerequisites & packages to work with your camera stream and process video files. Run the following commands:
 ```
 sudo apt-get install libjpeg-dev libpng-dev libtiff-dev
-sudo apt-get install libjasper-dev
-```
-You’ll need the following packages so you can work with your camera stream and process video files. Run:
-```
 sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
 sudo apt-get install libxvidcore-dev libx264-dev
 ```
