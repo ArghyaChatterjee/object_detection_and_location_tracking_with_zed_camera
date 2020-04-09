@@ -83,7 +83,7 @@ sudo ln -s /usr/bin/pip3 /usr/bin/pip
 ```
 Now check it with the following command: 
 ```
-pip --version
+python3 -m pip --version
 ```
 It should show: pip 20.0.2 or something similar. <br>
 **Note**: 
