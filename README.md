@@ -95,7 +95,7 @@ To validate that the GCC compiler is successfully installed, run:
 ```
 gcc --version
 ```
-It should show: 7.5.0. (default) <br>
+It should show: 7.5.0 or something similar. <br>
 **Note**:
 - GNU compiler collection (GCC) is a collection of compilers for programming such as C++, C, Objective-C, Java, and Fortran. The GNU provide the optimising compiler for C++ which is known as g++. GCC release is from a free software foundation operated through the command line. 
 - g++ compiler builds the object code from source code, and it does not generate any intermediate C version of the program. g++ is a complete compiler, but GCC requires the help of g++. 
@@ -114,7 +114,7 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /u
 ```
 gcc --version
 ```
-It should show: 9.1.0.
+It should show: 9.1.0 or something similar.
 ## Configuring Latest CMake Version:
 Ubuntu 18.04 LTS doesn't come with a preinstalled cmake. To check, run on terminal:
 ```
@@ -295,6 +295,7 @@ OpenCV’s highgui module relies on the GTK library for GUI operations. At the s
 ```
 sudo apt-get install libgtk-3-dev
 sudo apt-get install libatlas-base-dev gfortran
+sudo apt install python3-testresources
 sudo apt-get install python3.6-dev
 ```
 Since we’re continuing to work in the terminal, let’s download the official OpenCV release followed by the opencv_contrib  module using wget :
@@ -357,7 +358,6 @@ After installing opencv, you should start installing tensorflow. A list of CUDA 
 Here, we will be installing tensorflow from binary packages. According to the chart above, tensorflow 2.1 binary package ships with preconfigured cuda 10.1 dynamic libraries. <br>
 Assuming that you have a nvidia compatible gpu, run in the terminal:
 ```
-sudo apt install python3-testresources
 python3 -m pip install --user --upgrade tensorflow-gpu
 ```
 To check the successful gpu version installation, type:
