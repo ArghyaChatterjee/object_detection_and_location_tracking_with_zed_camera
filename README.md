@@ -18,6 +18,7 @@ It should show: VGA compatible controller NVIDIA Corporation GP104M [GeForce GTX
 ```
 uname -r
 ```
+It should show: 5.3.0-46-generic or something similar.
 - Install the kernel headers & packages with the following command:
 ```
 sudo apt-get install linux-headers-$(uname -r)
@@ -146,6 +147,7 @@ cmake --version
 ```
 It should show: 3.17.0 <br>
 **Note:**
+- Sh is a shell for running commands, so executing sh with sudo prompts you to a root shell. This means all commands in that shell are executed as root. Interactive shell helps you decide which things to install & which things to not as root.
 - Cmake can also be installed using "snap" package manager. Just type in a terminal:
 ```
 sudo snap install cmake
