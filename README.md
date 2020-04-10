@@ -47,8 +47,8 @@ Check with the following command:
 ```
 python --version
 ```
-It should show: 3.6.9. It is recommended to install same version shown in this tutorial to avoid additional problem.<br>
-**Note**: 
+It should show: 3.6.9. It is recommended to install same version shown in this tutorial to avoid additional problem.
+### Note: 
 - If you install python2 anytime after creating the symlink, the symlink will automatically be removed by your system & the system will start to import python2 when called as 'python'.  
 - Don't try to undo python symbolic link step by reversing the order, otherwise the system will break & you will loose your terminal. 
 - If you want to unlink the symbolic link we created, type:
@@ -56,7 +56,9 @@ It should show: 3.6.9. It is recommended to install same version shown in this t
 sudo unlink usr/bin/python3
 ```
 ## Configuring Latest PIP Version:
-If you want to use pip (python installation pipeline), you have to install it. You can install it with python 3. Run in a terminal:
+If you want to use pip (python installation pipeline), you have to install it first. 
+### Manual Installation:
+You can install pip with python 3. Run in a terminal:
 ```
 sudo apt install python3-pip
 ```
@@ -64,20 +66,25 @@ To verify installation, please run:
 ```
 pip3 --version
 ```
-It should show: pip 9.0.1. If you want to upgrade pip3 (To install tensorflow 2.x later), run: 
+It should show: pip 9.0.1 or something similar.
+### Upgrade PIP:
+If you want to upgrade pip3 (To install tensorflow 2.x later), run: 
 ```
 pip3 install --upgrade pip
 ``` 
-If you want to import pip3 as pip, run the following command:
+### Create Symbolic Link for PIP 3:
+If you want to remove pip2 (old version, comes with python 2.7), make pip3 as default & import pip3 as pip, run the following command:
 ```
+sudo rm /usr/bin/pip
 sudo ln -s /usr/bin/pip3 /usr/bin/pip
 ```
-Now check it with the following command: 
+### Check Installation:
+Now check successful pip3 installation & upgrade with the following command: 
 ```
 python3 -m pip --version
 ```
-It should show: pip 20.0.2 or something similar. <br>
-**Note**: 
+It should show: pip 20.0.2 or something similar. It is recommended to install same version shown in this tutorial to avoid additional problem.
+### Note: 
 - You can also install pip in the following way:
 ```
 wget https://bootstrap.pypa.io/get-pip.py
@@ -91,18 +98,21 @@ sudo python3 get-pip.py
 sudo unlink usr/bin/pip3
 ```
 - pip or python -m pip commands do the same. The docs for distributing Python modules were just updated to suggest using python -m pip instead of the pip executable, because it's easier to tell which version of python is going to be used to actually run pip that way.
-## Installing GCC, G++ & Make
+## Configuring GCC, G++ & Make:
+GNU compiler collection (GCC) is a collection of compilers for programming such as C++, C, Objective-C, Java, and Fortran. The GNU provide the optimising compiler for C++ which is known as g++. GCC release is from a free software foundation operated through the command line. 
+### Manual Installation:
 To install GCC, G++ & Make, run the following command in a terminal:
 ```
 sudo apt install build-essential
 ```
+### Check Installation:
 To validate that the GCC compiler is successfully installed, run:
 ```
 gcc --version
+g++ --version
 ```
-It should show: 7.5.0 or something similar. <br>
-**Note**:
-- GNU compiler collection (GCC) is a collection of compilers for programming such as C++, C, Objective-C, Java, and Fortran. The GNU provide the optimising compiler for C++ which is known as g++. GCC release is from a free software foundation operated through the command line. 
+It should show: 7.5.0 or something similar. It is recommended to install same version shown in this tutorial to avoid additional problem.
+### Note:
 - g++ compiler builds the object code from source code, and it does not generate any intermediate C version of the program. g++ is a complete compiler, but GCC requires the help of g++. 
 - 'make' is a tool to help build programs. It introduces a separate file of "rules", that describes how to go from source code to finished program. It then interprets this file, figures out what needs to be compiled, and calls gcc for you. 
 - If you want updated version of gcc & g++ to be installed on your system, run:
