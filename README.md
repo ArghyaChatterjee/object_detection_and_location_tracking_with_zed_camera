@@ -144,8 +144,8 @@ cmake --version
 ```
 It should show: 3.17.1 <br>
 **Note:**
-- Sh is a shell for running commands, so executing sh with sudo prompts you to a root shell. This means all commands in that shell are executed as root. Interactive shell helps you decide which things to install & which things to not as root.
-- Cmake can also be installed using "snap" package manager. Just type in a terminal:
+- 'sh' is a shell for running commands, so executing sh with sudo prompts you to a root shell. This means all commands in that shell are executed as root. Interactive shell helps you decide which things to install & which things to not as root.
+- Updated version of cmake (cmake-3.17.1) can also be installed using "snap" package manager. Just type in a terminal:
 ```
 sudo snap install cmake
 ```
@@ -190,15 +190,10 @@ Check whether cuda is already installed on your system or not. In the terminal, 
 ```
 nvcc --version
 ```
-It should show: nvcc not installed but can be installed by sudo apt install nvidia-cuda-toolkit. Download cuda 10.1 from this website: https://developer.nvidia.com/cuda-downloads. Click on Linux--->x86_64--->Ubuntu--->18.04--->deb local, you will get the installation file. Now, run the following commands in the terminal:
+It should show: nvcc not installed but can be installed by sudo apt install nvidia-cuda-toolkit. Download cuda 10.1 from this website: https://developer.nvidia.com/cuda-10.1-download-archive-update2. Click on Linux--->x86_64--->Ubuntu--->18.04--->runfile (local), you will get the installation method. Now, run the following commands in the terminal:
 ```
-wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
-sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
-wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda-repo-ubuntu1804-10-1-local-10.1.243-418.87.00_1.0-1_amd64.deb
-sudo dpkg -i cuda-repo-ubuntu1804-10-1-local-10.1.243-418.87.00_1.0-1_amd64.deb
-sudo apt-key add /var/cuda-repo-10-1-local-10.1.243-418.87.00/7fa2af80.pub
-sudo apt-get update
-sudo apt-get -y install cuda
+wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run
+sudo sh cuda_10.1.243_418.87.00_linux.run
 ```
 Now there are some post installation instructions. Just add 2 lines to your .bashrc file & save it. The .bashrc file is a hidden file & it is in the home directory. Press 'ctrl+h' to find it.
 ```
