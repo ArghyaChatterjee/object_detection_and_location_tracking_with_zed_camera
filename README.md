@@ -135,6 +135,7 @@ sudo sh cmake-3.17.1-Linux-x86_64.sh --prefix=/opt/cmake --skip-license
 ```
 Follow the command prompt for further installation instruction. Now to import current version of cmake using symbolic link, type:
 ```
+cd ~
 sudo ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
 ```
 Remove installation file, it's no longer needed:
