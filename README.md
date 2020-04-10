@@ -48,7 +48,7 @@ Check with the following command:
 python --version
 ```
 It should show: 3.6.9. It is recommended to install same version shown in this tutorial to avoid additional problem.
-### Note: 
+### Note (Aditional Info): 
 - If you install python2 anytime after creating the symlink, the symlink will automatically be removed by your system & the system will start to import python2 when called as 'python'.  
 - Don't try to undo python symbolic link step by reversing the order, otherwise the system will break & you will loose your terminal. 
 - If you want to unlink the symbolic link we created, type:
@@ -84,7 +84,7 @@ Now check successful pip3 installation & upgrade with the following command:
 python3 -m pip --version
 ```
 It should show: pip 20.0.2 or something similar. It is recommended to install same version shown in this tutorial to avoid additional problem.
-### Note: 
+### Note (Aditional Info): 
 - You can also install pip in the following way:
 ```
 wget https://bootstrap.pypa.io/get-pip.py
@@ -112,7 +112,7 @@ gcc --version
 g++ --version
 ```
 It should show: 7.5.0 or something similar. It is recommended to install same version shown in this tutorial to avoid additional problem.
-### Note:
+### Note (Aditional Info):
 - g++ compiler builds the object code from source code, and it does not generate any intermediate C version of the program. g++ is a complete compiler, but GCC requires the help of g++. 
 - 'make' is a tool to help build programs. It introduces a separate file of "rules", that describes how to go from source code to finished program. It then interprets this file, figures out what needs to be compiled, and calls gcc for you. 
 - If you want updated version of gcc & g++ to be installed on your system, run:
@@ -131,11 +131,14 @@ gcc --version
 ```
 It should show: 9.1.0 or something similar.
 ## Configuring Latest CMake Version:
+### Initial Check:
 Ubuntu 18.04 LTS doesn't come with a preinstalled cmake. To check, run on terminal:
 ```
 cmake --version
 ```
-It should show: Not installed but can be installed with "sudo apt-get install cmake". Here, we will download & install binary package in our system. Run the following command in the terminal:
+It should show: Not installed but can be installed with "sudo apt-get install cmake". 
+### Binary Installation:
+Here, we will download & install binary package in our system. Run the following command in the terminal:
 ```
 sudo mkdir /opt/cmake
 ```
@@ -148,17 +151,20 @@ Now run the following command to install 'cmake': <br>
 cd /opt/cmake
 sudo sh cmake-3.17.1-Linux-x86_64.sh --prefix=/opt/cmake --skip-license
 ```
-Follow the command prompt for further installation instruction. Now to import current version of cmake using symbolic link, type:
+Follow the command prompt for further installation instruction. 
+### Create Symbolic Link for Cmake:
+In order to import current version of cmake with 'cmake' command, we will use symbolic link. Type:
 ```
 cd ~
 sudo ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
 ```
-Check with the following command: 
+### Check Installation:
+Check cmake installation with the following command: 
 ```
 cmake --version
 ```
-It should show: 3.17.1 <br>
-**Note:**
+It should show: 3.17.1 or something similar. It is recommended to install same version shown in this tutorial to avoid additional problem.
+### Note (Aditional Info):
 - 'sh' is a shell for running commands, so executing sh with sudo prompts you to a root shell. This means all commands in that shell are executed as root. Interactive shell helps you decide which things to install & which things to not as root.
 - Updated version of cmake (cmake-3.17.1) can also be installed using "snap" package manager. Just type in a terminal:
 ```
