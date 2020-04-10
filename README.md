@@ -4,7 +4,8 @@ It's a must installation after a fresh Ubuntu 18.04 OS installation.
 - Download Ubuntu 18.04 OS image from this website: https://ubuntu.com/download/desktop
 - Download Balena-Etcher from this website: https://www.balena.io/etcher/
 - Follow this tutorial for installing Ubuntu 18.04 LTS OS on your system: https://www.youtube.com/watch?v=G6LAIrGeIjo
-- Open a terminal with 'shift+ctrl+t' & check you have installed a supported version of ubuntu. Type: 
+## Checking OS, Kernel & Driver Version:
+Open a terminal with 'shift+ctrl+t' & check you have installed a supported version of ubuntu. Type: 
 ```
 uname -m && cat /etc/*release
 ```
@@ -13,7 +14,7 @@ It should show: Ubuntu 18.04.4 or something similar.
 ```
 lspci | grep -i nvidia
 ```
-It should show: VGA compatible controller NVIDIA Corporation GP104M [GeForce GTX 1070 Mobile] or something similar.
+It should show: VGA compatible controller NVIDIA Corporation GP104M [GeForce GTX 1070 Mobile] or something alike.
 - Check your kernel headers are compatible with CUDA. Type:
 ```
 uname -r
@@ -34,7 +35,7 @@ Ubuntu 18.04 LTS comes with preinstalled python 3. To check, run on terminal:
 ```
 python3 --version
 ```
-It should show: 3.6.9. 
+It should show: 3.6.9 or something similar.
 ### Create Symbolic Link for Python 3: 
 To remove python 2.7, make python 3.6.9 default & import it with just "python" command, run on terminal:
 ```
@@ -46,7 +47,7 @@ Check with the following command:
 ```
 python --version
 ```
-It should show: 3.6.9. <br>
+It should show: 3.6.9. It is recommended to install same version shown in this tutorial to avoid additional problem.<br>
 **Note**: 
 - If you install python2 anytime after creating the symlink, the symlink will automatically be removed by your system & the system will start to import python2 when called as 'python'.  
 - Don't try to undo python symbolic link step by reversing the order, otherwise the system will break & you will loose your terminal. 
