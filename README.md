@@ -4,40 +4,24 @@ It's a must installation after a fresh Ubuntu 18.04 OS installation.
 - Download Ubuntu 18.04 OS image from this website: https://ubuntu.com/download/desktop
 - Download Balena-Etcher from this website: https://www.balena.io/etcher/
 - Follow this tutorial for installing Ubuntu 18.04 LTS OS on your system: https://www.youtube.com/watch?v=G6LAIrGeIjo
-- Open a terminal with 'shift+ctrl+t' & check you have installed the correct version of ubuntu. Type: 
+- Open a terminal with 'shift+ctrl+t' & check you have installed a supported version of ubuntu. Type: 
 ```
-lsb_release -a
+uname -m && cat /etc/*release
 ```
 It should show: Ubuntu 18.04.4 or something similar.
-## Installing GCC, G++ & Make
-To install GCC, G++ & Make, run the following command in a terminal:
+- Check your GPU can deal with CUDA by running:
 ```
-sudo apt install build-essential
+lspci | grep -i nvidia
 ```
-To validate that the GCC compiler is successfully installed, run:
+It should show: VGA compatible controller NVIDIA Corporation GP104M [GeForce GTX 1070 Mobile] or something similar.
+- Check your kernel headers are compatible with CUDA. Type:
 ```
-gcc --version
+uname -r
 ```
-It should show: 7.5.0. (default) <br>
-**Note**:
-- GNU compiler collection (GCC) is a collection of compilers for programming such as C++, C, Objective-C, Java, and Fortran. The GNU provide the optimising compiler for C++ which is known as g++. GCC release is from a free software foundation operated through the command line. 
-- g++ compiler builds the object code from source code, and it does not generate any intermediate C version of the program. g++ is a complete compiler, but GCC requires the help of g++. 
-- 'make' is a tool to help build programs. It introduces a separate file of "rules", that describes how to go from source code to finished program. It then interprets this file, figures out what needs to be compiled, and calls gcc for you. 
-- If you want updated version of gcc & g++ to be installed on your system, run:
+- Install the kernel headers & packages with the following command:
 ```
-sudo apt install software-properties-common
-sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-sudo apt install gcc-9 g++-9
+sudo apt-get install linux-headers-$(uname -r)
 ```
-- Also if you want to make newly installed gcc your systems default gcc compiler, then run:
-```
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
-```
-- For more info, visit: https://linuxize.com/post/how-to-install-gcc-compiler-on-ubuntu-18-04/. To check the update, run:
-```
-gcc --version
-```
-It should show: 9.1.0.
 ## Configuring Latest Python Version:
 
 It's always good practise to update & upgrade your pc before starting any type of installation. Run in a terminal:
@@ -59,6 +43,7 @@ python --version
 ```
 It should show: 3.6.9. <br>
 **Note**: 
+- If you install python2 anytime after creating the symlink, the symlink will automatically be removed by your system & the system will start to import python2 when called as 'python'.  
 - Don't try to undo python symbolic link step by reversing the order, otherwise the system will break & you will loose your terminal. 
 - If you want to unlink the symbolic link we created, type:
 ```
@@ -93,12 +78,42 @@ wget https://bootstrap.pypa.io/get-pip.py
 sudo python3 get-pip.py
 ```
 - pip or Python Installation Pipeline is a de facto standard package-management system used to install and manage software packages written in Python. Many packages can be found in the default source for packages and their dependencies — Python Package Index (PyPI).
+- If you install pip with python2 anytime after creating the symlink, the symlink will automatically be removed by your system & the system will start to import pip2 when called as 'pip'.
 - Don't try to undo pip symbolic link step by reversing the order, otherwise the system will break & you can seriously damage your system. 
 - If you want to unlink the symbolic link we created, type:
 ```
 sudo unlink usr/bin/pip3
 ```
 - pip or python -m pip commands do the same. The docs for distributing Python modules were just updated to suggest using python -m pip instead of the pip executable, because it's easier to tell which version of python is going to be used to actually run pip that way.
+## Installing GCC, G++ & Make
+To install GCC, G++ & Make, run the following command in a terminal:
+```
+sudo apt install build-essential
+```
+To validate that the GCC compiler is successfully installed, run:
+```
+gcc --version
+```
+It should show: 7.5.0. (default) <br>
+**Note**:
+- GNU compiler collection (GCC) is a collection of compilers for programming such as C++, C, Objective-C, Java, and Fortran. The GNU provide the optimising compiler for C++ which is known as g++. GCC release is from a free software foundation operated through the command line. 
+- g++ compiler builds the object code from source code, and it does not generate any intermediate C version of the program. g++ is a complete compiler, but GCC requires the help of g++. 
+- 'make' is a tool to help build programs. It introduces a separate file of "rules", that describes how to go from source code to finished program. It then interprets this file, figures out what needs to be compiled, and calls gcc for you. 
+- If you want updated version of gcc & g++ to be installed on your system, run:
+```
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt install gcc-9 g++-9
+```
+- Also if you want to make newly installed gcc your systems default gcc compiler, then run:
+```
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
+```
+- For more info, visit: https://linuxize.com/post/how-to-install-gcc-compiler-on-ubuntu-18-04/. To check the update, run:
+```
+gcc --version
+```
+It should show: 9.1.0.
 ## Configuring Latest CMake Version:
 Ubuntu 18.04 LTS doesn't come with a preinstalled cmake. To check, run on terminal:
 ```
@@ -233,14 +248,14 @@ sudo ldconfig
  cd /usr/local/cuda/lib64/
  ls -lha libcudnn*
  ```
-- You should see two symlinks (bold teal) and one single file. Something like this:
+- You should see two symlinks (bold teal) and one single file. If libcudnn.so and libcudnn.so.7 are not symlinks (i.e hard links) then this is the reason why you got this error:
  ```
  /usr/local/cuda/lib64$ ls -lha libcudnn*
 lrwxrwxrwx 1 root root  13 Mar 25 23:56 libcudnn.so 
 lrwxrwxrwx 1 root root  17 Mar 25 23:55 libcudnn.so.7
 -rwxr-xr-x 1 root root 76M Mar 25 23:27 libcudnn.so.7.6.5
 ```
-- If libcudnn.so and libcudnn.so.7 are not symlinks then this is the reason why you got this error. Cudnn downloaded from nvidia has symbolic link but when copied to other location, it losses the sym link info. If so, this is what you need to do:
+- Cudnn downloaded from nvidia has symbolic link but when copied to other location, it losses the sym link info. If so, this is what you need to do:
 ```
 /usr/local/cuda/lib64$ sudo rm libcudnn.so
 /usr/local/cuda/lib64$ sudo rm libcudnn.so.7
@@ -266,7 +281,7 @@ sudo apt-get upgrade
 ```
 Install developer tools by running the following command:
 ```
-sudo apt-get install build-essential unzip pkg-config
+sudo apt-get install cmake build-essential unzip pkg-config
 ```
 Now, we need to install some OpenCV-specific prerequisites & packages to work with your camera stream and process video files. Run the following commands:
 ```
@@ -377,11 +392,11 @@ git clone https://github.com/tensorflow/models
 ```
 Open the .bashrc file in your home directory. The PATH should look something like this:
 ```
-export PATH=/usr/local/cuda-10.2/bin${PATH:+:${PATH}}
+export PATH=/usr/local/cuda-10.1/bin${PATH:+:${PATH}}
 ```
 You have to manually add /home/arghya/.local/bin directory to environment path variable. After adding the directory to the variable list, it should look something like this:
 ```
-export PATH=/usr/local/cuda-10.2/bin:/home/arghya/.local/bin${PATH:+:${PATH}}
+export PATH=/usr/local/cuda-10.1/bin:/home/arghya/.local/bin${PATH:+:${PATH}}
 ``` 
 To verify the path, open a new terminal & run: 
 ```
