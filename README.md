@@ -154,27 +154,33 @@ sudo snap install cmake
 - 'sudo apt-get install cmake' command will install older version of cmake (cmake-3.10.0). So, it is not recommended to use this command. 
 - We have used precompiled binary package of cmake. You can also install cmake from source. To do so, follow the instruction here: https://vitux.com/how-to-install-cmake-on-ubuntu-18-04/
 ## Configuring Latest Nvidia Graphics Driver:
+Ensure that your pc has GPU from Nvidia:
+```
+ubuntu-drivers devices
+```
 A list of Nvidia Graphics Driver with supported compute architecture is given below:
 <p align="center">
     <img src="asset/Nvidia_graphics_driver.png", width="800">
 </p>
-
+### GUI Installation:
 Go to Activities Overview--->Software Updater--->Settings--->Additional Driver & Choose available latest nvidia driver-435. Then click on "Apply changes".
-If you want to check for recent version of nvidia gpu driver, please type:
+### Manual Installation:
+If you want to check for available versions of nvidia gpu driver provided by apt (Advanced Package Tool), type:
 ```
 apt search nvidia-driver
 ```
-If you want more updated version of nvidia gpu driver, run:
+You can get more updated version of nvidia gpu driver by adding nvidia drivers to ppa (Personal Package Archives), run:
 ```
 sudo apt-add-repository ppa:graphics-drivers/ppa
 sudo apt-get update
 sudo apt-get install nvidia-driver-435
 ```
-Restart the computer. Check the version of the nvidia graphics driver:
+### Check Installation:
+Restart the computer. It is necessary. Check the version of the nvidia graphics driver:
 ```
 nvidia-smi
 ```
-It should show: driver version-435.21 & CUDA version-10.1 <br>
+It should show: driver version-435.21 & CUDA version-10.1 or something similar. <br>
 **Note**:
 - Ubuntu software centre method is just a user interface equivalent of the apt-get install commands except paid apps and some of the free apps which is submited through my apps portal are not available in apt-get.
 - It's recommended to use PPA to add repositories for Nvidia drivers. Personal Package Archives (PPA) enables you to upload Ubuntu source packages to be built and published as an apt repository by Launchpad.
@@ -190,16 +196,20 @@ Check whether cuda is already installed on your system or not. In the terminal, 
 ```
 nvcc --version
 ```
-It should show: nvcc not installed but can be installed by sudo apt install nvidia-cuda-toolkit. Download cuda 10.1 from this website: https://developer.nvidia.com/cuda-10.1-download-archive-update2. Click on Linux--->x86_64--->Ubuntu--->18.04--->runfile (local), you will get the installation method. Now, run the following commands in the terminal:
+It should show: nvcc not installed but can be installed by sudo apt install nvidia-cuda-toolkit. 
+### Manual Installation:
+Download cuda 10.1 from this website: https://developer.nvidia.com/cuda-10.1-download-archive-update2. Click on Linux--->x86_64--->Ubuntu--->18.04--->runfile (local), you will get the installation method. Now, run the following commands in the terminal:
 ```
 wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run
 sudo sh cuda_10.1.243_418.87.00_linux.run
 ```
-There are some post installation instructions. Just add 2 lines to your .bashrc file & save it. The .bashrc file is a hidden file & it is in the home directory. Press 'ctrl+h' to find it.
+### Post Installation Instruction:
+Just add 2 lines to your .bashrc file & save it. The .bashrc file is a hidden file & it is in the home directory. Press 'ctrl+h' to find it.
 ```
 export PATH=/usr/local/cuda-10.1/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 ```
+### Check Installation:
 To check the installation, open a new terminal & run:
 ```
 nvcc --version
@@ -211,7 +221,7 @@ nvcc --version
 - $PATH or system path variable specifies the directories in which executable programs are located on the machine that can be started without knowing and typing the whole path to the file on the command line. On Linux and Mac OS X, it usually holds all bin and sbin directories relevant for the current user. On Windows, it contains at least the C:\Windows and C:\Windows\system32 directories.
 - Environment variables hold values related to the current environment, like the Operating System or user sessions. For more info, visit the website: https://superuser.com/questions/284342/what-are-path-and-other-environment-variables-and-how-can-i-set-or-use-them.
 - ${PATH:+:${PATH}} simply prepends newly specified path to the already existing system path when defined properly. For more info, visit this website: https://unix.stackexchange.com/questions/267506/what-does-pathpath-mean.
-- $LD_LIBRARY_PATH points to the directory where cuda & cudnn dynamic libraries (dll) are loaded. These libraries are necessary while running tensorflow in order to use your GPU. 
+- $LD_LIBRARY_PATH points to the directory where cuda & cudnn dynamic link libraries (dll) are loaded. These libraries are necessary while running tensorflow in order to use your GPU. 
 ## Configuring Latest CUDNN installation:
 First check that you have already cudnn installed on your system or not. Run:
 ```
@@ -221,13 +231,16 @@ Or,
 ```
 cat /usr/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
-It should show: No such file or directory. Go to this website: https://developer.nvidia.com/rdp/cudnn-download & download "cuDNN Library for Linux". Put the file to your home directory after download. Now open a new terminal & run the following command:
+It should show: No such file or directory. 
+### Manual Installation:
+Go to this website: https://developer.nvidia.com/rdp/cudnn-download & download "cuDNN Library for Linux". Put the file to your home directory after download. Now open a new terminal & run the following command:
  ```
- tar -xzvf cudnn-10.2-linux-x64-v7.6.5.32.tgz
+ tar -xzvf cudnn-10.1-linux-x64-v7.6.5.32.tgz
  sudo cp cuda/include/cudnn.h /usr/local/cuda/include
  sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
  sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
  ```
+### Check Installation:
 To check the installation, run the following command:
 ```
 cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
@@ -236,32 +249,33 @@ It should show: #define CUDNN_MAJOR 7 #define CUDNN_MINOR 6 #define CUDNN_PATCHL
 ```
 sudo ldconfig
 ```
-**Note**: 
-- If you want to manually download & install cudnn in your system, follow the installation guideline documented on this website: https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html .
-- If you get the error: /sbin/ldconfig.real: /usr/local/cuda-10.1/targets/x86_64-linux/lib/libcudnn.so.7 is not a symbolic link, then follow the instruction below. If you don't get the error message, your installation is complete & you don't need to continue further. Otherwise, run the following command: 
+If you get the error: /sbin/ldconfig.real: /usr/local/cuda-10.1/targets/x86_64-linux/lib/libcudnn.so.7 is not a symbolic link, then follow the instruction below. If you don't get the error message, your installation is complete & you can move forward to next section. Now, run the following command: 
  ```
  cd /usr/local/cuda/lib64/
  ls -lha libcudnn*
  ```
-- You should see two symlinks (bold teal) and one single file. If libcudnn.so and libcudnn.so.7 are not symlinks (i.e hard links) then this is the reason why you got this error:
+You should see two symlinks (bold teal) and one single file. If libcudnn.so and libcudnn.so.7 are not symlinks (i.e hard links) then this is the reason why you got this error:
  ```
  /usr/local/cuda/lib64$ ls -lha libcudnn*
 lrwxrwxrwx 1 root root  13 Mar 25 23:56 libcudnn.so 
 lrwxrwxrwx 1 root root  17 Mar 25 23:55 libcudnn.so.7
 -rwxr-xr-x 1 root root 76M Mar 25 23:27 libcudnn.so.7.6.5
 ```
-- Cudnn downloaded from nvidia has symbolic link but when copied to other location, it losses the sym link info. If so, this is what you need to do:
+Cudnn downloaded from nvidia has symbolic link but when copied to other location, it losses the sym link info. If so, this is what you need to do:
 ```
 /usr/local/cuda/lib64$ sudo rm libcudnn.so
 /usr/local/cuda/lib64$ sudo rm libcudnn.so.7
 /usr/local/cuda/lib64$ sudo ln -sf libcudnn.so.7.6.5 libcudnn.so.7
 /usr/local/cuda/lib64$ sudo ln -sf libcudnn.so.7 libcudnn.so
 ```
-- It is necessary to add -sf flag above for creating a symbolic link. If you forget to add it, it becomes a hard link. 
-- Now run the following command and you should not see any error:
+Now run the following command and you should not see any error:
 ```
 sudo ldconfig
 ```
+**Note**: 
+- If you want to manually download & install cudnn in your system, follow the installation guideline documented on this website: https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html .
+- It is necessary to add -sf flag above for creating a symbolic link. If you forget to add it, it becomes a hard link. 
+- 'sudo ldconfig' creates the necessary links and cache to the most recent shared libraries found in the directories specified on the command line or mentioned in the system path. The cache is used by the run-time linker.
 # Open-CV-Tensorflow-and-Object-Detection-API-installation-with-Nvidia-GPU
 It's an installation instruction for Opencv, Tensorflow & Object Detection API. Follow the guideline carefully for smooth installation.
 ## Open CV installation:
@@ -276,7 +290,7 @@ sudo apt-get upgrade
 ```
 Install developer tools by running the following command:
 ```
-sudo apt-get install build-essential unzip pkg-config
+sudo apt-get install unzip pkg-config           # add `cmake` & `build-essential` if you haven't installed them according to the tutorial 
 ```
 Install OpenGL (if it is not already installed) & glxinfo by typing following command:
 ```
@@ -286,7 +300,7 @@ Check whether OpenGL is successfully installed or not by running:
 ```
 glxinfo | grep "OpenGL version"
 ```
-It should show: OpenGL version string: 4.6.0 NVIDIA 435.21
+It should show: OpenGL version string: 4.6.0 NVIDIA 435.21 or something similar.
 Now, we need to install some OpenCV-specific prerequisites & packages to work with your camera stream and process video files. Run the following commands:
 ```
 sudo apt-get install libjpeg-dev libpng-dev libtiff-dev
