@@ -34,10 +34,14 @@ Ubuntu 18.04 LTS comes with preinstalled python 3. To check, run on terminal:
 ```
 python3 --version
 ```
-It should show: 3.6.9. Now to make python 3.6.9 default & import it with just "python" command using symbolic link, run on terminal:
+It should show: 3.6.9. 
+### Create Symbolic Link for Python 3: 
+To remove python 2.7, make python 3.6.9 default & import it with just "python" command, run on terminal:
 ```
+sudo rm /usr/bin/python
 sudo ln -s /usr/bin/python3 /usr/bin/python
 ```
+### Check Configuration:
 Check with the following command: 
 ```
 python --version
