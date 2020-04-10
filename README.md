@@ -151,6 +151,7 @@ sudo snap install cmake
 ```
 - You can also install cmake from "Ubuntu software centre". Just type Cmake and you will get the link to install it.
 - Make sure you have installed latest version of cmake as many softwares use latest cmake version to build & test their up to date projects. 
+- 'sudo apt-get install cmake' command will install older version of cmake (cmake-3.10.0). So, it is not recommended to use this command. 
 - We have used precompiled binary package of cmake. You can also install cmake from source. To do so, follow the instruction here: https://vitux.com/how-to-install-cmake-on-ubuntu-18-04/
 ## Configuring Latest Nvidia Graphics Driver:
 A list of Nvidia Graphics Driver with supported compute architecture is given below:
@@ -280,8 +281,17 @@ sudo apt-get upgrade
 ```
 Install developer tools by running the following command:
 ```
-sudo apt-get install cmake build-essential unzip pkg-config
+sudo apt-get install build-essential unzip pkg-config
 ```
+Install OpenGL (if it is not already installed) & glxinfo by typing following command:
+```
+sudo apt-get install libglu1-mesa-dev freeglut3-dev mesa-common-dev mesa-utils
+```
+Check whether OpenGL is successfully installed or not by running:
+```
+glxinfo | grep "OpenGL version"
+```
+It should show: OpenGL version string: 4.6.0 NVIDIA 435.21
 Now, we need to install some OpenCV-specific prerequisites & packages to work with your camera stream and process video files. Run the following commands:
 ```
 sudo apt-get install libjpeg-dev libpng-dev libtiff-dev
@@ -292,8 +302,8 @@ OpenCV’s highgui module relies on the GTK library for GUI operations. At the s
 ```
 sudo apt-get install libgtk-3-dev
 sudo apt-get install libatlas-base-dev gfortran
-sudo apt install python3-testresources
 sudo apt-get install python3.6-dev
+sudo apt install python3-testresources
 ```
 Since we’re continuing to work in the terminal, let’s download the official OpenCV release followed by the opencv_contrib  module using wget :
 ```
