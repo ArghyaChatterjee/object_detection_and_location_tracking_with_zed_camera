@@ -124,14 +124,14 @@ It should show: Not installed but can be installed with "sudo apt-get install cm
 ```
 sudo mkdir /opt/cmake
 ```
-Manually download "cmake-3.17.0-Linux-x86_64.sh" file to the "Downloads" directory from this site: https://cmake.org/download/. Run the following command to copy the file to newly created cmake directory: 
+Manually download "cmake-3.17.1-Linux-x86_64.sh" file to the "Downloads" directory from this site: https://cmake.org/download/. Run the following command to copy the file to newly created cmake directory: 
 ```
-sudo cp ~/Downloads/cmake-3.17.0-Linux-x86_64.sh /opt/cmake/
+sudo cp ~/Downloads/cmake-3.17.1-Linux-x86_64.sh /opt/cmake/
 ```
 Now run the following command to install 'cmake': <br>
 ```
 cd /opt/cmake
-sudo sh cmake-3.17.0-Linux-x86_64.sh --prefix=/opt/cmake --skip-license
+sudo sh cmake-3.17.1-Linux-x86_64.sh --prefix=/opt/cmake --skip-license
 ```
 Follow the command prompt for further installation instruction. Now to import current version of cmake using symbolic link, type:
 ```
@@ -139,13 +139,13 @@ sudo ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
 ```
 Remove installation file, it's no longer needed:
 ```
-rm cmake-3.17.0-Linux-x86_64.sh
+rm cmake-3.17.1-Linux-x86_64.sh
 ```
 Check with the following command: 
 ```
 cmake --version
 ```
-It should show: 3.17.0 <br>
+It should show: 3.17.1 <br>
 **Note:**
 - Sh is a shell for running commands, so executing sh with sudo prompts you to a root shell. This means all commands in that shell are executed as root. Interactive shell helps you decide which things to install & which things to not as root.
 - Cmake can also be installed using "snap" package manager. Just type in a terminal:
