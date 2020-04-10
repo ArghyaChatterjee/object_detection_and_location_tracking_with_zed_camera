@@ -138,10 +138,6 @@ Follow the command prompt for further installation instruction. Now to import cu
 cd ~
 sudo ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
 ```
-Remove installation file, it's no longer needed:
-```
-rm cmake-3.17.1-Linux-x86_64.sh
-```
 Check with the following command: 
 ```
 cmake --version
