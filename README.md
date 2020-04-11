@@ -351,7 +351,7 @@ OpenCV’s highgui module relies on the GTK library for GUI operations. At the s
 ```
 sudo apt-get install libgtk-3-dev
 sudo apt-get install libatlas-base-dev gfortran
-sudo apt-get install python3.6-dev
+sudo apt-get install python3-dev
 sudo apt install python3-testresources
 ```
 Since we’re continuing to work in the terminal, let’s download the official OpenCV release followed by the opencv_contrib  module using wget :
