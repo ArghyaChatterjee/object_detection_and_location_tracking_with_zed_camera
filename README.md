@@ -147,7 +147,13 @@ Ubuntu 18.04 LTS doesn't come with a preinstalled cmake. To check, run on termin
 cmake --version
 ```
 It should show: Not installed but can be installed with 'sudo apt-get install cmake'. 
-### Binary Installation (Recommended):
+### GUI based Installation (Recommended):
+Updated version of cmake (cmake-3.17.1) can also be installed using "snap" package manager. Just type in a terminal:
+```
+sudo snap install cmake
+```
+You can also install cmake from "Ubuntu software centre". Just type Cmake and click on 'install' when you get it.
+### Binary Installation (Applicable if you didn't use GUI Method):
 Here, we will download & install binary package in our system. Run the following command in the terminal:
 ```
 sudo mkdir /opt/cmake
@@ -161,19 +167,11 @@ Now run the following command to install 'cmake':
 cd /opt/cmake
 sudo sh cmake-3.17.1-Linux-x86_64.sh --prefix=/opt/cmake --skip-license
 ```
-Follow the command prompt for further installation instruction. 
-### Create Symbolic Link for Cmake:
 In order to import current version of cmake with 'cmake' command, we will use symbolic link. Type:
 ```
 cd ~
 sudo ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
 ```
-### GUI based Installation (Applicable if you didn't use 1st Method):
-Updated version of cmake (cmake-3.17.1) can also be installed using "snap" package manager. Just type in a terminal:
-```
-sudo snap install cmake
-```
-You can also install cmake from "Ubuntu software centre". Just type Cmake and click on 'install' when you get it.
 ### Check Installation:
 Check cmake installation with the following command: 
 ```
@@ -198,7 +196,7 @@ Ensure that your pc has GPU from Nvidia:
 ubuntu-drivers devices
 ```
 Device drivers will be shortlisted & you can see nvidia drivers enlisted.
-### GUI Installation:
+### GUI based Installation:
 Go to Activities Overview--->Software Updater--->Settings--->Additional Driver & Choose available latest nvidia driver-435. Then click on "Apply changes".
 ### Binary Installation (Applicable if you didn't use GUI Method):
 If you want to check for available versions of nvidia gpu driver available on apt (Advanced Package Tool), type:
