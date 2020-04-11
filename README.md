@@ -395,7 +395,7 @@ python3
 >>> import cv2
 >>> cv2.__version__
 '4.1.0'                              # Showing version of opencv installed on your system
-exit()
+>>> exit()
 ```
 Change your directory where your Python 3 bindings for OpenCV resides & rename the binding file by running the following command:
 ```
