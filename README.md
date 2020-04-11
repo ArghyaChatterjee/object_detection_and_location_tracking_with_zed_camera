@@ -303,17 +303,18 @@ lrwxrwxrwx 1 root root  13 Mar 25 23:56 libcudnn.so ---> libcudnn.so.7
 lrwxrwxrwx 1 root root  17 Mar 25 23:55 libcudnn.so.7 ---> libcudnn.so.7.6.5
 -rwxr-xr-x 1 root root 76M Mar 25 23:27 libcudnn.so.7.6.5
 ```
+Then check whether the dlls can be accessed from the terminal or not. In the same terminal, run: 
+```
+sudo ldconfig
+cd ~
+```
+You should not get any error.
 ### Check Installation:
 To check the installation, run the following command:
 ```
 cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
-It should show: #define CUDNN_MAJOR 7 #define CUDNN_MINOR 6 #define CUDNN_PATCHLEVEL 5. Then in the same terminal, run: 
-```
-sudo ldconfig
-cd ~
-```
-You should not get any error. Install same version shown in this tutorial to avoid additional problem.  
+It should show: #define CUDNN_MAJOR 7 #define CUDNN_MINOR 6 #define CUDNN_PATCHLEVEL 5.    
 ### Note (Aditional Info):
 - If you want to manually download & install cudnn in your system, follow the installation guideline documented on this website: https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html .
 - It is necessary to add -sf flag above for creating a symbolic link. If you forget to add it, it becomes a hard link. 
