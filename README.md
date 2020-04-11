@@ -54,7 +54,7 @@ It should show: 3.6.9. Install same version shown in this tutorial to avoid addi
 sudo unlink usr/bin/python3
 ```
 ## Configuring Latest PIP Version:
-### Check Installation:
+### Initial Check:
 If you want to use pip (python installation pipeline), first, check that your system has pip 3 already installed by typing:
 ```
 pip3 ---version
