@@ -311,6 +311,7 @@ cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 It should show: #define CUDNN_MAJOR 7 #define CUDNN_MINOR 6 #define CUDNN_PATCHLEVEL 5. Then in the same terminal, run: 
 ```
 sudo ldconfig
+cd ~
 ```
 You should not get any error. Install same version shown in this tutorial to avoid additional problem.  
 ### Note (Aditional Info):
