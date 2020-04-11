@@ -406,7 +406,6 @@ sudo mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.so.4.1.0
 - 'make' command builds the package & compiles source codes of Makefile accordingly to create binary executable files. 
 - 'sudo make install' command copies the compiled binaries to the system path binary directories accordingly.
 - 'sudo ldconfig' creates the necessary links and cache to the most recent shared libraries found in the directories specified on the command line or mentioned in the system path. The cache is used by the run-time linker.
-- 
 ## Tensorflow GPU installation:
 After installing opencv, you should start installing tensorflow. A list of CUDA version compatible tensorflow is given below:
 <p align="center">
