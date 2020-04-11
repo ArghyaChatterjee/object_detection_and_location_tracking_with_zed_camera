@@ -387,6 +387,7 @@ nproc                                # Will give you the number of CPU cores
 make -j8                             # Use -j4 instead if your CPU has 4 cores.
 sudo make install
 sudo ldconfig
+cd ~
 ```
 ### Check Installation:
 To check successful opencv installation, type:
@@ -401,6 +402,7 @@ Change your directory where your Python 3 bindings for OpenCV resides & rename t
 ```
 cd /usr/local/lib/python3.6/dist-packages/cv2/python-3.6
 sudo mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.so.4.1.0
+cd ~
 ```
 ### Note (Aditional Info):
 - Follow the instruction on this site to download and install opencv & some other necessary packages manually: https://www.pyimagesearch.com/2018/08/15/how-to-install-opencv-4-on-ubuntu/ & follow this for opencv installation with advanced features on: https://gist.github.com/ArghyaChatterjee/fe55b35cf06110d1ddb9ab7d321592bc.
