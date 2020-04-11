@@ -196,7 +196,7 @@ Ensure that your pc has GPU from Nvidia:
 ubuntu-drivers devices
 ```
 Device drivers will be shortlisted & you can see nvidia drivers enlisted.
-### GUI based Installation:
+### GUI based Installation (Recommended):
 Go to Activities Overview--->Software Updater--->Settings--->Additional Driver & Choose available latest nvidia driver-435. Then click on "Apply changes".
 ### Binary Installation (Applicable if you didn't use GUI Method):
 If you want to check for available versions of nvidia gpu driver available on apt (Advanced Package Tool), type:
