@@ -60,7 +60,7 @@ If you want to use pip (python installation pipeline), first, check that your sy
 pip3 ---version
 ```
 It should show: pip3 is not installed but can be insalled with 'sudo apt install python3-pip'.
-### Binary Installation:
+### Binary Installation (Recommended):
 You can install pip with python 3. Run in a terminal:
 ```
 sudo apt install python3-pip
@@ -73,6 +73,12 @@ It should show: pip 9.0.1 or something similar. You need to upgrade pip3 to inst
 ```
 pip3 install --upgrade pip
 ``` 
+### Binary Installation (Applicable if you didn't use 1st Method):
+You can also install pip in the following way:
+```
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python3 get-pip.py
+```
 ### Create Symbolic Link for PIP 3:
 If you want to remove pip2 (old version, comes with python 2.7), make pip3 as default & import pip3 as pip, run the following command:
 ```
@@ -86,11 +92,6 @@ python3 -m pip --version
 ```
 It should show: pip 20.0.2 or something similar. Install same version shown in this tutorial to avoid additional problem.
 ### Note (Aditional Info): 
-- You can also install pip in the following way:
-```
-wget https://bootstrap.pypa.io/get-pip.py
-sudo python3 get-pip.py
-```
 - pip or Python Installation Pipeline is a de facto standard package-management system used to install and manage software packages written in Python. Many packages can be found in the default source for packages and their dependencies — Python Package Index (PyPI).
 - If you install pip with python2 anytime after creating the symlink, the symlink will automatically be removed by your system & the system will start to import pip2 when called as 'pip'.
 - Don't try to undo pip symbolic link step by reversing the order, otherwise the system will break & you can seriously damage your system. 
@@ -100,18 +101,33 @@ sudo unlink usr/bin/pip3
 ```
 - pip or python -m pip commands do the same. The docs for distributing Python modules were just updated to suggest using python -m pip instead of the pip executable, because it's easier to tell which version of python is going to be used to actually run pip that way.
 ## Configuring GCC, G++ & Make:
-GNU compiler collection (GCC) is a collection of compilers for programming such as C++, C, Objective-C, Java, and Fortran. The GNU provide the optimising compiler for C++ which is known as g++. GCC release is from a free software foundation operated through the command line. 
 ### Initial Check:
 To check that whether you have gcc, g++ & make already installed in your system or not, run:  
 ```
 gcc --version
 ```
 It should show: 'gcc' not installed or no such file or directory named 'gcc'.
-### Binary Installation:
+### Binary Installation (Recommended):
 To install GCC, G++ & Make, run the following command in a terminal:
 ```
 sudo apt install build-essential
 ```
+### Binary Installation (Applicable if you didn't use 1st Method):
+If you want updated version of gcc & g++ to be installed on your system, run:
+```
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt install gcc-9 g++-9
+```
+Also if you want to make newly installed gcc your systems default gcc compiler, then run:
+```
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
+```
+To check the updated version, run the following command in the terminal:
+```
+gcc --version
+```
+It should show: 9.1.0 or something similar.
 ### Check Installation:
 To validate that the GCC compiler is successfully installed, run:
 ```
@@ -120,23 +136,10 @@ g++ --version
 ```
 It should show: 7.5.0 or something similar. Install same version shown in this tutorial to avoid additional problem.
 ### Note (Aditional Info):
+- GNU compiler collection (GCC) is a collection of compilers for programming such as C++, C, Objective-C, Java, and Fortran. The GNU provide the optimising compiler for C++ which is known as g++. GCC release is from a free software foundation operated through the command line. 
 - g++ compiler builds the object code from source code, and it does not generate any intermediate C version of the program. g++ is a complete compiler, but GCC requires the help of g++. 
 - 'make' is a tool to help build programs. It introduces a separate file of "rules", that describes how to go from source code to finished program. It then interprets this file, figures out what needs to be compiled, and calls gcc for you. 
-- If you want updated version of gcc & g++ to be installed on your system, run:
-```
-sudo apt install software-properties-common
-sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-sudo apt install gcc-9 g++-9
-```
-- Also if you want to make newly installed gcc your systems default gcc compiler, then run:
-```
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90 --slave /usr/bin/g++ g++ /usr/bin/g++-9 --slave /usr/bin/gcov gcov /usr/bin/gcov-9
-```
-- For more info, visit: https://linuxize.com/post/how-to-install-gcc-compiler-on-ubuntu-18-04/. To check the update, run:
-```
-gcc --version
-```
-It should show: 9.1.0 or something similar.
+- For more info, visit: https://linuxize.com/post/how-to-install-gcc-compiler-on-ubuntu-18-04/. 
 ## Configuring Latest CMake Version:
 ### Initial Check:
 Ubuntu 18.04 LTS doesn't come with a preinstalled cmake. To check, run on terminal:
@@ -144,7 +147,7 @@ Ubuntu 18.04 LTS doesn't come with a preinstalled cmake. To check, run on termin
 cmake --version
 ```
 It should show: Not installed but can be installed with 'sudo apt-get install cmake'. 
-### Binary Installation:
+### Binary Installation (Recommended):
 Here, we will download & install binary package in our system. Run the following command in the terminal:
 ```
 sudo mkdir /opt/cmake
@@ -165,6 +168,12 @@ In order to import current version of cmake with 'cmake' command, we will use sy
 cd ~
 sudo ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
 ```
+### GUI based Installation (Applicable if you didn't use 1st Method):
+Updated version of cmake (cmake-3.17.1) can also be installed using "snap" package manager. Just type in a terminal:
+```
+sudo snap install cmake
+```
+You can also install cmake from "Ubuntu software centre". Just type Cmake and click on 'install' when you get it.
 ### Check Installation:
 Check cmake installation with the following command: 
 ```
@@ -173,11 +182,7 @@ cmake --version
 It should show: 3.17.1 or something similar. Install same version shown in this tutorial to avoid additional problem.
 ### Note (Aditional Info):
 - 'sh' is a shell for running commands, so executing sh with sudo prompts you to a root shell. This means all commands in that shell are executed as root. Interactive shell helps you decide which things to install & which things to not as root.
-- Updated version of cmake (cmake-3.17.1) can also be installed using "snap" package manager. Just type in a terminal:
-```
-sudo snap install cmake
-```
-- You can also install cmake from "Ubuntu software centre". Just type Cmake and you will get the link to install it.
+- Snappy (snap) is a software deployment and package management system developed by Canonical for the Linux operating system. The packages, called snaps, and the tool for using them, snapd, work across a range of Linux distributions allowing distribution-agnostic upstream software packaging.
 - Make sure you have installed latest version of cmake as many softwares use latest cmake version to build & test their up to date projects. 
 - 'sudo apt-get install cmake' command will install older version of cmake (cmake-3.10.0). So, it is not recommended to use this command. 
 - We have used precompiled binary package of cmake. You can also install cmake from source. To do so, follow the instruction here: https://vitux.com/how-to-install-cmake-on-ubuntu-18-04/
@@ -599,7 +604,6 @@ The result should be something like below:
 </p>
 
 ### Note (Aditional Info): 
-- Snappy (snap) is a software deployment and package management system developed by Canonical for the Linux operating system. The packages, called snaps, and the tool for using them, snapd, work across a range of Linux distributions allowing distribution-agnostic upstream software packaging.
 - During running object_detection_zed.py with python3, if you see some error on the terminal mentioning 'can not open shared files', probably you are missing libcudart.so.10.1 & libnvinfer.so.6.0 dlls in /usr/local/cuda/lib64 directory. So, your system is using cpu instead of gpu during object detection. 
 - This type of error occurs when tensorflow functions can not access to use cuda dynamic link libraries (dlls) of your system due to cuda version mismatch. Downgrading cuda version will solve the problem.    
 - You can also download the object_detection_zed code from this website: https://github.com/stereolabs/zed-tensorflow/blob/master/object_detection_zed.py. They are the key people who wrote it.
