@@ -381,7 +381,7 @@ cd ~
 ```
 You should not get any error.
 ### Post Installation:
-Just prepend TensorRT installed path directory to the PATH list & LD_LIBRARY_PATH list inside your .bashrc file & save it.
+Just prepend /usr/local/TensorRT-6.0.1.5 directory to environment path list & /usr/local/TensorRT-6.0.1.5/lib dynamic link libraries path list. Don't forget to save the file.
 ```
 export PATH=/usr/local/TensorRT-6.0.1.5:/usr/local/cuda-10.1/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/TensorRT-6.0.1.5/lib:/usr/local/cuda-10.1/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
@@ -535,13 +535,13 @@ Now, we have to download "models" repository from tensorflow github page: https:
 cd ~/.local/lib/python3.6/site-packages/tensorflow
 git clone https://github.com/tensorflow/models
 ```
-Open the .bashrc file in your home directory. The PATH should look something like this:
+Some tensorflow binary files are located inside ~/.local/bin directory. Open the .bashrc file in your home directory. The PATH should look something like this:
 ```
-export PATH=/usr/local/cuda-10.1/bin${PATH:+:${PATH}}
+export PATH=/usr/local/TensorRT-6.0.1.5:/usr/local/cuda-10.1/bin${PATH:+:${PATH}}
 ```
-You have to manually add /home/arghya/.local/bin directory to environment path variable. After adding the directory to the variable list, it should look something like this:
+You have to manually add ~/.local/bin directory to environment path variable. After adding the directory to the path variable list, it should look something like this:
 ```
-export PATH=/usr/local/cuda-10.1/bin:/home/arghya/.local/bin${PATH:+:${PATH}}
+export PATH=/usr/local/TensorRT-6.0.1.5:/usr/local/cuda-10.1/bin:~/.local/bin${PATH:+:${PATH}}
 ``` 
 To verify the path, open a new terminal & run: 
 ```
@@ -549,11 +549,12 @@ echo $PATH
 ```
 The path should show something like this:
 ```
-/usr/local/cuda-10.2/bin:/home/arghya/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+/usr/local/TensorRT-6.0.1.5:/usr/local/cuda-10.1/bin:~/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 ```
-The remaining libraries can be installed on Ubuntu 18.04 via apt-get:
+The remaining libraries can be installed on Ubuntu 18.04 via apt:
 ```
 sudo apt-get install protobuf-compiler python3-pil python3-lxml python3-tk      
+python3 -m pip install --user numpy
 python3 -m pip install --user Cython
 python3 -m pip install --user contextlib2
 python3 -m pip install --user jupyter
