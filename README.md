@@ -55,7 +55,7 @@ sudo unlink usr/bin/python3
 ```
 ## Configuring Latest PIP Version:
 ### Initial Check:
-If you want to use pip (python installation pipeline), first, check that your system has pip 3 already installed by typing:
+If you want to use pip3 (python installation pipeline), first, check that your system has pip3 already installed by typing:
 ```
 pip3 ---version
 ```
@@ -219,7 +219,7 @@ It should show: driver version-435.21 & CUDA version-10.1 or something similar. 
 - Ubuntu software centre method is just a user interface equivalent of the apt-get install commands except paid apps and some of the free apps which is submited through my apps portal are not available in apt-get.
 - It's recommended to use PPA to add repositories for Nvidia drivers. Personal Package Archives (PPA) enables you to upload Ubuntu source packages to be built and published as an apt repository by Launchpad.
 - It's recommended to use apt to install nvidia drivers. APT or Advanced Package Tool, is a free-software user interface that works with core libraries to handle the installation and removal of software on Debian, Ubuntu.
-- If you want to download & install nvidia driver from source, it's a hectic process. Follow instructions in the website: http://www.linuxandubuntu.com/home/how-to-install-latest-nvidia-drivers-in-linux
+- If you want to download & install nvidia driver from source (it's not a recommended process), follow instructions in the website: http://www.linuxandubuntu.com/home/how-to-install-latest-nvidia-drivers-in-linux
 ## Configuring Latest CUDA installation:
 A list of Nvidia Graphics Driver with supported cuda version is given below:
 <p align="center">
@@ -238,6 +238,7 @@ Download cuda 10.1 from this website: https://developer.nvidia.com/cuda-10.1-dow
 wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run
 sudo sh cuda_10.1.243_418.87.00_linux.run
 ```
+When prompted to an interactive shell within the terminal, select 'continue' to continue without nvidia driver installation, as we have already installed it manually. Then on the next screen, just uncheck the driver installation option (untick 'x' in the box [ ] by pressing 'enter' key) & after that select the last option 'install'.
 ### Post Installation:
 Just add 2 lines to your .bashrc file & save it. The .bashrc file is a hidden file & it is in the home directory. Press 'ctrl+h' to find it.
 ```
