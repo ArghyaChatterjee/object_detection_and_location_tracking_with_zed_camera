@@ -186,14 +186,14 @@ Ensure that your pc has GPU from Nvidia:
 ```
 ubuntu-drivers devices
 ```
-A list of Nvidia Graphics Driver with supported compute architecture is given below:
+Device drivers will be shortlisted. A list of Nvidia Graphics Driver with supported compute architecture is given below:
 <p align="center">
     <img src="asset/Nvidia_graphics_driver.png", width="800">
 </p>
 
 ### GUI Installation:
 Go to Activities Overview--->Software Updater--->Settings--->Additional Driver & Choose available latest nvidia driver-435. Then click on "Apply changes".
-### Binary Installation:
+### Binary Installation (Applicable if you didn't use GUI Method):
 If you want to check for available versions of nvidia gpu driver available on apt (Advanced Package Tool), type:
 ```
 apt search nvidia-driver
@@ -309,20 +309,14 @@ sudo ldconfig
 # Open-CV-Tensorflow-and-Object-Detection-API-installation-with-Nvidia-GPU
 It's an installation instruction for Opencv, Tensorflow & Object Detection API. Follow the guideline carefully for smooth installation.
 ## Open CV installation:
-First check the version of python installed on your system by typing in a terminal:
-```
-python3 --version
-```
-It should show: version 3.6.9 (or something similar). Update & Upgrade preinstalled packages in your PC by typing: 
-```
-sudo apt-get update
-sudo apt-get upgrade
-```
+### Initial Check:
+
+### Source Installation:
 Install developer tools by running the following command:
 ```
-sudo apt-get install unzip pkg-config           # add `cmake` & `build-essential` if you haven't installed them according to the tutorial 
+sudo apt-get install unzip pkg-config           # add `cmake` & `build-essential` if you haven't installed them previously.
 ```
-Install OpenGL (if it is not already installed) & glxinfo by typing following command:
+OpenGL should have already been installed during CUDA installation. If not, install it by typing following command:
 ```
 sudo apt-get install libglu1-mesa-dev freeglut3-dev mesa-common-dev mesa-utils
 ```
@@ -357,7 +351,7 @@ unzip opencv_contrib.zip
 mv opencv-4.1.0 opencv
 mv opencv_contrib-4.1.0 opencv_contrib
 ```
-Let's setup our opencv build using cmake by running:
+Let's configure & build Makefile for opencv using cmake by running:
 ```
 cd ~/opencv
 $ mkdir build
@@ -378,7 +372,8 @@ make -j8                             # Use -j4 instead if your CPU has 4 cores.
 sudo make install
 sudo ldconfig
 ```
-To check the installation, type:
+### Check Installation:
+To check successful opencv installation, type:
 ```
 pkg-config --modversion opencv
 ```
@@ -388,13 +383,14 @@ cd /usr/local/lib/python3.6/dist-packages/cv2/python-3.6
 sudo mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.so.4.1.0
 ```
 ### Note (Aditional Info):
-- Follow the instruction on this site to download and install opencv & some other necessary packages manually: https://www.pyimagesearch.com/2018/08/15/how-to-install-opencv-4-on-ubuntu/
+- Follow the instruction on this site to download and install opencv & some other necessary packages manually: https://www.pyimagesearch.com/2018/08/15/how-to-install-opencv-4-on-ubuntu/ & follow this for opencv installation with advanced features on: https://gist.github.com/ArghyaChatterjee/fe55b35cf06110d1ddb9ab7d321592bc.
+- If you want to test opengl, go to this website: http://www.codebind.com/linux-tutorials/install-opengl-ubuntu-linux/ & follow the instructions accordingly.
 - 'cmake' & autotools are 2 different build systems. If you have source code build with autotools, you use './configure' & if you have cmake, you use 'cmake', 'ccmake' or 'cmake-gui' to do the configuration.
 - 'cmake' command with Release flag creates a Makefile in the build directory following updated packages mentioned in requirement.txt file according to system configuration.
 - 'make' command builds the package & compiles source codes of Makefile accordingly to create binary executable files. 
 - 'sudo make install' command copies the compiled binaries to the system path binary directories accordingly.
 - 'sudo ldconfig' creates the necessary links and cache to the most recent shared libraries found in the directories specified on the command line or mentioned in the system path. The cache is used by the run-time linker.
-- It's very necessary to keep the flag -D WITH_CUDA flag = ON to use your GPU while compiling & use cuda in later opencv related jobs. 
+- 
 ## Tensorflow GPU installation:
 After installing opencv, you should start installing tensorflow. A list of CUDA version compatible tensorflow is given below:
 <p align="center">
