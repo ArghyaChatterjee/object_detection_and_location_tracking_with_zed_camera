@@ -567,6 +567,7 @@ git clone https://github.com/cocodataset/cocoapi.git
 cd cocoapi/PythonAPI
 make
 cp -r pycocotools ~/.local/lib/python3.6/site-packages/tensorflow/models/research/
+cd ~
 ```
 The Tensorflow Object Detection API uses Protobufs to configure model and training parameters. Before the framework can be used, the Protobuf libraries must be compiled. Run:
 ```
