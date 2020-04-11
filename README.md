@@ -534,6 +534,7 @@ Now, we have to download "models" repository from tensorflow github page: https:
 ```
 cd ~/.local/lib/python3.6/site-packages/tensorflow
 git clone https://github.com/tensorflow/models
+cd ~
 ```
 Some tensorflow binary files are located inside ~/.local/bin directory. Open the .bashrc file in your home directory. The PATH should look something like this:
 ```
