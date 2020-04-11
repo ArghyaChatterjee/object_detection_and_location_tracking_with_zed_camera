@@ -381,7 +381,7 @@ cd ~
 ```
 You should not get any error.
 ### Post Installation:
-Just prepend TensorRT installed path  to the PATH list & LD_LIBRARY_PATH inside your .bashrc file & save it. The .bashrc file is a hidde
+Just prepend TensorRT installed path directory to the PATH list & LD_LIBRARY_PATH list inside your .bashrc file & save it.
 ```
 export PATH=/usr/local/TensorRT-6.0.1.5:/usr/local/cuda-10.1/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/TensorRT-6.0.1.5/lib:/usr/local/cuda-10.1/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
