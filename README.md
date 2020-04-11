@@ -324,7 +324,7 @@ import cv2
 ```
 It should show: Module_Not_Found_Error, No module named 'cv2'.
 ### Source Installation:
-Install developer tools by running the following command:
+Source installation of opencv module requires quite a number of preinstalled programs to compile different libraries of opencv from source. Install developer tools by running the following command:
 ```
 sudo apt-get install unzip pkg-config           # add `cmake` & `build-essential` if you haven't installed them previously.
 ```
@@ -363,7 +363,7 @@ unzip opencv_contrib.zip
 mv opencv-4.1.0 opencv
 mv opencv_contrib-4.1.0 opencv_contrib
 ```
-Let's configure & build Makefile for opencv using cmake by running:
+Let's configure & create Makefile for opencv using cmake by running:
 ```
 cd ~/opencv
 $ mkdir build
