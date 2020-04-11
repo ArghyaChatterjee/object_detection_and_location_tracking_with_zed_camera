@@ -42,12 +42,12 @@ To remove python 2.7, make python 3.6.9 default & import it with just "python" c
 sudo rm /usr/bin/python
 sudo ln -s /usr/bin/python3 /usr/bin/python
 ```
-### Check Configuration:
+### Check Installation:
 Check with the following command: 
 ```
 python --version
 ```
-It should show: 3.6.9. It is recommended to install same version shown in this tutorial to avoid additional problem.
+It should show: 3.6.9. Install same version shown in this tutorial to avoid additional problem.
 ### Note (Aditional Info): 
 - If you install python2 anytime after creating the symlink, the symlink will automatically be removed by your system & the system will start to import python2 when called as 'python'.  
 - Don't try to undo python symbolic link step by reversing the order, otherwise the system will break & you will loose your terminal. 
@@ -57,7 +57,7 @@ sudo unlink usr/bin/python3
 ```
 ## Configuring Latest PIP Version:
 If you want to use pip (python installation pipeline), you have to install it first. 
-### Manual Installation:
+### Binary Installation:
 You can install pip with python 3. Run in a terminal:
 ```
 sudo apt install python3-pip
@@ -83,7 +83,7 @@ Now check successful pip3 installation & upgrade with the following command:
 ```
 python3 -m pip --version
 ```
-It should show: pip 20.0.2 or something similar. It is recommended to install same version shown in this tutorial to avoid additional problem.
+It should show: pip 20.0.2 or something similar. Install same version shown in this tutorial to avoid additional problem.
 ### Note (Aditional Info): 
 - You can also install pip in the following way:
 ```
@@ -100,7 +100,11 @@ sudo unlink usr/bin/pip3
 - pip or python -m pip commands do the same. The docs for distributing Python modules were just updated to suggest using python -m pip instead of the pip executable, because it's easier to tell which version of python is going to be used to actually run pip that way.
 ## Configuring GCC, G++ & Make:
 GNU compiler collection (GCC) is a collection of compilers for programming such as C++, C, Objective-C, Java, and Fortran. The GNU provide the optimising compiler for C++ which is known as g++. GCC release is from a free software foundation operated through the command line. 
-### Manual Installation:
+### Initial Check:
+```
+gcc --version
+```
+### Binary Installation:
 To install GCC, G++ & Make, run the following command in a terminal:
 ```
 sudo apt install build-essential
@@ -111,7 +115,7 @@ To validate that the GCC compiler is successfully installed, run:
 gcc --version
 g++ --version
 ```
-It should show: 7.5.0 or something similar. It is recommended to install same version shown in this tutorial to avoid additional problem.
+It should show: 7.5.0 or something similar. Install same version shown in this tutorial to avoid additional problem.
 ### Note (Aditional Info):
 - g++ compiler builds the object code from source code, and it does not generate any intermediate C version of the program. g++ is a complete compiler, but GCC requires the help of g++. 
 - 'make' is a tool to help build programs. It introduces a separate file of "rules", that describes how to go from source code to finished program. It then interprets this file, figures out what needs to be compiled, and calls gcc for you. 
@@ -146,7 +150,7 @@ Manually download "cmake-3.17.1-Linux-x86_64.sh" file to the "Downloads" directo
 ```
 sudo cp ~/Downloads/cmake-3.17.1-Linux-x86_64.sh /opt/cmake/
 ```
-Now run the following command to install 'cmake': <br>
+Now run the following command to install 'cmake':
 ```
 cd /opt/cmake
 sudo sh cmake-3.17.1-Linux-x86_64.sh --prefix=/opt/cmake --skip-license
@@ -163,7 +167,7 @@ Check cmake installation with the following command:
 ```
 cmake --version
 ```
-It should show: 3.17.1 or something similar. It is recommended to install same version shown in this tutorial to avoid additional problem.
+It should show: 3.17.1 or something similar. Install same version shown in this tutorial to avoid additional problem.
 ### Note (Aditional Info):
 - 'sh' is a shell for running commands, so executing sh with sudo prompts you to a root shell. This means all commands in that shell are executed as root. Interactive shell helps you decide which things to install & which things to not as root.
 - Updated version of cmake (cmake-3.17.1) can also be installed using "snap" package manager. Just type in a terminal:
@@ -186,23 +190,23 @@ A list of Nvidia Graphics Driver with supported compute architecture is given be
 
 ### GUI Installation:
 Go to Activities Overview--->Software Updater--->Settings--->Additional Driver & Choose available latest nvidia driver-435. Then click on "Apply changes".
-### Manual Installation:
-If you want to check for available versions of nvidia gpu driver provided by apt (Advanced Package Tool), type:
+### Binary Installation:
+If you want to check for available versions of nvidia gpu driver available on apt (Advanced Package Tool), type:
 ```
 apt search nvidia-driver
 ```
-You can get more updated version of nvidia gpu driver by adding nvidia drivers to ppa (Personal Package Archives), run:
+Install updated version of nvidia gpu driver available on apt by adding drivers to ppa (Personal Package Archives), run:
 ```
 sudo apt-add-repository ppa:graphics-drivers/ppa
 sudo apt-get update
 sudo apt-get install nvidia-driver-435
 ```
 ### Check Installation:
-Restart the computer. It is necessary. Check the version of the nvidia graphics driver:
+Restart the computer. It is necessary. Check the version of the nvidia graphics driver recently installed:
 ```
 nvidia-smi
 ```
-It should show: driver version-435.21 & CUDA version-10.1 or something similar. 
+It should show: driver version-435.21 & CUDA version-10.1 or something similar. Install same version shown in this tutorial to avoid additional problem.
 ### Note (Aditional Info):
 - Ubuntu software centre method is just a user interface equivalent of the apt-get install commands except paid apps and some of the free apps which is submited through my apps portal are not available in apt-get.
 - It's recommended to use PPA to add repositories for Nvidia drivers. Personal Package Archives (PPA) enables you to upload Ubuntu source packages to be built and published as an apt repository by Launchpad.
@@ -214,12 +218,13 @@ A list of Nvidia Graphics Driver with supported cuda version is given below:
     <img src="asset/Nvidia_cuda_compatibility.png", width="400">
 </p>
 
+### Initial Check:
 Check whether cuda is already installed on your system or not. In the terminal, run:
 ```
 nvcc --version
 ```
-It should show: nvcc not installed but can be installed by sudo apt install nvidia-cuda-toolkit. 
-### Manual Installation:
+It should show: nvcc not installed but can be installed by 'sudo apt install nvidia-cuda-toolkit'. 
+### Binary Installation:
 Download cuda 10.1 from this website: https://developer.nvidia.com/cuda-10.1-download-archive-update2. Click on Linux--->x86_64--->Ubuntu--->18.04--->runfile (local), you will get the installation method. Now, run the following commands in the terminal:
 ```
 wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run
