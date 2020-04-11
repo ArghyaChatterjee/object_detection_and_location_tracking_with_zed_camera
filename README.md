@@ -360,8 +360,8 @@ sudo ln -sf libcudnn.so.7 libcudnn.so
 Now, type the following command to ensure that the symlinks have been created successfully:
 ```
  /usr/local/cuda/lib64$ ls -lha libcudnn*
-lrwxrwxrwx 1 root root  13 Mar 25 23:56 libcudnn.so ---> libcudnn.so.7
-lrwxrwxrwx 1 root root  17 Mar 25 23:55 libcudnn.so.7 ---> libcudnn.so.7.6.5
+lrwxrwxrwx 1 root root  13 Mar 25 23:56 libcudnn.so -> libcudnn.so.7
+lrwxrwxrwx 1 root root  17 Mar 25 23:55 libcudnn.so.7 -> libcudnn.so.7.6.5
 -rwxr-xr-x 1 root root 76M Mar 25 23:27 libcudnn.so.7.6.5
 ```
 Then check whether the dlls can be accessed from the terminal or not. In the same terminal, run: 
@@ -377,7 +377,7 @@ cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
 It should show: #define CUDNN_MAJOR 7 #define CUDNN_MINOR 6 #define CUDNN_PATCHLEVEL 5.    
 tar xzvf TensorRT-6.0.1.5.Ubuntu-18.04.x86_64-gnu.cuda-10.1.cudnn7.6.tar.gz
-sudo cp -r ~/TensorRT-6.0.1.5 /usr/local
+sudo cp -avr ~/TensorRT-6.0.1.5 /usr/local
 sudo chmod a+r /usr/local/TensorRT-6.0.1.5/include/NvInfer.h /usr/local/TensorRT-6.0.1.5/lib/libnvinfer*
 sudo chmod a+r /usr/local/TensorRT-6.0.1.5/include/NvInferPlugin.h /usr/local/TensorRT-6.0.1.5/lib/libnvinfer_plugin*
 cd /usr/local/TensorRT-6.0.1.5/lib
