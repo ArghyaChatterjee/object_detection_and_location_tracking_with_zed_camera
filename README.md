@@ -202,8 +202,8 @@ Restart the computer. It is necessary. Check the version of the nvidia graphics 
 ```
 nvidia-smi
 ```
-It should show: driver version-435.21 & CUDA version-10.1 or something similar. <br>
-**Note**:
+It should show: driver version-435.21 & CUDA version-10.1 or something similar. 
+### Note (Aditional Info):
 - Ubuntu software centre method is just a user interface equivalent of the apt-get install commands except paid apps and some of the free apps which is submited through my apps portal are not available in apt-get.
 - It's recommended to use PPA to add repositories for Nvidia drivers. Personal Package Archives (PPA) enables you to upload Ubuntu source packages to be built and published as an apt repository by Launchpad.
 - It's recommended to use apt to install nvidia drivers. APT or Advanced Package Tool, is a free-software user interface that works with core libraries to handle the installation and removal of software on Debian, Ubuntu.
@@ -236,7 +236,7 @@ To check the installation, open a new terminal & run:
 ```
 nvcc --version
 ``` 
-**Note**:
+### Note (Aditional Info):
 - It's necessary to double check Nvidia Graphics driver supported cuda version. Otherwise, we won't be able to use matching version of tensorflow later in this tutorial.  
 - You can manually follow the instruction to download and install cuda on your system. Go to this link for more info: https://developer.nvidia.com/cuda-downloads .
 - You can get documentation of post installation instruction here: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions.
@@ -294,7 +294,7 @@ Now run the following command and you should not see any error:
 ```
 sudo ldconfig
 ```
-**Note**: 
+### Note (Aditional Info):
 - If you want to manually download & install cudnn in your system, follow the installation guideline documented on this website: https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html .
 - It is necessary to add -sf flag above for creating a symbolic link. If you forget to add it, it becomes a hard link. 
 - 'sudo ldconfig' creates the necessary links and cache to the most recent shared libraries found in the directories specified on the command line or mentioned in the system path. The cache is used by the run-time linker.
@@ -379,7 +379,7 @@ It should show: 4.1.0. Change your directory where your Python 3 bindings for Op
 cd /usr/local/lib/python3.6/dist-packages/cv2/python-3.6
 sudo mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.so.4.1.0
 ```
-**Note**: 
+### Note (Aditional Info):
 - Follow the instruction on this site to download and install opencv & some other necessary packages manually: https://www.pyimagesearch.com/2018/08/15/how-to-install-opencv-4-on-ubuntu/
 - 'cmake' & autotools are 2 different build systems. If you have source code build with autotools, you use './configure' & if you have cmake, you use 'cmake', 'ccmake' or 'cmake-gui' to do the configuration.
 - 'cmake' command with Release flag creates a Makefile in the build directory following updated packages mentioned in requirement.txt file according to system configuration.
@@ -408,8 +408,8 @@ To know the version & directory where tensorflow is located, run:
 ```
 pip3 show tensorflow-gpu
 ```
-It should show version & location. <br>
-**Note**: 
+It should show version & location. 
+### Note (Aditional Info): 
 - To this date, tensorflow 2.1 binary package works well with cuda 10.1 (Not cuda 10.2). So if you want to run with cuda 10.2, you have to build tensorflow 2.1 from source. Follow this instruction: https://www.tensorflow.org/install/source.
 - As we have already upgraded the pip3 version (v. 20.0.2), the default version of tensorflow which will be installed is tensorflow 2.1. With the same command, the previous version of pip3 (v. 9.0.1) would have installed tensorflow 1.14. 
 - From tensorflow 2.x versions, you do not need to explicitely mention the gpu or cpu version, only mentioning "tensorflow" will do the same job. 
@@ -492,7 +492,7 @@ Alternatively, you can terminate the current bash session & start a new session 
 exec bash                      
 python3 object_detection/builders/model_builder_test.py
 ```
-**Note:**
+### Note (Aditional Info):
 - It's always a good practice to visit the vendor's website (who actually built it) before starting the installation. Visit the website: https://www.stereolabs.com/docs/tensorflow/
 - If you want, you can follow the tutorial & manually install tensorflow object detection api from the github page: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md.
 - In newer versions of tensorflow, protobuf compilers are installed during tensorflow installation. It's not needed to be installed separately. 
@@ -552,8 +552,8 @@ To check successful installation, run:
 python3
 import pyzed.sl as sl
 ```
-The file should successfully import without showing any error. <br>
-**Note:**
+The file should successfully import without showing any error. 
+### Note (Aditional Info):
 - For manual installation, follow tutorial provided in their official website: https://www.stereolabs.com/docs/app-development/python/install/
 - Follow tutorial from official website to install from binary package rather installing from source (hectic way). If you really want to install from source, follow their github page: https://github.com/stereolabs/zed-python-api
 ## Object Detection Model Run:
@@ -582,7 +582,7 @@ The result should be something like below:
     <img src="asset/Object_detection.png", width="800">
 </p>
 
-**Note**: 
+### Note (Aditional Info): 
 - Snappy (snap) is a software deployment and package management system developed by Canonical for the Linux operating system. The packages, called snaps, and the tool for using them, snapd, work across a range of Linux distributions allowing distribution-agnostic upstream software packaging.
 - During running object_detection_zed.py with python3, if you see some error on the terminal mentioning 'can not open shared files', probably you are missing libcudart.so.10.1 & libnvinfer.so.6.0 dlls in /usr/local/cuda/lib64 directory. So, your system is using cpu instead of gpu during object detection. 
 - This type of error occurs when tensorflow functions can not access to use cuda dynamic link libraries (dlls) of your system due to cuda version mismatch. Downgrading cuda version will solve the problem.    
