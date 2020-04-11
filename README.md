@@ -182,6 +182,7 @@ sudo snap install cmake
 - 'sudo apt-get install cmake' command will install older version of cmake (cmake-3.10.0). So, it is not recommended to use this command. 
 - We have used precompiled binary package of cmake. You can also install cmake from source. To do so, follow the instruction here: https://vitux.com/how-to-install-cmake-on-ubuntu-18-04/
 ## Configuring Latest Nvidia Graphics Driver:
+### Initial Check:
 Ensure that your pc has GPU from Nvidia:
 ```
 ubuntu-drivers devices
@@ -233,7 +234,7 @@ Download cuda 10.1 from this website: https://developer.nvidia.com/cuda-10.1-dow
 wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run
 sudo sh cuda_10.1.243_418.87.00_linux.run
 ```
-### Post Installation Instruction:
+### Post Installation:
 Just add 2 lines to your .bashrc file & save it. The .bashrc file is a hidden file & it is in the home directory. Press 'ctrl+h' to find it.
 ```
 export PATH=/usr/local/cuda-10.1/bin${PATH:+:${PATH}}
@@ -253,6 +254,7 @@ nvcc --version
 - ${PATH:+:${PATH}} simply prepends newly specified path to the already existing system path when defined properly. For more info, visit this website: https://unix.stackexchange.com/questions/267506/what-does-pathpath-mean.
 - $LD_LIBRARY_PATH points to the directory where cuda & cudnn dynamic link libraries (dll) are loaded. These libraries are necessary while running tensorflow in order to use your GPU. 
 ## Configuring Latest CUDNN installation:
+### Initial Check:
 First check that you have already cudnn installed on your system or not. Run:
 ```
 cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
@@ -262,14 +264,40 @@ Or,
 cat /usr/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
 It should show: No such file or directory. 
-### Manual Installation:
-Go to this website: https://developer.nvidia.com/rdp/cudnn-download & download "cuDNN Library for Linux". Put the file to your home directory after download. Now open a new terminal & run the following command:
+### Binary Installation:
+Go to this website: https://developer.nvidia.com/rdp/cudnn-download & download "cuDNN Library for Linux". Put the file to your home directory after download. Now open a new terminal to copy the files & change their permission:
  ```
  tar -xzvf cudnn-10.1-linux-x64-v7.6.5.32.tgz
  sudo cp cuda/include/cudnn.h /usr/local/cuda/include
  sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
  sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
  ```
+ Now, navigate to the cuda library directory to see the symlinks. Run the following command: 
+ ```
+ cd /usr/local/cuda/lib64/
+ ls -lha libcudnn*
+ ```
+You can see libcudnn.so and libcudnn.so.7 are not symlinks (i.e hard links) :
+ ```
+ /usr/local/cuda/lib64$ ls -lha libcudnn*
+lrwxrwxrwx 1 root root  13 Mar 25 23:56 libcudnn.so 
+lrwxrwxrwx 1 root root  17 Mar 25 23:55 libcudnn.so.7
+-rwxr-xr-x 1 root root 76M Mar 25 23:27 libcudnn.so.7.6.5
+```
+Cudnn downloaded from nvidia has symbolic link but when copied to other location, it losses the symlink info. If so, stay in the same directory & terminal. Run the following command:
+```
+sudo rm libcudnn.so
+sudo rm libcudnn.so.7
+sudo ln -sf libcudnn.so.7.6.5 libcudnn.so.7
+sudo ln -sf libcudnn.so.7 libcudnn.so
+```
+Now, type the following command to ensure that the symlinks have been created successfully:
+```
+ /usr/local/cuda/lib64$ ls -lha libcudnn*
+lrwxrwxrwx 1 root root  13 Mar 25 23:56 libcudnn.so ---> libcudnn.so.7
+lrwxrwxrwx 1 root root  17 Mar 25 23:55 libcudnn.so.7 ---> libcudnn.so.7.6.5
+-rwxr-xr-x 1 root root 76M Mar 25 23:27 libcudnn.so.7.6.5
+```
 ### Check Installation:
 To check the installation, run the following command:
 ```
@@ -279,35 +307,13 @@ It should show: #define CUDNN_MAJOR 7 #define CUDNN_MINOR 6 #define CUDNN_PATCHL
 ```
 sudo ldconfig
 ```
-If you get the error: /sbin/ldconfig.real: /usr/local/cuda-10.1/targets/x86_64-linux/lib/libcudnn.so.7 is not a symbolic link, then follow the instruction below. If you don't get the error message, your installation is complete & you can move forward to next section. Now, run the following command: 
- ```
- cd /usr/local/cuda/lib64/
- ls -lha libcudnn*
- ```
-You should see two symlinks (bold teal) and one single file. If libcudnn.so and libcudnn.so.7 are not symlinks (i.e hard links) then this is the reason why you got this error:
- ```
- /usr/local/cuda/lib64$ ls -lha libcudnn*
-lrwxrwxrwx 1 root root  13 Mar 25 23:56 libcudnn.so 
-lrwxrwxrwx 1 root root  17 Mar 25 23:55 libcudnn.so.7
--rwxr-xr-x 1 root root 76M Mar 25 23:27 libcudnn.so.7.6.5
-```
-Cudnn downloaded from nvidia has symbolic link but when copied to other location, it losses the sym link info. If so, this is what you need to do:
-```
-/usr/local/cuda/lib64$ sudo rm libcudnn.so
-/usr/local/cuda/lib64$ sudo rm libcudnn.so.7
-/usr/local/cuda/lib64$ sudo ln -sf libcudnn.so.7.6.5 libcudnn.so.7
-/usr/local/cuda/lib64$ sudo ln -sf libcudnn.so.7 libcudnn.so
-```
-Now run the following command and you should not see any error:
-```
-sudo ldconfig
-```
+You should not get any error. Install same version shown in this tutorial to avoid additional problem.  
 ### Note (Aditional Info):
 - If you want to manually download & install cudnn in your system, follow the installation guideline documented on this website: https://docs.nvidia.com/deeplearning/sdk/cudnn-install/index.html .
 - It is necessary to add -sf flag above for creating a symbolic link. If you forget to add it, it becomes a hard link. 
 - 'sudo ldconfig' creates the necessary links and cache to the most recent shared libraries found in the directories specified on the command line or mentioned in the system path. The cache is used by the run-time linker.
 # Open-CV-Tensorflow-and-Object-Detection-API-installation-with-Nvidia-GPU
-It's an installation instruction for Opencv, Tensorflow & Object Detection API. Follow the guideline carefully for smooth installation.
+It's an installation instruction for Opencv, Tensorflow & Object Detection API. Follow the guideline carefully for source installation. 
 ## Open CV installation:
 ### Initial Check:
 
