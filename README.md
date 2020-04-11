@@ -586,8 +586,9 @@ For permanent use, open your .bashrc file & put this line at the end:
 ```
 export PYTHONPATH=$PYTHONPATH:/home/arghya/.local/lib/python3.6/site-packages/tensorflow/models:/home/arghya/.local/lib/python3.6/site-packages/tensorflow/models/research:/home/arghya/.local/lib/python3.6/site-packages/tensorflow/models/research/slim
 ```
-Then, you can open a new terminal & run the following command:
+Then, you have to open a new terminal & run the following command:
 ```
+cd ~/.local/lib/python3.6/site-packages/tensorflow/models/research/
 python3 object_detection/builders/model_builder_test.py
 ```
 Or, you can source your currently modified .bashrc file & execute required command in the same terminal:
