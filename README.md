@@ -9,18 +9,15 @@ Open a terminal with 'shift+ctrl+t' & check you have installed a supported versi
 ```
 uname -m && cat /etc/*release
 ```
-It should show: Ubuntu 18.04.4 or something similar.
-- Check your GPU can deal with CUDA by running:
+It should show: Ubuntu 18.04.4 or something similar. Check your GPU can deal with CUDA by running:
 ```
 lspci | grep -i nvidia
 ```
-It should show: VGA compatible controller NVIDIA Corporation GP104M [GeForce GTX 1070 Mobile] or something alike.
-- Check your kernel headers are compatible with CUDA. Type:
+It should show: VGA compatible controller NVIDIA Corporation GP104M [GeForce GTX 1070 Mobile] or something alike. Check your kernel headers are compatible with CUDA. Type:
 ```
 uname -r
 ```
-It should show: 5.3.0-46-generic or something similar.
-- Install the kernel headers & packages with the following command:
+It should show: 5.3.0-46-generic or something similar. Install the kernel headers & packages with the following command:
 ```
 sudo apt-get install linux-headers-$(uname -r)
 ```
@@ -31,6 +28,7 @@ It's always good practise to update & upgrade your pc before starting any type o
 sudo apt-get update
 sudo apt-get upgrade
 ```
+### Initial Check:
 Ubuntu 18.04 LTS comes with preinstalled python 3. To check, run on terminal:
 ```
 python3 --version
@@ -56,19 +54,22 @@ It should show: 3.6.9. Install same version shown in this tutorial to avoid addi
 sudo unlink usr/bin/python3
 ```
 ## Configuring Latest PIP Version:
-If you want to use pip (python installation pipeline), you have to install it first. 
+### Check Installation:
+If you want to use pip (python installation pipeline), first, check that your system has pip 3 already installed by typing:
+```
+pip3 ---version
+```
+It should show: pip3 is not installed but can be insalled with 'sudo apt install python3-pip'.
 ### Binary Installation:
 You can install pip with python 3. Run in a terminal:
 ```
 sudo apt install python3-pip
 ```
-To verify installation, please run: 
+To verify successful pip3 installation, run: 
 ```
 pip3 --version
 ```
-It should show: pip 9.0.1 or something similar.
-### Upgrade PIP:
-If you want to upgrade pip3 (To install tensorflow 2.x later), run: 
+It should show: pip 9.0.1 or something similar. You need to upgrade pip3 to install tensorflow 2.x later. Run: 
 ```
 pip3 install --upgrade pip
 ``` 
@@ -101,9 +102,11 @@ sudo unlink usr/bin/pip3
 ## Configuring GCC, G++ & Make:
 GNU compiler collection (GCC) is a collection of compilers for programming such as C++, C, Objective-C, Java, and Fortran. The GNU provide the optimising compiler for C++ which is known as g++. GCC release is from a free software foundation operated through the command line. 
 ### Initial Check:
+To check that whether you have gcc, g++ & make already installed in your system or not, run:  
 ```
 gcc --version
 ```
+It should show: 'gcc' not installed or no such file or directory named 'gcc'.
 ### Binary Installation:
 To install GCC, G++ & Make, run the following command in a terminal:
 ```
@@ -140,7 +143,7 @@ Ubuntu 18.04 LTS doesn't come with a preinstalled cmake. To check, run on termin
 ```
 cmake --version
 ```
-It should show: Not installed but can be installed with "sudo apt-get install cmake". 
+It should show: Not installed but can be installed with 'sudo apt-get install cmake'. 
 ### Binary Installation:
 Here, we will download & install binary package in our system. Run the following command in the terminal:
 ```
