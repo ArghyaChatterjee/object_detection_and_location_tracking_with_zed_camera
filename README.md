@@ -321,7 +321,7 @@ It should show: #define CUDNN_MAJOR 7 #define CUDNN_MINOR 6 #define CUDNN_PATCHL
 - 'sudo ldconfig' creates the necessary links and cache to the most recent shared libraries found in the directories specified on the command line or mentioned in the system path. The cache is used by the run-time linker.
 ## Configuring TensorRT installation:
 ### Initial Check:
-First check that you have already cudnn installed on your system or not. Run:
+If you have installed TensorRT through dpkg previously, then you can check the installation with the following command:
 ```
 cat /usr/local/TensorRT-6.0.1.5/include/NvInfer.h | grep CUDNN_MAJOR -A 2
 ```
@@ -331,16 +331,16 @@ cat /usr/include/NvInfer.h | grep CUDNN_MAJOR -A 2
 ```
 It should show: No such file or directory. 
 ### Binary Installation:
-Go to this website: https://developer.nvidia.com/rdp/cudnn-download & download "cuDNN Library for Linux". Put the file to your home directory after download. Now open a new terminal to copy the files & change their permission:
+Go to this website: https://developer.nvidia.com/nvidia-tensorrt-6x-download & download "Tar File Install Packages For Linux x86". Put the file to your home directory after download. Now open a new terminal to copy the files & change their permission:
  ```
- tar -xzvf cudnn-10.1-linux-x64-v7.6.5.32.tgz
- sudo cp cuda/include/cudnn.h /usr/local/cuda/include
- sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
- sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+ tar xzvf TensorRT-6.0.1.5.Ubuntu-18.04.x86_64-gnu.cuda-10.1.cudnn7.6.tar.gz
+ sudo cp -avr ~/TensorRT-6.0.1.5 /usr/local
+ sudo chmod a+r /usr/local/TensorRT-6.0.1.5/include/NvInfer.h /usr/local/TensorRT-6.0.1.5/lib/libnvinfer*
+ sudo chmod a+r /usr/local/TensorRT-6.0.1.5/include/NvInferPlugin.h /usr/local/TensorRT-6.0.1.5/lib/libnvinfer_plugin*
  ```
  Now, navigate to the cuda library directory to see the symlinks. Run the following command: 
  ```
- cd /usr/local/cuda/lib64/
+ cd /usr/local/TensorRT-6.0.1.5/lib
  ls -lha libcudnn*
  ```
 You can see libcudnn.so and libcudnn.so.7 are not symlinks (i.e hard links) :
@@ -350,12 +350,16 @@ lrwxrwxrwx 1 root root  13 Mar 25 23:56 libcudnn.so
 lrwxrwxrwx 1 root root  17 Mar 25 23:55 libcudnn.so.7
 -rwxr-xr-x 1 root root 76M Mar 25 23:27 libcudnn.so.7.6.5
 ```
-Cudnn downloaded from nvidia has symbolic link but when copied to other location, it losses the symlink info. If so, stay in the same directory & terminal. Run the following command:
+TensorRT downloaded from nvidia has symbolic link in it's libraries but when copied to other location, it losses the symlink info. If so, stay in the same directory & terminal. Run the following command:
 ```
-sudo rm libcudnn.so
-sudo rm libcudnn.so.7
-sudo ln -sf libcudnn.so.7.6.5 libcudnn.so.7
-sudo ln -sf libcudnn.so.7 libcudnn.so
+sudo rm libnvinfer.so
+sudo rm libnvinfer.so.6
+sudo rm libnvinfer_plugin.so
+sudo rm libnvinfer_plugin.so.6
+sudo ln -sf libnvinfer.so.6.0.1 libnvinfer.so.6
+sudo ln -sf libnvinfer.so.6 libnvinfer.so
+sudo ln -sf libnvinfer_plugin.so.6.0.1 libnvinfer_plugin.so.6
+sudo ln -sf libnvinfer_plugin.so.6 libnvinfer_plugin.so
 ```
 Now, type the following command to ensure that the symlinks have been created successfully:
 ```
@@ -376,20 +380,6 @@ To check the installation, run the following command:
 cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
 It should show: #define CUDNN_MAJOR 7 #define CUDNN_MINOR 6 #define CUDNN_PATCHLEVEL 5.    
-tar xzvf TensorRT-6.0.1.5.Ubuntu-18.04.x86_64-gnu.cuda-10.1.cudnn7.6.tar.gz
-sudo cp -avr ~/TensorRT-6.0.1.5 /usr/local
-sudo chmod a+r /usr/local/TensorRT-6.0.1.5/include/NvInfer.h /usr/local/TensorRT-6.0.1.5/lib/libnvinfer*
-sudo chmod a+r /usr/local/TensorRT-6.0.1.5/include/NvInferPlugin.h /usr/local/TensorRT-6.0.1.5/lib/libnvinfer_plugin*
-cd /usr/local/TensorRT-6.0.1.5/lib
-sudo rm libnvinfer.so
-sudo rm libnvinfer.so.6
-sudo rm libnvinfer_plugin.so
-sudo rm libnvinfer_plugin.so.6
-sudo ln -sf libnvinfer.so.6.0.1 libnvinfer.so.6
-sudo ln -sf libnvinfer.so.6 libnvinfer.so
-sudo ln -sf libnvinfer_plugin.so.6.0.1 libnvinfer_plugin.so.6
-sudo ln -sf libnvinfer_plugin.so.6 libnvinfer_plugin.so
-
 # Open-CV-Tensorflow-and-Object-Detection-API-installation-with-Nvidia-GPU
 It's an installation instruction for Opencv, Tensorflow & Object Detection API. Follow the guideline carefully for source installation. 
 ## Open CV installation:
