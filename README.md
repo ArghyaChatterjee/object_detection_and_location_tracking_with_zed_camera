@@ -230,7 +230,7 @@ nvcc --version
 ```
 It should show: nvcc not installed but can be installed by 'sudo apt install nvidia-cuda-toolkit'. 
 ### Binary Installation:
-Download cuda 10.1 from this website: https://developer.nvidia.com/cuda-10.1-download-archive-update2. Click on Linux--->x86_64--->Ubuntu--->18.04--->runfile (local), you will get the installation method. Now, run the following commands in the terminal:
+Download cuda 10.1 from this website: https://developer.nvidia.com/cuda-10.1-download-archive-update2. Click on Linux---> x86_64---> Ubuntu---> 18.04---> runfile (local), you will get the installation method which is also mentioned below. Run the following commands in the terminal:
 ```
 wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run
 sudo sh cuda_10.1.243_418.87.00_linux.run
