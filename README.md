@@ -13,7 +13,7 @@ It should show: Ubuntu 18.04.4 or something similar. Check your GPU can deal wit
 ```
 lspci | grep -i nvidia
 ```
-It should show: VGA compatible controller NVIDIA Corporation GP104M [GeForce GTX 1070 Mobile] or something alike. Check your kernel headers are compatible with CUDA. Type:
+It should show: VGA compatible controller NVIDIA GeForce GTX 1070 or something alike. Check your kernel headers are compatible with CUDA. Type:
 ```
 uname -r
 ```
