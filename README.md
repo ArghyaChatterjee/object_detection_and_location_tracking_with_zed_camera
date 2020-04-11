@@ -394,8 +394,10 @@ To check successful opencv installation, type:
 python3
 >>> import cv2
 >>> cv2.__version__
+'4.1.0'                              # Showing version of opencv installed on your system
+exit()
 ```
-It should show: 4.1.0. Change your directory where your Python 3 bindings for OpenCV resides & rename the binding file by running the following command:
+Change your directory where your Python 3 bindings for OpenCV resides & rename the binding file by running the following command:
 ```
 cd /usr/local/lib/python3.6/dist-packages/cv2/python-3.6
 sudo mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.so.4.1.0
