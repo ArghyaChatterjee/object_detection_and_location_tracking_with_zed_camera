@@ -182,16 +182,17 @@ sudo snap install cmake
 - 'sudo apt-get install cmake' command will install older version of cmake (cmake-3.10.0). So, it is not recommended to use this command. 
 - We have used precompiled binary package of cmake. You can also install cmake from source. To do so, follow the instruction here: https://vitux.com/how-to-install-cmake-on-ubuntu-18-04/
 ## Configuring Latest Nvidia Graphics Driver:
+A list of Nvidia Graphics Driver with supported compute architecture is given below:
+<p align="center">
+    <img src="asset/Nvidia_graphics_driver.png", width="800">
+</p>
+
 ### Initial Check:
 Ensure that your pc has GPU from Nvidia:
 ```
 ubuntu-drivers devices
 ```
-Device drivers will be shortlisted. A list of Nvidia Graphics Driver with supported compute architecture is given below:
-<p align="center">
-    <img src="asset/Nvidia_graphics_driver.png", width="800">
-</p>
-
+Device drivers will be shortlisted & you can see nvidia drivers enlisted.
 ### GUI Installation:
 Go to Activities Overview--->Software Updater--->Settings--->Additional Driver & Choose available latest nvidia driver-435. Then click on "Apply changes".
 ### Binary Installation (Applicable if you didn't use GUI Method):
@@ -316,7 +317,12 @@ You should not get any error. Install same version shown in this tutorial to avo
 It's an installation instruction for Opencv, Tensorflow & Object Detection API. Follow the guideline carefully for source installation. 
 ## Open CV installation:
 ### Initial Check:
-
+First check that you have already opencv installed on your system or not. Run:
+```
+python3
+import cv2
+```
+It should show: Module_Not_Found_Error, No module named 'cv2'.
 ### Source Installation:
 Install developer tools by running the following command:
 ```
