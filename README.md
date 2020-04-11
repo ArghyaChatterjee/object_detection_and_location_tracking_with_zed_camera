@@ -324,7 +324,7 @@ It's an installation instruction for Opencv, Tensorflow & Object Detection API. 
 First check that you have already opencv installed on your system or not. Run:
 ```
 python3
-import cv2
+>>>import cv2
 ```
 It should show: Module_Not_Found_Error, No module named 'cv2'.
 ### Source Installation:
@@ -376,7 +376,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
     -D CMAKE_INSTALL_PREFIX=/usr/local \
     -D INSTALL_C_EXAMPLES=OFF \
     -D INSTALL_PYTHON_EXAMPLES=ON \
-    -D WITH_CUDA=ON \
+    -D WITH_CUDA=OFF \
     -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
     -D OPENCV_ENABLE_NONFREE=ON \
     -D BUILD_EXAMPLES=ON ..
@@ -391,7 +391,9 @@ sudo ldconfig
 ### Check Installation:
 To check successful opencv installation, type:
 ```
-pkg-config --modversion opencv
+python3
+>>> import cv2
+>>> cv2.__version__
 ```
 It should show: 4.1.0. Change your directory where your Python 3 bindings for OpenCV resides & rename the binding file by running the following command:
 ```
