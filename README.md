@@ -238,7 +238,7 @@ Download cuda 10.1 from this website: https://developer.nvidia.com/cuda-10.1-dow
 wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run
 sudo sh cuda_10.1.243_418.87.00_linux.run
 ```
-When prompted to an interactive shell within the terminal, select 'continue' to continue without nvidia driver installation, as we have already installed it manually. Then on the next screen, just uncheck the driver installation option (untick 'x' in the box [ ] by pressing 'enter' key) & after that select the last option 'install'.
+When prompted to an interactive shell within the terminal, select 'continue' to continue without nvidia driver installation, as we have already installed it manually. Then on the next screen, just uncheck the driver installation option (untick 'x' in the box [ ] by pressing 'enter' key) & after that select the last option 'install'. It's ok to get error regarding incomplete installation on the terminal.
 ### Post Installation:
 Just add 2 lines to your .bashrc file & save it. The .bashrc file is a hidden file & it is in the home directory. Press 'ctrl+h' to find it.
 ```
