@@ -69,7 +69,7 @@ To verify successful pip3 installation, run:
 ```
 pip3 --version
 ```
-It should show: pip 9.0.1 or something similar. You need to upgrade pip3 to install tensorflow 2.x later. Run: 
+It should show: pip 9.0.1 or something similar. You need to upgrade pip3 to install tensorflow 1.15 later. Run: 
 ```
 pip3 install --upgrade pip
 ``` 
@@ -233,7 +233,7 @@ nvcc --version
 ```
 It should show: nvcc not installed but can be installed by 'sudo apt install nvidia-cuda-toolkit'. 
 ### Binary Installation:
-Download cuda 10.1 from this website: https://developer.nvidia.com/cuda-10.1-download-archive-update2. Click on Linux---> x86_64---> Ubuntu---> 18.04---> runfile (local), you will get the installation method which is also mentioned below. Run the following commands in the terminal:
+Download cuda 10.0 from this website: https://developer.nvidia.com/cuda-10.0-download-archive-update2. Click on Linux---> x86_64---> Ubuntu---> 18.04---> runfile (local), you will get the installation method which is also mentioned below. Run the following commands in the terminal:
 ```
 wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run
 sudo sh cuda_10.1.243_418.87.00_linux.run
@@ -242,8 +242,8 @@ When prompted to an interactive shell within the terminal, select 'continue' to 
 ### Post Installation:
 Just add 2 lines to your .bashrc file & save it. The .bashrc file is a hidden file & it is in the home directory. Press 'ctrl+h' to find it.
 ```
-export PATH=/usr/local/cuda-10.1/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export PATH=/usr/local/cuda-10.0/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 ```
 ### Check Installation:
 To check the installation, open a new terminal & run:
@@ -272,7 +272,7 @@ It should show: No such file or directory.
 ### Binary Installation:
 Go to this website: https://developer.nvidia.com/rdp/cudnn-download & download "cuDNN Library for Linux". Put the file to your home directory after download. Now open a new terminal to copy the files & change their permission:
  ```
- tar -xzvf cudnn-10.1-linux-x64-v7.6.5.32.tgz
+ tar -xzvf cudnn-10.0-linux-x64-v7.5.tgz
  sudo cp cuda/include/cudnn.h /usr/local/cuda/include
  sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
  sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
@@ -453,6 +453,7 @@ cd ~/opencv
 mkdir build
 cd build
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
+    -D ENABLE_CXX11=ON
     -D CMAKE_INSTALL_PREFIX=/usr/local \
     -D INSTALL_C_EXAMPLES=OFF \
     -D INSTALL_PYTHON_EXAMPLES=ON \
@@ -498,16 +499,16 @@ After installing opencv, you should start installing tensorflow. A list of CUDA 
     <img src="asset/GPU_Version.png", width="800">
 </p>
 
-Here, we will be installing tensorflow from binary packages. According to the chart above, tensorflow 2.1 binary package ships with preconfigured cuda 10.1 dynamic libraries. <br>
+Here, we will be installing tensorflow from binary packages. According to the chart above, tensorflow 1.15 binary package ships with preconfigured cuda 10.0. <br>
 Assuming that you have a nvidia compatible gpu, run in the terminal:
 ```
-python3 -m pip install --user --upgrade tensorflow-gpu
+python3 -m pip install --user tensorflow-gpu==1.15
 ```
 To check the successful gpu version installation, type:
 ```
 python3
-import tensorflow as tf2
-tf2.test.is_gpu_available()
+import tensorflow as tf
+tf.test.is_gpu_available()
 ``` 
 To know the version & directory where tensorflow is located, run:
 ```
@@ -515,7 +516,7 @@ pip3 show tensorflow-gpu
 ```
 It should show version & location. 
 ### Note (Aditional Info): 
-- To this date, tensorflow 2.1 binary package works well with cuda 10.1 (Not cuda 10.2). So if you want to run with cuda 10.2, you have to build tensorflow 2.1 from source. Follow this instruction: https://www.tensorflow.org/install/source.
+- To this date, tensorflow 1.15 binary package works well with cuda 10.0 (Not cuda 10.2). So if you want to run with cuda 10.2, you have to build tensorflow 1.15 from source. Follow this instruction: https://www.tensorflow.org/install/source.
 - As we have already upgraded the pip3 version (v. 20.0.2), the default version of tensorflow which will be installed is tensorflow 2.1. With the same command, the previous version of pip3 (v. 9.0.1) would have installed tensorflow 1.14. 
 - From tensorflow 2.x versions, you do not need to explicitely mention the gpu or cpu version, only mentioning "tensorflow" will do the same job. 
 - If you are using a virtual environment, omit the --user argument. 
