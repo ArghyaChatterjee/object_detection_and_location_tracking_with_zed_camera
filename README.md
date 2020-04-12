@@ -245,6 +245,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBR
 ### Check Installation:
 To check the installation, open a new terminal & run:
 ```
+sudo ldconfig
 nvcc --version
 ``` 
 ### Note (Aditional Info):
@@ -269,7 +270,7 @@ It should show: No such file or directory.
 ### Binary Installation:
 Go to this website: https://developer.nvidia.com/rdp/cudnn-download & download "cuDNN Library for Linux". Put the file to your home directory after download. Now open a new terminal to copy the files & change their permission:
  ```
- tar -xzvf cudnn-10.0-linux-x64-v7.5.tgz
+ tar -xzvf cudnn-10.0-linux-x64-v7.6.5.tgz
  sudo cp cuda/include/cudnn.h /usr/local/cuda/include
  sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
  sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
@@ -387,7 +388,7 @@ export LD_LIBRARY_PATH=/usr/local/TensorRT-6.0.1.5/lib:/usr/local/cuda-10.1/lib6
 You can check it after tensorflow installation (later). To check the installation at that time, run the following command:
 ```
 python3
->> import tensorflow as tf2
+>> import tensorflow as tf
 ```
 It should show: Successfully opened dynamic library libnvinfer.so.6 & libnvinfer_plugin.so.6. You can also check it if you have installed TensorRT using 'dpkg' command:
 ```
@@ -409,7 +410,7 @@ Source installation of opencv module requires quite a number of preinstalled pro
 ```
 sudo apt-get install unzip pkg-config           # add `cmake` & `build-essential` if you haven't installed them previously.
 ```
-OpenGL should have already been installed during CUDA installation. If not, install it by typing following command:
+OpenGL should have already been installed during Nvidia manual driver installation or Driver installation during CUDA installation. If not, install it by typing following command:
 ```
 sudo apt-get install libglu1-mesa-dev freeglut3-dev mesa-common-dev mesa-utils
 ```
@@ -417,7 +418,7 @@ Check whether OpenGL is successfully installed or not by running:
 ```
 glxinfo | grep "OpenGL version"
 ```
-It should show: OpenGL version string: 4.6.0 NVIDIA 435.21 or something similar.
+It should show: OpenGL version string: 4.6.0 NVIDIA 440.82 or something similar.
 Now, we need to install some OpenCV-specific prerequisites & packages to work with your camera stream and process video files. Run the following commands:
 ```
 sudo apt-get install libjpeg-dev libpng-dev libtiff-dev
@@ -496,7 +497,7 @@ After installing opencv, you should start installing tensorflow. A list of CUDA 
     <img src="asset/GPU_Version.png", width="800">
 </p>
 
-Here, we will be installing tensorflow from binary packages. According to the chart above, tensorflow 1.15 binary package ships with preconfigured cuda 10.0. <br>
+Here, we will be installing tensorflow from binary packages. According to the chart above, tensorflow 1.15 binary package ships with preconfigured cuda 10.2. <br>
 Assuming that you have a nvidia compatible gpu, run in the terminal:
 ```
 python3 -m pip install --user tensorflow-gpu==1.15
