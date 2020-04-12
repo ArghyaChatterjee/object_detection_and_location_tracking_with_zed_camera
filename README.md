@@ -327,19 +327,19 @@ It should show: No such file or directory.
 ### Binary Installation:
 Go to this website: https://developer.nvidia.com/nvidia-tensorrt-6x-download & download "Tar File Install Packages For Linux x86". Put the file to your home directory after download. Now open a new terminal to copy the files & change their permission:
  ```
- tar -xzvf TensorRT-6.0.1.5.Ubuntu-18.04.x86_64-gnu.cuda-10.1.cudnn7.6.tar.gz
- sudo cp -avr ~/TensorRT-6.0.1.5 /usr/local
- sudo chmod a+r /usr/local/TensorRT-6.0.1.5/include/NvInfer.h /usr/local/TensorRT-6.0.1.5/lib/libnvinfer*
- sudo chmod a+r /usr/local/TensorRT-6.0.1.5/include/NvInferPlugin.h /usr/local/TensorRT-6.0.1.5/lib/libnvinfer_plugin*
+ tar -xzvf TensorRT-7.0.0.11.Ubuntu-18.04.x86_64-gnu.cuda-10.2.cudnn7.6.tar.gz
+ sudo cp -avr ~/TensorRT-7.0.0.11 /usr/local
+ sudo chmod a+r /usr/local/TensorRT-7.0.0.11/include/NvInfer.h /usr/local/TensorRT-7.0.0.11/lib/libnvinfer*
+ sudo chmod a+r /usr/local/TensorRT-7.0.0.11/include/NvInferPlugin.h /usr/local/TensorRT-7.0.0.11/lib/libnvinfer_plugin*
  ```
  Now, navigate to the cuda library directory to see the symlinks. Run the following command: 
  ```
- cd /usr/local/TensorRT-6.0.1.5/lib
+ cd /usr/local/TensorRT-7.0.0.11/lib
  ls -lha libnvinfer*
  ```
 You can see libnvinfer.so, libnvinfer.so.6, libnvinfer_plugin.so & libnvinfer_plugin.so.6 are not symlinks (i.e hard links):
  ```
- /usr/local/TensorRT-6.0.1.5/lib$ ls -lha libnvinfer*
+ /usr/local/TensorRT-7.0.0.11/lib$ ls -lha libnvinfer*
 lrwxrwxrwx 1 root root   22 এপ্রিল 11 22:20 libnvinfer_plugin.so 
 lrwxrwxrwx 1 root root   26 এপ্রিল 11 22:19 libnvinfer_plugin.so.6 
 -rwxr-xr-x 1 root root 4.3M এপ্রিল 11 21:32 libnvinfer_plugin.so.6.0.1
@@ -362,7 +362,7 @@ sudo ln -sf libnvinfer_plugin.so.6 libnvinfer_plugin.so
 ```
 Now, type the following command to ensure that the symlinks have been created successfully:
 ```
-/usr/local/TensorRT-6.0.1.5/lib$ ls -lha libnvinfer*
+/usr/local/TensorRT-7.0.0.11/lib$ ls -lha libnvinfer*
 lrwxrwxrwx 1 root root   22 এপ্রিল 11 22:20 libnvinfer_plugin.so -> libnvinfer_plugin.so.6
 lrwxrwxrwx 1 root root   26 এপ্রিল 11 22:19 libnvinfer_plugin.so.6 -> libnvinfer_plugin.so.6.0.1
 -rwxr-xr-x 1 root root 4.3M এপ্রিল 11 21:32 libnvinfer_plugin.so.6.0.1
