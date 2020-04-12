@@ -326,13 +326,12 @@ dpkg -l | grep TensorRT
 ```
 It should show: No such file or directory. 
 ### Binary Installation:
-Go to this website: https://developer.nvidia.com/nvidia-tensorrt-6x-download & download "Tar File Install Packages For Linux x86". Put the file to your home directory after download. Now open a new terminal to copy the files & change their permission:
+Go to this website: https://developer.nvidia.com/nvidia-tensorrt-6x-download & download "Tar File Install Packages For Linux x86". Put the file to your home directory after download. Now open a new terminal to extract TensorRT from tar file:
  ```
  tar -xzvf TensorRT-7.0.0.11.Ubuntu-18.04.x86_64-gnu.cuda-10.2.cudnn7.6.tar.gz
- sudo cp -r ~/TensorRT-7.0.0.11 /usr/local
- cd /usr/local/TensorRT-7.0.0.11/
+ cd ~/TensorRT-7.0.0.11/
  ```
- Now install TensorRT from wheel files. Execute the following commands one by one:
+ Now install TensorRT from wheel files to use python examples. Execute the following commands one by one:
  ```
  cd python 
  sudo -H python3 -m pip install tensorrt-7.0.0.11-cp36-none-linux_x86_64.whl
@@ -346,7 +345,7 @@ Go to this website: https://developer.nvidia.com/nvidia-tensorrt-6x-download & d
  ```
  Now, navigate to the cuda library directory to see the symlinks. Run the following command: 
  ```
- cd /usr/local/TensorRT-7.0.0.11/lib
+ cd ~/TensorRT-7.0.0.11/lib
  ls -lha libnvinfer*
  ```
 You can see libnvinfer.so, libnvinfer.so.6, libnvinfer_plugin.so & libnvinfer_plugin.so.6 are not symlinks (i.e hard links):
@@ -391,20 +390,23 @@ cd ~
 ```
 You should not get any error.
 ### Post Installation:
-Just prepend /usr/local/TensorRT-7.0.0.11 directory to environment path list & /usr/local/TensorRT-7.0.0.11/lib dynamic link libraries path list. Don't forget to save the file.
+Just prepend ~/TensorRT-7.0.0.11/lib directory to system dynamic link libraries path list. Don't forget to save the file.
 ```
-export PATH=/usr/local/TensorRT-7.0.0.11:/usr/local/cuda-10.2/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/TensorRT-7.0.0.11/lib:/usr/local/cuda-10.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export PATH=/usr/local/cuda-10.2/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=~/TensorRT-7.0.0.11/lib:/usr/local/cuda-10.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 ```
 ### Check Installation:
-You can check it after tensorflow installation (later). To check the installation at that time, run the following command:
+Manually check that the python samples are in the samples/python directory. To check the installation with terminal, install tree & check with 'tree' in a new terminal:
 ```
-python3
->> import tensorflow as tf
+sudo snap install tree
+cd TensorRT-7.0.0.11
+tree -d
 ```
-It should show: Successfully opened dynamic library libnvinfer.so.6 & libnvinfer_plugin.so.6. 
+It should show whether all supported installed files are in place in the lib, include, data, etc… directories.
 ### Note (Additional Info):
 - Installing from dpkg or debian installation method may limit you to single installation of TensorRT whereas installing from tar file helps you to do a lot of customization & also gives you freedom to install multiple versions of TensorRT in the same pc. 
+- Don't append (just prepend) ~/TensorRT-7.0.0.11/lib directory after /usr/local/cuda-10.2/lib64 directory as the system tries to import dlls from cuda directory first rather than tensorrt & throws an error showing can not open shared libraries. 
+- Build and run one of the shipped samples, for example, sampleMNIST in the installed directory. You should be able to compile and execute the sample without additional settings. For more information, visit: https://github.com/NVIDIA/TensorRT/tree/release/7.0/samples/opensource/sampleMNIST
 - You can also check your installation if you have installed TensorRT using 'dpkg' command:
 ```
 dpkg -l | grep TensorRT
