@@ -195,9 +195,9 @@ Ensure that your pc has GPU from Nvidia:
 ```
 ubuntu-drivers devices
 ```
-Device drivers will be shortlisted & you can see nvidia drivers enlisted.
+Device drivers will be shortlisted & you can see nvidia drivers enlisted. We will choose Nvidia Driver-440 as 440 is comaptible with cuda-10.2 & ZED SDK-3.1.2 has support for cuda-10.2. (Also cuda-10.0 but not for cuda-10.1)
 ### GUI based Installation (Recommended):
-Go to Activities Overview--->Software Updater--->Settings--->Additional Driver & Choose available latest nvidia driver-435. Then click on "Apply changes".
+Go to Activities Overview--->Software Updater--->Settings--->Additional Driver & Choose available latest nvidia driver-440. Then click on "Apply changes".
 ### Binary Installation (Applicable if you didn't use GUI Method):
 Install updated version of nvidia gpu driver by checking versions of drivers available on apt (Advanced Package Tool) & add drivers to ppa (Personal Package Archives). Run:
 ```
@@ -248,6 +248,7 @@ To check the installation, open a new terminal & run:
 sudo ldconfig
 nvcc --version
 ``` 
+You should not get any error & nvcc should show cuda version 10.2.89 or something similar.
 ### Note (Aditional Info):
 - It's necessary to double check Nvidia Graphics driver supported cuda version. Otherwise, we won't be able to use matching version of tensorflow later in this tutorial.  
 - You can manually follow the instruction to download and install cuda on your system. Go to this link for more info: https://developer.nvidia.com/cuda-downloads .
