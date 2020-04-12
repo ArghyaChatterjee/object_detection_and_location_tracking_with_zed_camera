@@ -199,22 +199,19 @@ Device drivers will be shortlisted & you can see nvidia drivers enlisted.
 ### GUI based Installation (Recommended):
 Go to Activities Overview--->Software Updater--->Settings--->Additional Driver & Choose available latest nvidia driver-435. Then click on "Apply changes".
 ### Binary Installation (Applicable if you didn't use GUI Method):
-If you want to check for available versions of nvidia gpu driver available on apt (Advanced Package Tool), type:
-```
-apt search nvidia-driver
-```
-Install updated version of nvidia gpu driver available on apt by adding drivers to ppa (Personal Package Archives), run:
+Install updated version of nvidia gpu driver by checking versions of drivers available on apt (Advanced Package Tool) & add drivers to ppa (Personal Package Archives). Run:
 ```
 sudo apt-add-repository ppa:graphics-drivers/ppa
 sudo apt-get update
-sudo apt-get install nvidia-driver-435
+sudo apt search nvidia-driver
+sudo apt-get install nvidia-driver-440
 ```
 ### Check Installation:
 Restart the computer. It is necessary. Check the version of the nvidia graphics driver recently installed:
 ```
 nvidia-smi
 ```
-It should show: driver version-435.21 & CUDA version-10.1 or something similar. Install same version shown in this tutorial to avoid additional problem.
+It should show: driver version-440.82 & CUDA version-10.2 or something similar. Install same version shown in this tutorial to avoid additional problem.
 ### Note (Aditional Info):
 - Ubuntu software centre method is just a user interface equivalent of the apt-get install commands except paid apps and some of the free apps which is submited through my apps portal are not available in apt-get.
 - It's recommended to use PPA to add repositories for Nvidia drivers. Personal Package Archives (PPA) enables you to upload Ubuntu source packages to be built and published as an apt repository by Launchpad.
@@ -233,7 +230,7 @@ nvcc --version
 ```
 It should show: nvcc not installed but can be installed by 'sudo apt install nvidia-cuda-toolkit'. 
 ### Binary Installation:
-Download cuda 10.0 from this website: https://developer.nvidia.com/cuda-10.0-download-archive-update2. Click on Linux---> x86_64---> Ubuntu---> 18.04---> runfile (local), you will get the installation method which is also mentioned below. Run the following commands in the terminal:
+Download cuda 10.2 from this website: https://developer.nvidia.com/cuda-10.0-download-archive-update2. Click on Linux---> x86_64---> Ubuntu---> 18.04---> runfile (local), you will get the installation method which is also mentioned below. Run the following commands in the terminal:
 ```
 wget http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda_10.1.243_418.87.00_linux.run
 sudo sh cuda_10.1.243_418.87.00_linux.run
@@ -242,8 +239,8 @@ When prompted to an interactive shell within the terminal, select 'continue' to 
 ### Post Installation:
 Just add 2 lines to your .bashrc file & save it. The .bashrc file is a hidden file & it is in the home directory. Press 'ctrl+h' to find it.
 ```
-export PATH=/usr/local/cuda-10.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export PATH=/usr/local/cuda-10.2/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 ```
 ### Check Installation:
 To check the installation, open a new terminal & run:
