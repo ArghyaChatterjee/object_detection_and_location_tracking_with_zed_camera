@@ -330,8 +330,19 @@ Go to this website: https://developer.nvidia.com/nvidia-tensorrt-6x-download & d
  ```
  tar -xzvf TensorRT-7.0.0.11.Ubuntu-18.04.x86_64-gnu.cuda-10.2.cudnn7.6.tar.gz
  sudo cp -r ~/TensorRT-7.0.0.11 /usr/local
- sudo chmod a+r /usr/local/TensorRT-7.0.0.11/include/NvInfer.h /usr/local/TensorRT-7.0.0.11/lib/libnvinfer*
- sudo chmod a+r /usr/local/TensorRT-7.0.0.11/include/NvInferPlugin.h /usr/local/TensorRT-7.0.0.11/lib/libnvinfer_plugin*
+ cd /usr/local/TensorRT-7.0.0.11/
+ ```
+ Now install TensorRT from wheel files. Execute the following commands one by one:
+ ```
+ cd python 
+ sudo -H python3 -m pip install tensorrt-7.0.0.11-cp36-none-linux_x86_64.whl
+ cd ..
+ cd uff
+ sudo -H python3 -m pip install uff-0.6.5-py2.py3-none-any.whl
+ cd ..
+ cd graphsurgeon
+ sudo -H python3 -m pip install graphsurgeon-0.4.1-py2.py3-none-any.whl
+ cd ~
  ```
  Now, navigate to the cuda library directory to see the symlinks. Run the following command: 
  ```
