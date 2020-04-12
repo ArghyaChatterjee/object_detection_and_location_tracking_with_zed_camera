@@ -383,7 +383,7 @@ lrwxrwxrwx 1 root root   19 এপ্রিল 11 22:19 libnvinfer.so.6 -> libnv
 -rwxr-xr-x 1 root root 209M এপ্রিল 11 21:32 libnvinfer.so.6.0.1
 -rw-r--r-- 1 root root 235M এপ্রিল 11 21:32 libnvinfer_static.a
 ```
-Then check whether the dlls can be accessed from the terminal or not. In the same terminal, run: 
+Then check whether the link directories have been successfully configured & updated in the cache from the terminal or not. In the same terminal, run: 
 ```
 sudo ldconfig
 cd ~
