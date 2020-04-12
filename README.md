@@ -240,7 +240,7 @@ When prompted to an interactive shell within the terminal, select 'continue' to 
 Just add 2 lines to your .bashrc file & save it. The .bashrc file is a hidden file & it is in the home directory. Press 'ctrl+h' to find it.
 ```
 export PATH=/usr/local/cuda-10.2/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 ```
 ### Check Installation:
 To check the installation, open a new terminal & run:
@@ -328,7 +328,7 @@ It should show: No such file or directory.
 Go to this website: https://developer.nvidia.com/nvidia-tensorrt-6x-download & download "Tar File Install Packages For Linux x86". Put the file to your home directory after download. Now open a new terminal to copy the files & change their permission:
  ```
  tar -xzvf TensorRT-7.0.0.11.Ubuntu-18.04.x86_64-gnu.cuda-10.2.cudnn7.6.tar.gz
- sudo cp -avr ~/TensorRT-7.0.0.11 /usr/local
+ sudo cp -r ~/TensorRT-7.0.0.11 /usr/local
  sudo chmod a+r /usr/local/TensorRT-7.0.0.11/include/NvInfer.h /usr/local/TensorRT-7.0.0.11/lib/libnvinfer*
  sudo chmod a+r /usr/local/TensorRT-7.0.0.11/include/NvInferPlugin.h /usr/local/TensorRT-7.0.0.11/lib/libnvinfer_plugin*
  ```
@@ -379,10 +379,10 @@ cd ~
 ```
 You should not get any error.
 ### Post Installation:
-Just prepend /usr/local/TensorRT-6.0.1.5 directory to environment path list & /usr/local/TensorRT-6.0.1.5/lib dynamic link libraries path list. Don't forget to save the file.
+Just prepend /usr/local/TensorRT-7.0.0.11 directory to environment path list & /usr/local/TensorRT-7.0.0.11/lib dynamic link libraries path list. Don't forget to save the file.
 ```
-export PATH=/usr/local/TensorRT-6.0.1.5:/usr/local/cuda-10.1/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/TensorRT-6.0.1.5/lib:/usr/local/cuda-10.1/lib64\ ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export PATH=/usr/local/TensorRT-7.0.0.11:/usr/local/cuda-10.2/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/TensorRT-7.0.0.11/lib:/usr/local/cuda-10.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 ```
 ### Check Installation:
 You can check it after tensorflow installation (later). To check the installation at that time, run the following command:
@@ -390,7 +390,10 @@ You can check it after tensorflow installation (later). To check the installatio
 python3
 >> import tensorflow as tf
 ```
-It should show: Successfully opened dynamic library libnvinfer.so.6 & libnvinfer_plugin.so.6. You can also check it if you have installed TensorRT using 'dpkg' command:
+It should show: Successfully opened dynamic library libnvinfer.so.6 & libnvinfer_plugin.so.6. 
+### Note (Additional Info):
+- Installing from dpkg or debian installation method may limit you to single installation of TensorRT whereas installing from tar file helps you to do a lot of customization & also gives you freedom to install multiple versions of TensorRT in the same pc. 
+- You can also check your installation if you have installed TensorRT using 'dpkg' command:
 ```
 dpkg -l | grep TensorRT
 ```
@@ -537,11 +540,11 @@ cd ~
 ```
 Some tensorflow binary files are located inside ~/.local/bin directory. Open the .bashrc file in your home directory. The PATH should look something like this:
 ```
-export PATH=/usr/local/TensorRT-6.0.1.5:/usr/local/cuda-10.1/bin${PATH:+:${PATH}}
+export PATH=/usr/local/TensorRT-7.0.0.11:/usr/local/cuda-10.2/bin${PATH:+:${PATH}}
 ```
 You have to manually add ~/.local/bin directory to environment path variable. After adding the directory to the path variable list, it should look something like this:
 ```
-export PATH=/usr/local/TensorRT-6.0.1.5:/usr/local/cuda-10.1/bin:~/.local/bin${PATH:+:${PATH}}
+export PATH=/usr/local/TensorRT-7.0.0.11:/usr/local/cuda-10.2/bin:~/.local/bin${PATH:+:${PATH}}
 ``` 
 To verify the path, open a new terminal & run: 
 ```
@@ -549,7 +552,7 @@ echo $PATH
 ```
 The path should show something like this:
 ```
-/usr/local/TensorRT-6.0.1.5:/usr/local/cuda-10.1/bin:~/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+/usr/local/TensorRT-7.0.0.11:/usr/local/cuda-10.2/bin:~/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 ```
 The remaining libraries can be installed on Ubuntu 18.04 via apt:
 ```
