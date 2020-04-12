@@ -235,7 +235,7 @@ Download cuda 10.2 from this website: https://developer.nvidia.com/cuda-download
 wget http://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda_10.2.89_440.33.01_linux.run
 sudo sh cuda_10.2.89_440.33.01_linux.run
 ```
-When prompted to an interactive shell within the terminal, select 'continue' to continue without nvidia driver installation, as we have already installed it manually. Then on the next screen, just uncheck the driver installation option (untick 'x' in the box [ ] by pressing 'enter' key) & after that select the last option 'install'. It's ok to get error regarding incomplete installation on the terminal.
+When prompted to an interactive shell within the terminal, select 'continue' to continue without nvidia driver installation, as we have already installed it manually & type 'accept' for license agreement. Then on the next screen, just uncheck the driver installation option (untick 'x' in the box [ ] by pressing 'enter' key) & after that select the last option 'install'. It's ok to get error regarding incomplete driver installation on the terminal.
 ### Post Installation:
 Just add 2 lines to your .bashrc file & save it. The .bashrc file is a hidden file & it is in the home directory. Press 'ctrl+h' to find it.
 ```
@@ -327,7 +327,7 @@ It should show: No such file or directory.
 ### Binary Installation:
 Go to this website: https://developer.nvidia.com/nvidia-tensorrt-6x-download & download "Tar File Install Packages For Linux x86". Put the file to your home directory after download. Now open a new terminal to copy the files & change their permission:
  ```
- tar xzvf TensorRT-6.0.1.5.Ubuntu-18.04.x86_64-gnu.cuda-10.1.cudnn7.6.tar.gz
+ tar -xzvf TensorRT-6.0.1.5.Ubuntu-18.04.x86_64-gnu.cuda-10.1.cudnn7.6.tar.gz
  sudo cp -avr ~/TensorRT-6.0.1.5 /usr/local
  sudo chmod a+r /usr/local/TensorRT-6.0.1.5/include/NvInfer.h /usr/local/TensorRT-6.0.1.5/lib/libnvinfer*
  sudo chmod a+r /usr/local/TensorRT-6.0.1.5/include/NvInferPlugin.h /usr/local/TensorRT-6.0.1.5/lib/libnvinfer_plugin*
