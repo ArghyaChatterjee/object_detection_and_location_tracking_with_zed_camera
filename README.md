@@ -560,11 +560,11 @@ cd ~
 ```
 Some tensorflow binary files are located inside ~/.local/bin directory. Open the .bashrc file in your home directory. The PATH should look something like this:
 ```
-export PATH=/usr/local/TensorRT-7.0.0.11:/usr/local/cuda-10.2/bin${PATH:+:${PATH}}
+export PATH=/usr/local/cuda-10.2/bin${PATH:+:${PATH}}
 ```
 You have to manually add ~/.local/bin directory to environment path variable. After adding the directory to the path variable list, it should look something like this:
 ```
-export PATH=/usr/local/TensorRT-7.0.0.11:/usr/local/cuda-10.2/bin:~/.local/bin${PATH:+:${PATH}}
+export PATH=/usr/local/cuda-10.2/bin:~/.local/bin${PATH:+:${PATH}}
 ``` 
 To verify the path, open a new terminal & run: 
 ```
@@ -572,7 +572,7 @@ echo $PATH
 ```
 The path should show something like this:
 ```
-/usr/local/TensorRT-7.0.0.11:/usr/local/cuda-10.2/bin:~/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+/usr/local/cuda-10.2/bin:~/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 ```
 The remaining libraries can be installed on Ubuntu 18.04 via apt:
 ```
