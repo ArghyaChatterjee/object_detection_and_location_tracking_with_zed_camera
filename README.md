@@ -255,7 +255,7 @@ nvcc --version
 ``` 
 You should not get any error & nvcc should show cuda version 10.2.89 or something similar.
 ### Note (Aditional Info):
-- It's recommended to install Nvidia graphics driver during cuda installation rather than manually as shown previously if you are a beginner.  
+- It's recommended to install Nvidia graphics driver along with cuda installation rather than manually as shown previously if you are a beginner. During graphics driver installation with CUDA, OpenGL related driver files are installed, nvidia drm kernel modules are installed, system x config files are updated to use the new nvidia driver & kernel source files are by default copied to /usr/src/nvidia-440.82/nvidia-drm.
 - It's necessary to double check Nvidia Graphics driver supported cuda version. Otherwise, we won't be able to use matching version of tensorflow later in this tutorial.  
 - You can manually follow the instruction to download and install cuda on your system. Go to this link for more info: https://developer.nvidia.com/cuda-downloads .
 - You can get documentation of post installation instruction here: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions.
