@@ -196,9 +196,7 @@ Ensure that your pc has GPU from Nvidia:
 ubuntu-drivers devices
 ```
 Device drivers will be shortlisted & you can see nvidia drivers enlisted. We will choose Nvidia Driver-440 as 440 is comaptible with cuda-10.2 & ZED SDK-3.1.2 has support for cuda-10.2. (Also cuda-10.0 but not for cuda-10.1)
-### GUI based Installation (Recommended):
-Go to Activities Overview--->Software Updater--->Settings--->Additional Driver & Choose available latest nvidia driver-440. Then click on "Apply changes".
-### Binary Installation (Applicable if you didn't use GUI Method):
+### Binary Installation (Recommended):
 Install updated version of nvidia gpu driver by checking versions of drivers available on apt (Advanced Package Tool) & add drivers to ppa (Personal Package Archives). Run:
 ```
 sudo apt-add-repository ppa:graphics-drivers/ppa
@@ -206,13 +204,20 @@ sudo apt-get update
 sudo apt search nvidia-driver
 sudo apt-get install nvidia-driver-440
 ```
+### GUI based Installation (Applicable if you didn't use GUI Method):
+Go to Activities Overview--->Software Updater--->Settings--->Additional Driver & Choose available latest nvidia driver-440. Then click on "Apply changes".
 ### Check Installation:
-Restart the computer. It is necessary. Check the version of the nvidia graphics driver recently installed:
+Restart the computer. It is necessary to apply the changes installed in your system. Check the version of the nvidia graphics driver recently installed:
 ```
 nvidia-smi
 ```
 It should show: driver version-440.82 & CUDA version-10.2 or something similar. Install same version shown in this tutorial to avoid additional problem.
 ### Note (Aditional Info):
+- If you upgrade or downgrade from a previous nvidia graphics driver, your previous graphics driver's kernel may sometime crash & your system may want to send this crash reports to the developers. It may pop up anytime: 'system program problem detected'. To prevent this error message from repeating, just open a terminal & do the followings :
+```
+ls -l /var/crash/
+sudo rm /var/crash/*
+```
 - Ubuntu software centre method is just a user interface equivalent of the apt-get install commands except paid apps and some of the free apps which is submited through my apps portal are not available in apt-get.
 - It's recommended to use PPA to add repositories for Nvidia drivers. Personal Package Archives (PPA) enables you to upload Ubuntu source packages to be built and published as an apt repository by Launchpad.
 - It's recommended to use apt to install nvidia drivers. APT or Advanced Package Tool, is a free-software user interface that works with core libraries to handle the installation and removal of software on Debian, Ubuntu.
@@ -250,6 +255,7 @@ nvcc --version
 ``` 
 You should not get any error & nvcc should show cuda version 10.2.89 or something similar.
 ### Note (Aditional Info):
+- It's recommended to install Nvidia graphics driver during cuda installation rather than manually as shown previously if you are a beginner.  
 - It's necessary to double check Nvidia Graphics driver supported cuda version. Otherwise, we won't be able to use matching version of tensorflow later in this tutorial.  
 - You can manually follow the instruction to download and install cuda on your system. Go to this link for more info: https://developer.nvidia.com/cuda-downloads .
 - You can get documentation of post installation instruction here: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions.
