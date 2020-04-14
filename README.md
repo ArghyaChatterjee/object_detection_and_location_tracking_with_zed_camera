@@ -332,7 +332,7 @@ dpkg -l | grep TensorRT
 ```
 It should show: No such file or directory. 
 ### Binary Installation:
-Go to this website: https://developer.nvidia.com/nvidia-tensorrt-6x-download & download "Tar File Install Packages For Linux x86". Put the file to your home directory after download. Now open a new terminal to extract TensorRT from tar file:
+Go to this website: https://developer.nvidia.com/nvidia-tensorrt-7x-download & download "Tar File Install Packages For Linux x86". Put the file to your home directory after download. Now open a new terminal to extract TensorRT from tar file:
  ```
  tar -xzvf TensorRT-7.0.0.11.Ubuntu-18.04.x86_64-gnu.cuda-10.2.cudnn7.6.tar.gz
  cd ~/TensorRT-7.0.0.11/
@@ -349,47 +349,12 @@ Go to this website: https://developer.nvidia.com/nvidia-tensorrt-6x-download & d
  sudo -H python3 -m pip install graphsurgeon-0.4.1-py2.py3-none-any.whl
  cd ~
  ```
- Now, navigate to the cuda library directory to see the symlinks. Run the following command: 
+ Now, navigate to the tensorrt library directory to see the symlinks. Run the following command: 
  ```
  cd ~/TensorRT-7.0.0.11/lib
  ls -lha libnvinfer*
  ```
-You can see libnvinfer.so, libnvinfer.so.6, libnvinfer_plugin.so & libnvinfer_plugin.so.6 are not symlinks (i.e hard links):
- ```
- /usr/local/TensorRT-7.0.0.11/lib$ ls -lha libnvinfer*
-lrwxrwxrwx 1 root root   22 এপ্রিল 11 22:20 libnvinfer_plugin.so 
-lrwxrwxrwx 1 root root   26 এপ্রিল 11 22:19 libnvinfer_plugin.so.6 
--rwxr-xr-x 1 root root 4.3M এপ্রিল 11 21:32 libnvinfer_plugin.so.6.0.1
--rw-r--r-- 1 root root 5.2M এপ্রিল 11 21:32 libnvinfer_plugin_static.a
-lrwxrwxrwx 1 root root   15 এপ্রিল 11 22:19 libnvinfer.so 
-lrwxrwxrwx 1 root root   19 এপ্রিল 11 22:19 libnvinfer.so.6 
--rwxr-xr-x 1 root root 209M এপ্রিল 11 21:32 libnvinfer.so.6.0.1
--rw-r--r-- 1 root root 235M এপ্রিল 11 21:32 libnvinfer_static.a
-```
-TensorRT downloaded from nvidia has symbolic link in it's libraries but when copied to other location, it losses the symlink info. If so, stay in the same directory & terminal. Run the following command:
-```
-sudo rm libnvinfer.so
-sudo rm libnvinfer.so.6
-sudo rm libnvinfer_plugin.so
-sudo rm libnvinfer_plugin.so.6
-sudo ln -sf libnvinfer.so.6.0.1 libnvinfer.so.6
-sudo ln -sf libnvinfer.so.6 libnvinfer.so
-sudo ln -sf libnvinfer_plugin.so.6.0.1 libnvinfer_plugin.so.6
-sudo ln -sf libnvinfer_plugin.so.6 libnvinfer_plugin.so
-```
-Now, type the following command to ensure that the symlinks have been created successfully:
-```
-/usr/local/TensorRT-7.0.0.11/lib$ ls -lha libnvinfer*
-lrwxrwxrwx 1 root root   22 এপ্রিল 11 22:20 libnvinfer_plugin.so -> libnvinfer_plugin.so.6
-lrwxrwxrwx 1 root root   26 এপ্রিল 11 22:19 libnvinfer_plugin.so.6 -> libnvinfer_plugin.so.6.0.1
--rwxr-xr-x 1 root root 4.3M এপ্রিল 11 21:32 libnvinfer_plugin.so.6.0.1
--rw-r--r-- 1 root root 5.2M এপ্রিল 11 21:32 libnvinfer_plugin_static.a
-lrwxrwxrwx 1 root root   15 এপ্রিল 11 22:19 libnvinfer.so -> libnvinfer.so.6
-lrwxrwxrwx 1 root root   19 এপ্রিল 11 22:19 libnvinfer.so.6 -> libnvinfer.so.6.0.1
--rwxr-xr-x 1 root root 209M এপ্রিল 11 21:32 libnvinfer.so.6.0.1
--rw-r--r-- 1 root root 235M এপ্রিল 11 21:32 libnvinfer_static.a
-```
-Then check whether the link directories have been successfully configured & updated in the cache from the terminal or not. In the same terminal, run: 
+You can see libnvinfer.so, libnvinfer.so.7, libnvinfer_plugin.so & libnvinfer_plugin.so.7 are symlinks. Then check whether the link directories have been successfully configured & updated in the cache from the terminal or not. In the same terminal, run: 
 ```
 sudo ldconfig
 cd ~
@@ -417,7 +382,7 @@ It should show whether all supported installed files are in place in the lib, in
 ```
 dpkg -l | grep TensorRT
 ```
-It should show: libnvinfer6 6.0.1–1+cuda10.1 amd64 TensorRT runtime libraries & tensorrt 6.0.1.5–1+cuda10.1 amd64 Meta package of TensorRT.
+It should show: libnvinfer7 7.0.0.11–1+cuda10.2 amd64 TensorRT runtime libraries & tensorrt 7.0.0.11–1+cuda10.2 amd64 Meta package of TensorRT.
 # Open-CV-Tensorflow-and-Object-Detection-API-installation-with-Nvidia-GPU
 It's an installation instruction for Opencv, Tensorflow & Object Detection API. Follow the guideline carefully for source installation. 
 ## Open CV installation:
@@ -447,6 +412,9 @@ Now, we need to install some OpenCV-specific prerequisites & packages to work wi
 sudo apt-get install libjpeg-dev libpng-dev libtiff-dev
 sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
 sudo apt-get install libxvidcore-dev libx264-dev
+sudo add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main"
+sudo apt update
+sudo apt install libjasper1 libjasper-dev
 ```
 OpenCV’s highgui module relies on the GTK library for GUI operations. At the same time, install some packages which will provide optimizing functions for OpenCV & Python3 headers & libraries. Type:
 ```
@@ -458,15 +426,15 @@ sudo apt install python3-testresources
 Since we’re continuing to work in the terminal, let’s download the official OpenCV release followed by the opencv_contrib  module using wget :
 ```
 cd ~
-wget -O opencv.zip https://github.com/opencv/opencv/archive/4.1.0.zip
-wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/4.1.0.zip
+wget -O opencv.zip https://github.com/opencv/opencv/archive/3.4.8.zip
+wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/3.4.8.zip
 ```
 Unzip & rename the directories. Run:
 ```
 unzip opencv.zip
 unzip opencv_contrib.zip
-mv opencv-4.1.0 opencv
-mv opencv_contrib-4.1.0 opencv_contrib
+mv opencv-3.4.8 opencv
+mv opencv_contrib-3.4.8 opencv_contrib
 ```
 Let's configure & create Makefile for opencv using cmake by running:
 ```
@@ -497,17 +465,17 @@ To check successful opencv installation, type:
 python3
 >>> import cv2
 >>> cv2.__version__
-'4.1.0'                              # Showing version of opencv installed on your system
+'3.4.8'                              # Showing version of opencv installed on your system
 >>> exit()
 ```
 Change your directory where your Python 3 bindings for OpenCV resides & rename the binding file by running the following command:
 ```
 cd /usr/local/lib/python3.6/dist-packages/cv2/python-3.6
-sudo mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.so.4.1.0
+sudo mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.so.3.4.8
 cd ~
 ```
 ### Note (Aditional Info):
-- Follow the instruction on this site to download and install opencv & some other necessary packages manually: https://www.pyimagesearch.com/2018/08/15/how-to-install-opencv-4-on-ubuntu/ & follow this for opencv installation with advanced features on: https://gist.github.com/ArghyaChatterjee/fe55b35cf06110d1ddb9ab7d321592bc.
+- Follow the instruction on this site to download and install opencv & some other necessary packages manually: https://www.pyimagesearch.com/2018/05/28/ubuntu-18-04-how-to-install-opencv/ & follow this for opencv installation with advanced features on: https://gist.github.com/ArghyaChatterjee/fe55b35cf06110d1ddb9ab7d321592bc.
 - If you want to test opengl, go to this website: http://www.codebind.com/linux-tutorials/install-opengl-ubuntu-linux/ & follow the instructions accordingly.
 - 'cmake' & autotools are 2 different build systems. If you have source code build with autotools, you use './configure' & if you have cmake, you use 'cmake', 'ccmake' or 'cmake-gui' to do the configuration.
 - 'cmake' command with Release flag creates a Makefile in the build directory following updated packages mentioned in requirement.txt file according to system configuration.
@@ -535,9 +503,9 @@ To know the version & directory where tensorflow is located, run:
 ```
 pip3 show tensorflow-gpu
 ```
-It should show version & location. 
+It should show version & location of tensorflow installed on your system. 
 ### Note (Aditional Info): 
-- To this date, tensorflow 1.15 binary package works well with cuda 10.0 (Not cuda 10.2). So if you want to run with cuda 10.2, you have to build tensorflow 1.15 from source. Follow this instruction: https://www.tensorflow.org/install/source.
+- To this date, tensorflow 1.15 binary package works well with cuda 10.0 (Not cuda 10.2). So if you want to run with cuda 10.2, you can also build tensorflow 1.15 from source. Follow this instruction: https://www.tensorflow.org/install/source.
 - As we have already upgraded the pip3 version (v. 20.0.2), the default version of tensorflow which will be installed is tensorflow 2.1. With the same command, the previous version of pip3 (v. 9.0.1) would have installed tensorflow 1.14. 
 - From tensorflow 2.x versions, you do not need to explicitely mention the gpu or cpu version, only mentioning "tensorflow" will do the same job. 
 - If you are using a virtual environment, omit the --user argument. 
