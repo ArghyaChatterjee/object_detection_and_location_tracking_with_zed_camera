@@ -649,6 +649,7 @@ python3 -m pip install pyzed-3.1-cp36-cp36m-linux_x86_64.whl
 ```
 To check successful installation, run:
 ```
+cd ~
 python3
 import pyzed.sl as sl
 ```
