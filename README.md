@@ -471,7 +471,7 @@ python3
 Change your directory where your Python 3 bindings for OpenCV resides & rename the binding file by running the following command:
 ```
 cd /usr/local/lib/python3.6/dist-packages/cv2/python-3.6
-sudo mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.so.3.4.8
+sudo mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.so
 cd ~
 ```
 ### Note (Aditional Info):
