@@ -498,13 +498,33 @@ To check the successful gpu version installation, type:
 python3
 import tensorflow as tf
 tf.test.is_gpu_available()
+exit()
 ``` 
+If you are getting errors like 'can not open shared libraries: No such files or directory', most probably your system is having updated version of some cuda dynamic link libraries which doesn't ship with pre-compiled tensorflow 1.15 binaries which we just installed. To avoid this error, do the following steps:
+```
+sudo cp /usr/lib/x86_64-linux-gnu/libcublas.so.10.2.2.89 /usr/local/cuda-10.2/lib64/
+sudo cp /usr/lib/x86_64-linux-gnu/libcublas_static.a /usr/local/cuda-10.2/lib64/
+sudo cp /usr/include/cublas.h /usr/local/cuda-10.2/include/
+```
+After you copied some dlls from system library directory to the directory where your cuda libraries are installed, make symlinks of those dlls so that the tensorflow 1.15 can access familiar version of dlls (version 10.0) during GPU enhanced computations. In the same terminal, type:
+```
+cd /usr/local/cuda/lib64
+sudo ln -sf libcublas.so.10.2.2.89 libcublas.so.10
+sudo ln -sf libcublas.so.10 libcublas.so
+sudo ln -sf libcudart.so.10.2.89 libcudart.so.10.0
+sudo ln -sf libcublas.so.10.2.2.89 libcublas.so.10.0
+sudo ln -sf libcufft.so.10.1.2.89 libcufft.so.10.0
+sudo ln -sf libcurand.so.10.1.2.89 libcurand.so.10.0
+sudo ln -sf libcusolver.so.10.3.0.89 libcusolver.so.10.0
+sudo ln -sf libcusparse.so.10.3.1.89 libcusparse.so.10.0
+```
 To know the version & directory where tensorflow is located, run:
 ```
 pip3 show tensorflow-gpu
 ```
 It should show version & location of tensorflow installed on your system. 
 ### Note (Aditional Info): 
+- Tensorflow Object Detection Module supports Tensorflow 1.x till this date. So, it's better to install tensorflow 1.x version if you want to use tensorflow for object detection. If you want to convert a file from tensorflow 1.x to 2.x compatible all by yourself, go through this tutorial: https://www.tensorflow.org/guide/migrate.   
 - To this date, tensorflow 1.15 binary package works well with cuda 10.0 (Not cuda 10.2). So if you want to run with cuda 10.2, you can also build tensorflow 1.15 from source. Follow this instruction: https://www.tensorflow.org/install/source.
 - As we have already upgraded the pip3 version (v. 20.0.2), the default version of tensorflow which will be installed is tensorflow 2.1. With the same command, the previous version of pip3 (v. 9.0.1) would have installed tensorflow 1.14. 
 - From tensorflow 2.x versions, you do not need to explicitely mention the gpu or cpu version, only mentioning "tensorflow" will do the same job. 
@@ -512,7 +532,6 @@ It should show version & location of tensorflow installed on your system.
 - Upgrading the system pip can cause problems. If not in a virtual environment, use python3 -m pip. This ensures that you upgrade and use the Python pip instead of the system pip. 
 - If you ever realize that you have installed wrong version of tensorflow, then you can do the following to get it undone & after that, manually delete files named 'tensorflow-estimator-1.15', 'tensorflow-estimator', 'tensorflow', 'tensorboard-1.15', 'tensorboard' from usr/arghya/.local/lib/python3.6/site-packages/.
 ```
-python3 -m pip uninstall protobuf    
 python3 -m pip uninstall tensorflow-gpu
 ```
 ## Tensorflow Object Detection API Installation:
