@@ -520,6 +520,7 @@ sudo ln -sf libcusparse.so.10.3.1.89 libcusparse.so.10.0
 ```
 To know the version & directory where tensorflow is located, run:
 ```
+cd ~
 pip3 show tensorflow-gpu
 ```
 It should show version & location of tensorflow installed on your system. 
