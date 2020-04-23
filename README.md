@@ -51,7 +51,8 @@ It should show: 3.6.9. Install same version shown in this tutorial to avoid addi
 - Don't try to undo python symbolic link step by reversing the order, otherwise the system will break & you will loose your terminal. 
 - If you want to unlink the symbolic link we created, type:
 ```
-sudo unlink usr/bin/python3
+sudo rm /usr/bin/python
+sudo ln -s /usr/bin/python2 /usr/bin/python
 ```
 ## Configuring Latest PIP Version:
 ### Initial Check:
@@ -97,7 +98,8 @@ It should show: pip 20.0.2 or something similar. Install same version shown in t
 - Don't try to undo pip symbolic link step by reversing the order, otherwise the system will break & you can seriously damage your system. 
 - If you want to unlink the symbolic link we created, type:
 ```
-sudo unlink usr/bin/pip3
+sudo rm /usr/bin/pip
+sudo apt install python-pip   # Only if you want to use pip with python2, otherwise don't run it
 ```
 - pip or python -m pip commands do the same. The docs for distributing Python modules were just updated to suggest using python -m pip instead of the pip executable, because it's easier to tell which version of python is going to be used to actually run pip that way.
 ## Configuring GCC, G++ & Make:
