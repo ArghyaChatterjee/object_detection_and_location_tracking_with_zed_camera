@@ -485,6 +485,7 @@ cd ~
 - 'make' command builds the package & compiles source codes of Makefile accordingly to create binary executable files. 
 - 'sudo make install' command copies the compiled binaries to the system path binary directories accordingly.
 - 'sudo ldconfig' creates the necessary links and cache to the most recent shared libraries found in the directories specified on the command line or mentioned in the system path. The cache is used by the run-time linker.
+- ROS has a similar build system named 'catkin' which is based on cmake. For further information regarding different commands, you can see: http://wiki.ros.org/catkin/workspaces
 ## Tensorflow GPU installation:
 After installing opencv, you should start installing tensorflow. A list of CUDA version compatible tensorflow is given below:
 <p align="center">
