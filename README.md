@@ -138,7 +138,7 @@ g++ --version
 ```
 It should show: 7.5.0 or something similar. Install same version shown in this tutorial to avoid additional problem.
 ### Note (Aditional Info):
-- If you want to know about different types of build systems, follow the link: http://wiki.ros.org/catkin/conceptual_overview/#1.1_What_is_a_Build_System?
+- If you want to know about different types of build systems, follow the link: http://wiki.ros.org/catkin/conceptual_overview//*[@id="What_is_a_Build_System.3F"]?
 - GNU compiler collection (GCC) is a collection of compilers for programming such as C++, C, Objective-C, Java, and Fortran. The GNU provide the optimising compiler for C++ which is known as g++. GCC release is from a free software foundation operated through the command line. 
 - g++ compiler builds the object code from source code, and it does not generate any intermediate C version of the program. g++ is a complete compiler, but GCC requires the help of g++. 
 - 'make' is a tool to help build programs. It introduces a separate file of "rules", that describes how to go from source code to finished program. It then interprets this file, figures out what needs to be compiled, and calls gcc for you. 
