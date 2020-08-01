@@ -207,7 +207,7 @@ sudo apt-get update
 sudo apt search nvidia-driver
 sudo apt-get install nvidia-driver-440
 ```
-### GUI based Installation (Applicable if you didn't use GUI Method):
+### GUI based Installation (Applicable if you didn't use Binary Installation Method):
 Go to Activities Overview--->Software Updater--->Settings--->Additional Driver & Choose available latest nvidia driver-440. Then click on "Apply changes".
 ### Check Installation:
 Restart the computer. It is necessary to apply the changes installed in your system. Check the version of the nvidia graphics driver recently installed:
