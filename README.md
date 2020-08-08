@@ -506,15 +506,13 @@ exit()
 ``` 
 If you are getting errors like 'can not open shared libraries: No such files or directory', most probably your system is having updated version of some cuda dynamic link libraries which doesn't ship with pre-compiled tensorflow 1.15 binaries which we just installed. To avoid this error, do the following steps:
 ```
-sudo cp /usr/lib/x86_64-linux-gnu/libcublas.so.10.2.2.89 /usr/local/cuda-10.2/lib64/
-sudo cp /usr/lib/x86_64-linux-gnu/libcublas_static.a /usr/local/cuda-10.2/lib64/
-sudo cp /usr/include/cublas.h /usr/local/cuda-10.2/include/
+sudo cp /usr/lib/x86_64-linux-gnu/libcublas.so.10.2.2.89 /usr/local/cuda-10.2/targets/x86_64-linux/lib/
+sudo cp /usr/lib/x86_64-linux-gnu/libcublas_static.a /usr/local/cuda-10.2/targets/x86_64-linux/lib/
+sudo cp /usr/include/cublas.h /usr/local/cuda-10.2/targets/x86_64-linux/include/
 ```
 After you copied some dlls from system library directory to the directory where your cuda libraries are installed, make symlinks of those dlls so that the tensorflow 1.15 can access familiar version of dlls (version 10.0) during GPU enhanced computations. In the same terminal, type:
 ```
 cd /usr/local/cuda/lib64
-sudo ln -sf libcublas.so.10.2.2.89 libcublas.so.10
-sudo ln -sf libcublas.so.10 libcublas.so
 sudo ln -sf libcudart.so.10.2.89 libcudart.so.10.0
 sudo ln -sf libcublas.so.10.2.2.89 libcublas.so.10.0
 sudo ln -sf libcufft.so.10.1.2.89 libcufft.so.10.0
