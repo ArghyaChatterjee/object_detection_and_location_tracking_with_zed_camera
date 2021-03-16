@@ -58,7 +58,7 @@ sudo ln -s /usr/bin/python2 /usr/bin/python
 ### Initial Check:
 If you want to use pip3 (python installation pipeline), first, check that your system has pip3 already installed by typing:
 ```
-pip3 ---version
+pip3 --version
 ```
 It should show: pip3 is not installed but can be insalled with 'sudo apt install python3-pip'.
 ### Binary Installation (Recommended):
