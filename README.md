@@ -150,7 +150,7 @@ Ubuntu 18.04 LTS doesn't come with a preinstalled cmake. To check, run on termin
 cmake --version
 ```
 It should show: Not installed but can be installed with 'sudo apt-get install cmake'. 
-### GUI based Installation (Recommended):
+### CLI based Installation (Recommended):
 Updated version of cmake (cmake-3.17.1) can also be installed using "snap" package manager. Just type in a terminal:
 ```
 sudo snap install cmake
