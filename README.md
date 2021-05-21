@@ -720,6 +720,9 @@ export $TENSORFLOW="~/.local/lib/python3.6/site-packages/tensorflow:$PATH"
 4. YOLO ROS for ZED camera with distance estimation: https://github.com/leoll2/darknet_ros_zed
 5. YOLO ROS for ZED camera with 3D distance estimation: https://github.com/PhiAbs/zed-yolo
 6. YOLO ROS for 360 camera: https://github.com/cvgl/darknet2_ros
+7. Mask RCNN ROS for 2D camera: 
+   a) https://github.com/qixuxiang/mask_rcnn_ros
+   b) https://github.com/yehengchen/mask_rcnn_ros
 # Special Thanks:
 1. https://github.com/stereolabs/zed-tensorflow
 2. https://www.stereolabs.com/docs/api/
