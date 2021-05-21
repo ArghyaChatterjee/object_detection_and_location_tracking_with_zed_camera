@@ -714,11 +714,12 @@ The result should be something like below:
 export $TENSORFLOW="~/.local/lib/python3.6/site-packages/tensorflow:$PATH"
 ```
 ## YOLO ROS:
-1. YOLO ROS for 2D camera: https://github.com/leggedrobotics/darknet_ros
-2. YOLO ROS for ZED camera: https://github.com/AkellaSummerResearch/darknet_ros
-3. YOLO ROS for ZED camera with distance estimation: https://github.com/leoll2/darknet_ros_zed
-4. YOLO ROS for ZED camera with 3D distance estimation: https://github.com/PhiAbs/zed-yolo
-5. YOLO ROS for 360 camera: https://github.com/cvgl/darknet2_ros
+1. YOLO Darknet ROS for 2D camera: https://github.com/leggedrobotics/darknet_ros
+2. YOLO Pytorch ROS for 2D camera: https://github.com/vvasilo/yolov3_pytorch_ros 
+3. YOLO ROS for ZED camera: https://github.com/AkellaSummerResearch/darknet_ros
+4. YOLO ROS for ZED camera with distance estimation: https://github.com/leoll2/darknet_ros_zed
+5. YOLO ROS for ZED camera with 3D distance estimation: https://github.com/PhiAbs/zed-yolo
+6. YOLO ROS for 360 camera: https://github.com/cvgl/darknet2_ros
 # Special Thanks:
 1. https://github.com/stereolabs/zed-tensorflow
 2. https://www.stereolabs.com/docs/api/
