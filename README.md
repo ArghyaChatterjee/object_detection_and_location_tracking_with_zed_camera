@@ -340,7 +340,7 @@ Go to this website: https://developer.nvidia.com/nvidia-tensorrt-7x-download & d
  tar -xzvf TensorRT-7.0.0.11.Ubuntu-18.04.x86_64-gnu.cuda-10.2.cudnn7.6.tar.gz
  cd ~/TensorRT-7.0.0.11/
  ```
- Now install TensorRT from wheel files to use python examples. Execute the following commands one by one:
+ Now install TensorRT from wheel files to use python examples. If you want to use TensorRT with python 3.6 (cp36), execute the following commands one by one:
  ```
  cd python 
  sudo -H python3 -m pip install tensorrt-7.0.0.11-cp36-none-linux_x86_64.whl
