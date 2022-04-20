@@ -713,6 +713,23 @@ The result should be something like below:
 ```
 export $TENSORFLOW="~/.local/lib/python3.6/site-packages/tensorflow:$PATH"
 ```
+## Darknet with ZED:
+1. Follow this repo's instruction to clone and build darknet.
+```
+git clone https://github.com/pjreddie/darknet/tree/yolov3.git
+cd ~/darknet
+make
+```
+2. Try to run the demo with zed camera.
+```
+cd ~/darknet
+./build-release/uselib data/coco.names cfg/yolov3.cfg yolov3.weights zed_camera
+```
+The result should be something like below:
+<p align="center">
+    <img src="asset/Object_detection_and_location.gif", width="800">
+</p>
+
 ## YOLO ROS:
 1. YOLO Darknet ROS for 2D camera: https://github.com/leggedrobotics/darknet_ros
 2. YOLO Pytorch ROS for 2D camera: https://github.com/vvasilo/yolov3_pytorch_ros 
